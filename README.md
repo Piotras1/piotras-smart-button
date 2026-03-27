@@ -32,10 +32,15 @@ By assigning `icon_mode`, `name_mode`, and `value_mode` to these numbers, you ca
 
 ---
 
-### Visual Hierarchy
-- **Icon Wrap** – A glowing, tinted ring that emphasizes the device state.
-- **Dynamic Filter** – When using background images, the card applies professional-grade filters (grayscale/brightness) based on the entity state.
-- **Control Zone** – When `show_more: true` is enabled, the bottom of the card transforms into a functional area for sliders or power bars.
+### Visual Hierarchy & Style
+
+The card is built on a layered architecture to ensure maximum readability even with complex backgrounds:
+
+* **Dynamic Background Layer**: Supports solid colors, 2/3-color gradients, or high-resolution images.
+* **Smart Filter Engine**: When `show_filter` is enabled, the card automatically applies CSS filters (brightness, saturation, grayscale) to the background image based on the entity's state (ON/OFF).
+* **Glassmorphic Overlays**: Elements like the **Icon Wrap** and **Control Zone** use backdrop-blur and semi-transparent backgrounds to pop against the main image.
+* **Glow & Shadow Effects**: Icons and text feature multi-layered drop shadows and glows (tinted by `icon_color`) to maintain high contrast regardless of the background complexity.
+* **Interactive Controls**: Sliders and Power Bars are docked at the bottom in a dedicated translucent "Control Zone" that appears only when `show_more` is active, keeping the main UI clean.
 
 ### Configuration Example
 
