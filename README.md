@@ -1,53 +1,66 @@
-##  Piotras Smart Button
+# Piotras Smart Button Card
 ### Release v1.0.0
 
 A high-performance Home Assistant button card designed for ultimate control and deep customization.  
-Features a unique 9-grid layout system, dynamic background effects, and auto-detecting control sliders.
+Features a unique 9-grid layout system, dynamic background effects, auto-detecting control sliders, and a service countdown engine.
 
 ## ✨ Features
-- **9-Grid Element Placement** – independently position Icon, Name, and State.
-- **Adaptive Auto-Sliders** – smart detection of Brightness, Temp, Volume, and more.
-- **Dynamic Backgrounds** – support for 2/3-color gradients and filtered images.
-- **Advanced Action Engine** – optimized Tap, Double Tap, and Hold for mobile/desktop.
-- **Power Monitoring** – integrated bar with configurable safety warnings.
+
+- **9-Grid Element Placement** – independently position Icon, Name, and State across a 3×3 matrix.
+- **Adaptive Auto-Sliders** – smart detection of Brightness, Color Temp, Volume, Cover Position, and Fan Speed.
+- **Dynamic Backgrounds** – solid colors, 2/3-color gradients, and filtered background images.
+- **Advanced Action Engine** – optimized Tap, Double-Tap, and Hold for mobile and desktop.
+- **Power Monitoring** – integrated bar with configurable safety pulse warning.
+- **Service Countdown** – animated circle or progress bar countdown after `call-service`, with optional card blockade.
+- **Font Styles** – 4 text style presets for Name and State labels.
 
 ---
-![Zrzut ekranu (1115)a](https://github.com/user-attachments/assets/8913b4f7-18ce-41cb-9460-546c6f49b9fd)![Zrzut ekranu (1116)a](https://github.com/user-attachments/assets/39951fd9-a3b5-47df-97e9-a55047fe8183)![Zrzut ekranu (1115)b](https://github.com/user-attachments/assets/10f1c332-7c81-493d-b757-ba618669feec)![Zrzut ekranu (1116)b](https://github.com/user-attachments/assets/d1a0fa72-6b9b-4cd9-9083-78dc696b0ea0)
+
+<!-- 
+  ZDJĘCIA DO WSTAWIENIA:
+  1. Kilka kart obok siebie w różnych konfiguracjach kolorystycznych (gradient tła, różne ikony)
+     – pokaż różnorodność wyglądu: światło, gniazdko, głośnik
+  2. Karta z włączonym show_more: true i widocznym sliderem jasności (światło ON)
+  3. Karta bez entity z aktywnym odliczaniem w trybie "circle" – widoczne animowane kółko w środku
+  4. Karta z paskiem mocy (entity_watts) i migającym ostrzeżeniem con_warning
+-->
 
 ---
 
 ## 🧩 Layout: The 9-Grid System
 
-### Description
-The card uses a unique grid system (1-9) to position elements, giving you complete freedom over the UI structure. The grid is a 3x3 matrix:
-- **1, 2, 3** – Top Row (Left, Center, Right)
-- **4, 5, 6** – Middle Row (Left, Center, Right)
-- **7, 8, 9** – Bottom Row (Left, Center, Right)
+The card uses a 3×3 grid (positions 1–9) to place each element independently.  
+You can overlap elements, push them into corners, or create any custom composition.
 
-By assigning `icon_mode`, `name_mode`, and `value_mode` to these numbers, you can overlap elements or separate them into distinct corners.
+```
+┌─────────────────────┐
+│  1 (TL) │ 2 (TC) │ 3 (TR) │
+│─────────┼────────┼────────│
+│  4 (ML) │ 5 (MC) │ 6 (MR) │  ← default: 5 (center)
+│─────────┼────────┼────────│
+│  7 (BL) │ 8 (BC) │ 9 (BR) │
+└─────────────────────┘
+```
+
+Assign `icon_mode`, `name_mode`, and `value_mode` to any of the 9 positions.  
+When `show_more: true` is active, elements in the bottom row (7/8/9) automatically shift one row up to avoid the Control Zone.
 
 ---
 
-![Zrzut ekranu (1117)a](https://github.com/user-attachments/assets/fbd34755-2e10-412e-9e66-4777cffbddb9)![Zrzut ekranu (1118)a](https://github.com/user-attachments/assets/30afccae-2acc-429d-9375-f72dcb3fe128)![Zrzut ekranu (1117)b](https://github.com/user-attachments/assets/4c9e7e84-35d0-4459-bdcc-73dd32a5b047)![Zrzut ekranu (1118)b](https://github.com/user-attachments/assets/c6297306-ba6b-44f4-a438-d053dcf8c3c4)
+<!-- 
+  ZDJĘCIA DO WSTAWIENIA:
+  5. Schemat / diagram wizualny siatki 3×3 z numerami – może być zrzut karty z oznaczonymi pozycjami
+  6. Przykład kart z różnym rozmieszczeniem elementów: np. ikona w 1, nazwa w 9 vs ikona w 5, nazwa w 8
+-->
 
 ---
-
-### Visual Hierarchy & Style
-
-The card is built on a layered architecture to ensure maximum readability even with complex backgrounds:
-
-* **Dynamic Background Layer**: Supports solid colors, 2/3-color gradients, or high-resolution images.
-* **Smart Filter Engine**: When `show_filter` is enabled, the card automatically applies CSS filters (brightness, saturation, grayscale) to the background image based on the entity's state (ON/OFF).
-* **Glassmorphic Overlays**: Elements like the **Icon Wrap** and **Control Zone** use backdrop-blur and semi-transparent backgrounds to pop against the main image.
-* **Glow & Shadow Effects**: Icons and text feature multi-layered drop shadows and glows (tinted by `icon_color`) to maintain high contrast regardless of the background complexity.
-* **Interactive Controls**: Sliders and Power Bars are docked at the bottom in a dedicated translucent "Control Zone" that appears only when `show_more` is active, keeping the main UI clean.
 
 ### Configuration Example
 
 ```yaml
 type: custom:smart-button-card
 entity: light.living_room
-name: "Salon"
+name: Salon
 icon: mdi:lightbulb
 card_width: 140
 card_height: 140
@@ -59,17 +72,70 @@ value_mode: 9
 
 ---
 
-## 🧩 Layout: Power & Safety Monitor
-### Description
+## 🎨 Visual Style: Layered Architecture
 
-- **Designed for smart plugs and sockets, this mode provides immediate visual feedback on current power consumption.**
-- **Dynamic Fill**– The bar fills based on max_watts ratio.
-- **Visual Alert** – If consumption exceeds con_warning (%), the bar triggers a pulse animation to warn the user.
+The card is built on a layered rendering system to ensure maximum readability with any background:
+
+- **Background Layer** — solid color, 2/3-color gradient, or full-resolution image.
+- **Smart Filter Engine** — when `show_filter: true`, CSS filters (brightness, saturation, grayscale) are applied to the background image based on the entity ON/OFF state.
+- **Glassmorphic Overlays** — Icon Wrap and Control Zone use `backdrop-blur` and semi-transparent backgrounds to remain legible over complex images.
+- **Glow & Shadow Effects** — icons and text use multi-layered drop shadows tinted by `icon_color` / `icon_color_on` for high contrast on any background.
+- **Font Styles** — 4 text presets (`font_style`) applied to both Name and State labels simultaneously.
+
+---
+
+## ⚡ Service Countdown
+
+When `tap_action`, `hold_action`, or `double_tap_action` is set to `call-service` and `show_service: true` is enabled, the card displays an animated countdown for the duration defined by `time_service`.
+
+Two display styles are available:
+
+| `service_style` | Behavior |
+|---|---|
+| `circle` *(default)* | Full-card SVG circle in `icon_color_on` — only when `entity` is empty and `show_more: false` |
+| `bar` | Progress bar at the bottom of the card |
+
+The `time_service` value supports two formats:
+- `10` — countdown from 10 seconds, bar scale = 10s
+- `"10/20"` — countdown from 10s, but the visual scale is 20s (bar starts at 50%)
+
+Optional `blockade_card: true` prevents re-triggering the service while countdown is active.
+
+### Configuration Example
+
+```yaml
+type: custom:smart-button-card
+name: Boiler
+icon: mdi:water-boiler
+icon_color_on: "#ff6b35"
+show_service: true
+time_service: "30/60"
+service_style: circle
+blockade_card: true
+tap_action:
+  action: call-service
+  service: switch.turn_on
+  service_data:
+    entity_id: switch.boiler
+```
+
+---
+
+## 🔌 Power & Safety Monitor
+
+Designed for smart plugs and sockets — provides immediate visual feedback on current power consumption.
+
+- **Dynamic Fill** — bar fills proportionally to `max_watts`.
+- **Visual Alert** — when consumption exceeds `con_warning` (%), a pulse animation warns the user.
+- Set `con_warning: false` to disable the warning entirely.
+
+### Configuration Example
 
 ```yaml
 type: custom:smart-button-card
 entity: switch.coffee_maker
-name: "Coffee Machine"
+name: Coffee Machine
+icon: mdi:coffee
 entity_watts: sensor.coffee_machine_power
 max_watts: 2500
 con_warning: 85
@@ -78,62 +144,139 @@ icon_color_on: "#ffffff"
 icon_color: "#f0c040"
 ```
 
+---
 
 ## ⚙️ Configuration Reference
 
-### Card-level options
+### Card Size & Shape
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `card_width` | number | `140` | Card width (px) |
+| `card_height` | number / string | `120` | Card height (px) or `"auto"` |
+| `border_radius` | number | `12` | Corner radius (px) |
+| `border_width` | number | `0` | Border thickness (px) |
+| `border_color` | string | `"rgba(255,255,255,0.2)"` | Border color |
+
+### Entity & Labels
+
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `entity` | string | — | Main entity ID |
 | `name` | string | — | Display name |
-| `icon` | string | `mdi:lightning-bolt` | MDI icon |
-| `card_width` | number | `140` | Width in px |
-| `card_height` | number/string| `120` | Height in px or `"auto"` |
-| `border_radius` | number | `12` | Corner radius (px) |
-| `border_width` | number | `0` | Border width (px) |
-| `border_color` | string | `"rgba(255,255,255,0.2)"` | Border color |
-| `show_icon` | boolean | `true` | Show or hide icon |
-| `show_name` | boolean | `true` | Show or hide name |
-| `show_state` | boolean | `true` | Show or hide state label |
-| `show_more` | boolean | `false` | Enable Sliders or Power Bar zone |
-
-### Visual Appearance & Colors
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `background_color1` | string | `#1a1a2e` | Primary background color |
-| `background_gradient` | list | `null` | List of colors for gradient |
-| `background_gradient_angle`| number| `135` | Angle of the gradient (deg) |
-| `icon_color` | string | `#f0c040` | Icon color when OFF |
-| `icon_color_on` | string | `#ffffff` | Icon color when ON |
-| `icon_size` | number | `28` | Icon size (px) |
-| `icon_wrap_size` | number | `48` | Glow ring size (px) |
-| `text_color` | string | `#ffffff` | Color for name and state |
+| `icon` | string | `mdi:lightning-bolt` | MDI icon identifier |
 | `name_on` | string | `null` | Custom state label when ON |
 | `name_off` | string | `null` | Custom state label when OFF |
 
-### Background Images & Filters
+### Visibility
+
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `show_image` | boolean | `false` | Enable background images |
+| `show_icon` | boolean | `true` | Show/hide icon |
+| `show_icon_full` | boolean | `true` | Full-size icon wrap vs. corner overlap mode |
+| `show_name` | boolean | `true` | Show/hide name label |
+| `show_state` | boolean | `true` | Show/hide state label |
+| `show_more` | boolean | `false` | Enable Sliders / Power Bar Control Zone |
+
+### Colors & Icon
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `icon_color` | string | `#f0c040` | Icon color when OFF (also tints wrap ring) |
+| `icon_color_on` | string | `#ffffff` | Icon color when ON (also tints wrap ring) |
+| `icon_size` | number | `28` | Icon size (px) |
+| `icon_wrap_size` | number | `48` | Icon wrap / glow ring diameter (px) |
+| `icon_over_size` | number | `4` | Corner overlap divisor when `show_icon_full: false` |
+| `text_color` | string | `#ffffff` | Color for name and state labels |
+| `name_size` | number | `14` | Name font size (px) |
+| `state_size` | number | `12` | State badge font size (px) |
+| `font_style` | number | `1` | Text style: `1`=normal `2`=small-caps `3`=monospace `4`=uppercase+spacing |
+
+### Background
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `background_color1` | string | `#1a1a2e` | Primary background color |
+| `background_color2` | string | `""` | Second color for gradient |
+| `background_color3` | string | `""` | Third color for gradient |
+| `background_gradient_angle` | number | `135` | Gradient angle (degrees) |
+
+### Background Images & Filters
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `show_image` | boolean | `false` | Enable background image |
 | `background_image_on` | string | `null` | Image path for ON state |
 | `background_image_off` | string | `null` | Image path for OFF state |
-| `show_filter` | boolean | `false` | Enable CSS filters on images |
-| `image_filter_on` | string | `"brightness(1) saturate(1.1)"` | Filter for ON state |
-| `image_filter_off` | string | `"brightness(0.45)..."` | Filter for OFF state |
+| `show_filter` | boolean | `false` | Enable CSS filters on background image |
+| `image_filter_on` | string | `"brightness(1) saturate(1.1)"` | CSS filter when ON |
+| `image_filter_off` | string | `"brightness(0.45) saturate(0.2) grayscale(0.5)"` | CSS filter when OFF |
+
+### Layout (9-Grid)
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `icon_mode` | number | `5` | Icon position (1–9) |
+| `name_mode` | number | `5` | Name position (1–9) |
+| `value_mode` | number | `5` | State badge position (1–9) |
+
+### Sliders & Control Zone
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `show_more` | boolean | `false` | Show auto-slider or power bar zone |
+| `slider_height` | number | `26` | Control Zone height (px) |
+
+Auto-detected sliders: `brightness`, `color_temp`, `volume_level`, `current_position` (cover), `percentage` (fan), `preset_mode` (fan).
 
 ### Power Bar Monitoring
+
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `entity_watts` | string | `null` | Sensor for power monitoring |
-| `max_watts` | number | `2000` | Max scale for power bar |
-| `con_warning` | number | `80` | Threshold (%) for pulse warning |
+| `entity_watts` | string | `null` | Power sensor entity ID |
+| `max_watts` | number | `2000` | Maximum scale for the bar (W) |
+| `con_warning` | number / boolean | `80` | Pulse warning threshold (%) — `false` to disable |
+
+### Service Countdown
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `show_service` | boolean | `false` | Enable countdown after `call-service` action |
+| `time_service` | number / string | `10` | Seconds, or `"remaining/scale"` e.g. `"10/20"` |
+| `service_style` | string | `"circle"` | `"circle"` — SVG ring (no entity + show_more:false) / `"bar"` — bottom bar |
+| `blockade_card` | boolean | `false` | Block re-triggering while countdown is active |
 
 ### Actions
+
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `tap_action` | object | `toggle` | Single tap action |
-| `double_tap_action`| object | `more-info`| Double tap action |
-| `hold_action` | object | `more-info`| Long press action |
+| `tap_action` | object | `{action: "toggle"}` | Single tap |
+| `double_tap_action` | object | `{action: "more-info"}` | Double tap |
+| `hold_action` | object | `{action: "more-info"}` | Long press |
+
+Supported actions: `toggle`, `more-info`, `navigate`, `call-service`.
 
 ---
+
+## 📦 Installation
+
+1. Copy `piotras-smart-button-card.js` to `/config/www/` in your Home Assistant instance.
+2. Add the resource in **Settings → Dashboards → Resources**:
+
+```yaml
+url: /local/piotras-smart-button-card.js
+type: module
+```
+
+3. Add the card to your dashboard:
+
+```yaml
+type: custom:smart-button-card
+entity: light.your_light
+name: My Light
+icon: mdi:lightbulb
+```
+
+---
+
 *Created by Piotras. Strictly engineered for reliability.*
