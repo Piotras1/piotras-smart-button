@@ -1,107 +1,124 @@
 # Piotras Smart Button Card
 ### Release v1.0.0
 
-A high-performance Home Assistant button card designed for ultimate control and deep customization.  
-Features a unique 9-grid layout system, dynamic background effects, auto-detecting control sliders, and a service countdown engine.
+**Most cards go silent after calling a service. This one tells you it worked.**
+
+A Home Assistant button card with 9-grid layout · auto-detecting sliders · dynamic backgrounds · service countdown · visual editor included.
+
+---
+
+![GitHub release](https://img.shields.io/github/v/release/piotras/smart-button-card?style=flat-square)
+![HACS](https://img.shields.io/badge/HACS-Custom-orange?style=flat-square)
+![HA min version](https://img.shields.io/badge/HA-2023.x%2B-blue?style=flat-square)
+
+---
+
+<!--
+  ZDJĘCIE 1: Kilka kart obok siebie — różne kolory, ikony, stany ON/OFF.
+  Pokazuje różnorodność wyglądu. Najlepiej 4–6 kart w rzędzie.
+-->
+<!-- ![Preview](https://github.com/user-attachments/assets/REPLACE_ME) -->
+
+---
 
 ## ✨ Features
 
-- **9-Grid Element Placement** – independently position Icon, Name, and State across a 3×3 matrix.
-- **Adaptive Auto-Sliders** – smart detection of Brightness, Color Temp, Volume, Cover Position, and Fan Speed.
-- **Dynamic Backgrounds** – solid colors, 2/3-color gradients, and filtered background images.
-- **Advanced Action Engine** – optimized Tap, Double-Tap, and Hold for mobile and desktop.
-- **Power Monitoring** – integrated bar with configurable safety pulse warning.
-- **Service Countdown** – animated circle or progress bar countdown after `call-service`, with optional card blockade.
-- **Font Styles** – 4 text style presets for Name and State labels.
+- **Visual Editor** — full GUI with tabs: General, Size, Background, Icon, Text, Layout, Slider & Power, Filters, Actions, Service. No manual YAML needed.
+- **9-Grid Layout System** — place Icon, Name, and State badge independently across a 3×3 matrix.
+- **Adaptive Auto-Sliders** — smart detection of Brightness, Color Temp, Volume, Cover Position, Fan Speed. Zero configuration required.
+- **Dynamic Backgrounds** — solid color, 2/3-color gradients, or full-resolution background images.
+- **Smart Filter Engine** — CSS filters (brightness, saturation, grayscale) applied automatically per ON/OFF state.
+- **Service Countdown** — animated SVG circle or progress bar after `call-service`, with optional card blockade.
+- **Power Monitoring** — real-time consumption bar with configurable pulse warning threshold.
+- **Font Styles** — 4 text presets for Name and State labels.
+- **Advanced Action Engine** — Tap, Double-Tap, and Hold, optimized for both mobile and desktop.
 
 ---
 
-<!-- 
-  ZDJĘCIA DO WSTAWIENIA:
-  1. Kilka kart obok siebie w różnych konfiguracjach kolorystycznych (gradient tła, różne ikony)
-     – pokaż różnorodność wyglądu: światło, gniazdko, głośnik
-  2. Karta z włączonym show_more: true i widocznym sliderem jasności (światło ON)
-  3. Karta bez entity z aktywnym odliczaniem w trybie "circle" – widoczne animowane kółko w środku
-  4. Karta z paskiem mocy (entity_watts) i migającym ostrzeżeniem con_warning
--->
+## 📦 Installation
 
----
+### Manual
 
-## 🧩 Layout: The 9-Grid System
+1. Download `piotras-smart-button-card.js` and `smart-button-card-editor.js`.
+2. Copy both files to `/config/www/` in your Home Assistant instance.
+3. Add the resource in **Settings → Dashboards → Resources**:
 
-The card uses a 3×3 grid (positions 1–9) to place each element independently.  
-You can overlap elements, push them into corners, or create any custom composition.
-
-```
-┌─────────────────────┐
-│  1 (TL) │ 2 (TC) │ 3 (TR) │
-│─────────┼────────┼────────│
-│  4 (ML) │ 5 (MC) │ 6 (MR) │  ← default: 5 (center)
-│─────────┼────────┼────────│
-│  7 (BL) │ 8 (BC) │ 9 (BR) │
-└─────────────────────┘
+```yaml
+url: /local/piotras-smart-button-card.js
+type: module
 ```
 
-Assign `icon_mode`, `name_mode`, and `value_mode` to any of the 9 positions.  
-When `show_more: true` is active, elements in the bottom row (7/8/9) automatically shift one row up to avoid the Control Zone.
-
----
-
-<!-- 
-  ZDJĘCIA DO WSTAWIENIA:
-  5. Schemat / diagram wizualny siatki 3×3 z numerami – może być zrzut karty z oznaczonymi pozycjami
-  6. Przykład kart z różnym rozmieszczeniem elementów: np. ikona w 1, nazwa w 9 vs ikona w 5, nazwa w 8
--->
-
----
-
-### Configuration Example
+4. Reload the browser. Add the card via the UI or YAML:
 
 ```yaml
 type: custom:smart-button-card
 entity: light.living_room
-name: Salon
+name: Living Room
 icon: mdi:lightbulb
-card_width: 140
-card_height: 140
-show_more: true
-icon_mode: 5
-name_mode: 8
-value_mode: 9
 ```
+
+### HACS
+
+> Add this repository as a custom repository in HACS → Frontend.
 
 ---
 
-## 🎨 Visual Style: Layered Architecture
+## 🧩 The 9-Grid Layout System
 
-The card is built on a layered rendering system to ensure maximum readability with any background:
+Position Icon, Name, and State independently using a 3×3 grid (positions 1–9):
 
-- **Background Layer** — solid color, 2/3-color gradient, or full-resolution image.
-- **Smart Filter Engine** — when `show_filter: true`, CSS filters (brightness, saturation, grayscale) are applied to the background image based on the entity ON/OFF state.
-- **Glassmorphic Overlays** — Icon Wrap and Control Zone use `backdrop-blur` and semi-transparent backgrounds to remain legible over complex images.
-- **Glow & Shadow Effects** — icons and text use multi-layered drop shadows tinted by `icon_color` / `icon_color_on` for high contrast on any background.
-- **Font Styles** — 4 text presets (`font_style`) applied to both Name and State labels simultaneously.
+```
+┌───────┬───────┬───────┐
+│ 1 ↖   │  2 ↑  │ 3 ↗   │
+├───────┼───────┼───────┤
+│ 4 ←   │  5 ·  │ 6 →   │   ← default center
+├───────┼───────┼───────┤
+│ 7 ↙   │  8 ↓  │ 9 ↘   │
+└───────┴───────┴───────┘
+```
+
+Elements sharing the same position are stacked vertically: `icon → name → state`.  
+When `show_more: true` is active, elements in the bottom row shift up automatically to avoid the Control Zone.
+
+<!--
+  ZDJĘCIE 2: Schemat siatki 3×3 lub zrzut z edytora (zakładka Layout z widocznymi gridami).
+-->
+<!-- ![Layout Grid](https://github.com/user-attachments/assets/REPLACE_ME) -->
+
+```yaml
+# Classic: icon top-left, name + state bottom-center
+icon_mode: 1
+name_mode: 8
+value_mode: 8
+
+# Centered stack (default)
+icon_mode: 5
+name_mode: 5
+value_mode: 5
+```
 
 ---
 
 ## ⚡ Service Countdown
 
-When `tap_action`, `hold_action`, or `double_tap_action` is set to `call-service` and `show_service: true` is enabled, the card displays an animated countdown for the duration defined by `time_service`.
+When any action is set to `call-service` and `show_service: true` is enabled, the card displays an animated countdown for the duration set by `time_service`.
 
-Two display styles are available:
+Two display styles:
 
-| `service_style` | Behavior |
+| `service_style` | Description |
 |---|---|
-| `circle` *(default)* | Full-card SVG circle in `icon_color_on` — only when `entity` is empty and `show_more: false` |
-| `bar` | Progress bar at the bottom of the card |
+| `circle` *(default)* | Animated SVG ring centered on the card in `icon_color_on`. Available when `entity` is empty and `show_more: false`. Size follows `icon_wrap_size`. |
+| `bar` | Classic progress bar docked at the bottom of the card. |
 
-The `time_service` value supports two formats:
-- `10` — countdown from 10 seconds, bar scale = 10s
-- `"10/20"` — countdown from 10s, but the visual scale is 20s (bar starts at 50%)
+`time_service` supports two formats:
+- `10` — countdown from 10 s, bar scale = 10 s
+- `"10/20"` — countdown from 10 s, visual scale is 20 s (bar starts at 50%)
 
-Optional `blockade_card: true` prevents re-triggering the service while countdown is active.
-
-### Configuration Example
+<!--
+  ZDJĘCIE 3: Karta bez entity z aktywnym kółkiem SVG na środku (tryb circle).
+  Najlepiej GIF pokazujący animację odliczania.
+-->
+<!-- ![Circle Countdown](https://github.com/user-attachments/assets/REPLACE_ME) -->
 
 ```yaml
 type: custom:smart-button-card
@@ -123,13 +140,15 @@ tap_action:
 
 ## 🔌 Power & Safety Monitor
 
-Designed for smart plugs and sockets — provides immediate visual feedback on current power consumption.
+Real-time power consumption bar for smart plugs and sockets.
 
 - **Dynamic Fill** — bar fills proportionally to `max_watts`.
-- **Visual Alert** — when consumption exceeds `con_warning` (%), a pulse animation warns the user.
-- Set `con_warning: false` to disable the warning entirely.
+- **Pulse Warning** — bar pulses when consumption exceeds `con_warning` (%). Set to `false` to disable.
 
-### Configuration Example
+<!--
+  ZDJĘCIE 4: Karta z paskiem mocy wypełnionym wysoko + widoczne miganie ostrzeżenia.
+-->
+<!-- ![Power Bar](https://github.com/user-attachments/assets/REPLACE_ME) -->
 
 ```yaml
 type: custom:smart-button-card
@@ -140,8 +159,6 @@ entity_watts: sensor.coffee_machine_power
 max_watts: 2500
 con_warning: 85
 show_more: true
-icon_color_on: "#ffffff"
-icon_color: "#f0c040"
 ```
 
 ---
@@ -156,7 +173,7 @@ icon_color: "#f0c040"
 | `card_height` | number / string | `120` | Card height (px) or `"auto"` |
 | `border_radius` | number | `12` | Corner radius (px) |
 | `border_width` | number | `0` | Border thickness (px) |
-| `border_color` | string | `"rgba(255,255,255,0.2)"` | Border color |
+| `border_color` | string | `rgba(255,255,255,0.2)` | Border color |
 
 ### Entity & Labels
 
@@ -164,7 +181,7 @@ icon_color: "#f0c040"
 |---|---|---|---|
 | `entity` | string | — | Main entity ID |
 | `name` | string | — | Display name |
-| `icon` | string | `mdi:lightning-bolt` | MDI icon identifier |
+| `icon` | string | `mdi:lightning-bolt` | MDI icon |
 | `name_on` | string | `null` | Custom state label when ON |
 | `name_off` | string | `null` | Custom state label when OFF |
 
@@ -172,11 +189,11 @@ icon_color: "#f0c040"
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `show_icon` | boolean | `true` | Show/hide icon |
-| `show_icon_full` | boolean | `true` | Full-size icon wrap vs. corner overlap mode |
-| `show_name` | boolean | `true` | Show/hide name label |
-| `show_state` | boolean | `true` | Show/hide state label |
-| `show_more` | boolean | `false` | Enable Sliders / Power Bar Control Zone |
+| `show_icon` | boolean | `true` | Show / hide icon |
+| `show_icon_full` | boolean | `true` | Keep icon inside card bounds |
+| `show_name` | boolean | `true` | Show / hide name label |
+| `show_state` | boolean | `true` | Show / hide state badge |
+| `show_more` | boolean | `false` | Enable Slider / Power Bar zone |
 
 ### Colors & Icon
 
@@ -185,20 +202,20 @@ icon_color: "#f0c040"
 | `icon_color` | string | `#f0c040` | Icon color when OFF (also tints wrap ring) |
 | `icon_color_on` | string | `#ffffff` | Icon color when ON (also tints wrap ring) |
 | `icon_size` | number | `28` | Icon size (px) |
-| `icon_wrap_size` | number | `48` | Icon wrap / glow ring diameter (px) |
+| `icon_wrap_size` | number | `48` | Glow ring diameter (px) |
 | `icon_over_size` | number | `4` | Corner overlap divisor when `show_icon_full: false` |
-| `text_color` | string | `#ffffff` | Color for name and state labels |
+| `text_color` | string | `#ffffff` | Color for Name and State labels |
 | `name_size` | number | `14` | Name font size (px) |
 | `state_size` | number | `12` | State badge font size (px) |
-| `font_style` | number | `1` | Text style: `1`=normal `2`=small-caps `3`=monospace `4`=uppercase+spacing |
+| `font_style` | number | `1` | `1` normal · `2` small-caps · `3` monospace · `4` uppercase + letter-spacing |
 
 ### Background
 
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `background_color1` | string | `#1a1a2e` | Primary background color |
-| `background_color2` | string | `""` | Second color for gradient |
-| `background_color3` | string | `""` | Third color for gradient |
+| `background_color2` | string | `""` | Second gradient color |
+| `background_color3` | string | `""` | Third gradient color |
 | `background_gradient_angle` | number | `135` | Gradient angle (degrees) |
 
 ### Background Images & Filters
@@ -208,9 +225,9 @@ icon_color: "#f0c040"
 | `show_image` | boolean | `false` | Enable background image |
 | `background_image_on` | string | `null` | Image path for ON state |
 | `background_image_off` | string | `null` | Image path for OFF state |
-| `show_filter` | boolean | `false` | Enable CSS filters on background image |
-| `image_filter_on` | string | `"brightness(1) saturate(1.1)"` | CSS filter when ON |
-| `image_filter_off` | string | `"brightness(0.45) saturate(0.2) grayscale(0.5)"` | CSS filter when OFF |
+| `show_filter` | boolean | `false` | Enable CSS filters on background |
+| `image_filter_on` | string | `brightness(1) saturate(1.1)` | CSS filter when ON |
+| `image_filter_off` | string | `brightness(0.45) saturate(0.2) grayscale(0.5)` | CSS filter when OFF |
 
 ### Layout (9-Grid)
 
@@ -229,21 +246,21 @@ icon_color: "#f0c040"
 
 Auto-detected sliders: `brightness`, `color_temp`, `volume_level`, `current_position` (cover), `percentage` (fan), `preset_mode` (fan).
 
-### Power Bar Monitoring
+### Power Bar
 
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `entity_watts` | string | `null` | Power sensor entity ID |
-| `max_watts` | number | `2000` | Maximum scale for the bar (W) |
+| `max_watts` | number | `2000` | Maximum scale (W) |
 | `con_warning` | number / boolean | `80` | Pulse warning threshold (%) — `false` to disable |
 
 ### Service Countdown
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `show_service` | boolean | `false` | Enable countdown after `call-service` action |
+| `show_service` | boolean | `false` | Enable countdown after `call-service` |
 | `time_service` | number / string | `10` | Seconds, or `"remaining/scale"` e.g. `"10/20"` |
-| `service_style` | string | `"circle"` | `"circle"` — SVG ring (no entity + show_more:false) / `"bar"` — bottom bar |
+| `service_style` | string | `"circle"` | `"circle"` SVG ring (requires no entity + `show_more: false`) · `"bar"` bottom bar |
 | `blockade_card` | boolean | `false` | Block re-triggering while countdown is active |
 
 ### Actions
@@ -258,24 +275,22 @@ Supported actions: `toggle`, `more-info`, `navigate`, `call-service`.
 
 ---
 
-## 📦 Installation
+## 🖥 Visual Editor
 
-1. Copy `piotras-smart-button-card.js` to `/config/www/` in your Home Assistant instance.
-2. Add the resource in **Settings → Dashboards → Resources**:
+The card ships with a full visual editor accessible directly in the Home Assistant dashboard UI.
 
-```yaml
-url: /local/piotras-smart-button-card.js
-type: module
-```
+<!--
+  ZDJĘCIE 5: Zrzut edytora — np. zakładka Service z widocznym podglądem kółka na karcie po prawej.
+-->
+<!-- ![Visual Editor](https://github.com/user-attachments/assets/REPLACE_ME) -->
 
-3. Add the card to your dashboard:
+Tabs available: **General · Size · Background · Icon · Text · Layout · Slider & Power · Filters · Actions · Service**
 
-```yaml
-type: custom:smart-button-card
-entity: light.your_light
-name: My Light
-icon: mdi:lightbulb
-```
+---
+
+## 📄 License
+
+MIT — free to use, modify, and share.
 
 ---
 
