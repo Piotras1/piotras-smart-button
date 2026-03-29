@@ -1,4 +1,4 @@
-# Piotras Smart Button
+## Piotras Smart Button
 ### Release v1.0.0
 
 **Most cards go silent after calling a service. This one tells you it worked.**
