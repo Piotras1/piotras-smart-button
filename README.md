@@ -99,6 +99,59 @@ value_mode: 5
 
 ---
 
+## 🧭 Navigation Mode (Neumorphic Style)
+### The card works equally well as a navigation controller — icon-only, circular, with a tactile press-and-hold feel.
+### Key features:
+
+- **Active State Glow** — the current page highlights with a colored glow, immediately visible where you are
+- **Press & Hold feedback** — button stays visually pressed ~500ms before redirecting
+- **Minimalist look** — icon-only with border_radius: 50 for a perfect circle, no clutter
+- **Still functional** — navigation buttons can still show background statuses (show_service, entity_watts) in real-time
+
+![Zrzut ekranu (1174)a](https://github.com/user-attachments/assets/d4a332d1-9811-47a7-8f61-7adacb4270b9)
+
+```yaml
+type: custom:piotras-smart-button
+icon: mdi:folder-home
+icon_color: "#5badff"
+show_filter: false
+show_state: false
+show_name: false
+show_image: false
+background_color1: "#5badff"
+card_width: 70
+card_height: 70
+border_radius: 50
+icon_size: 44
+icon_wrap_size: 48
+tap_action:
+  action: navigate
+  navigation_path: /dashboard-home/0
+```
+
+![Zrzut ekranu (1175)](https://github.com/user-attachments/assets/7856887a-f315-4faf-9a49-18947315f8dc)
+
+```yaml
+type: custom:piotras-smart-button
+icon: mdi:folder-home
+icon_color: "#5badff"
+show_filter: false
+show_state: false
+show_name: false
+show_image: false
+background_color1: "#ffffff"
+card_width: 52
+card_height: 52
+border_radius: 50
+icon_size: 44
+icon_wrap_size: 48
+tap_action:
+  action: navigate
+  navigation_path: /dashboard-home/0
+```
+
+---
+
 ## ⚡ Service Countdown
 
 When any action is set to `call-service` and `show_service: true` is enabled, the card displays an animated countdown for the duration set by `time_service`.
@@ -121,7 +174,7 @@ Two display styles:
 <!-- ![Circle Countdown](https://github.com/user-attachments/assets/REPLACE_ME) -->
 
 ```yaml
-type: custom:smart-button-card
+type: custom:piotras-smart-button
 name: Boiler
 icon: mdi:water-boiler
 icon_color_on: "#ff6b35"
@@ -151,7 +204,7 @@ Real-time power consumption bar for smart plugs and sockets.
 <!-- ![Power Bar](https://github.com/user-attachments/assets/REPLACE_ME) -->
 
 ```yaml
-type: custom:smart-button-card
+type: custom:piotras-smart-button
 entity: switch.coffee_maker
 name: Coffee Machine
 icon: mdi:coffee
