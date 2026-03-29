@@ -7,17 +7,32 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 
 ---
 
-![GitHub release](https://img.shields.io/github/v/release/piotras/smart-button-card?style=flat-square)
-![HACS](https://img.shields.io/badge/HACS-Custom-orange?style=flat-square)
-![HA min version](https://img.shields.io/badge/HA-2023.x%2B-blue?style=flat-square)
+## ⚙️ Installation
 
----
+### Method 1: Via HACS (Recommended)
 
-<!--
-  ZDJĘCIE 1: Kilka kart obok siebie — różne kolory, ikony, stany ON/OFF.
-  Pokazuje różnorodność wyglądu. Najlepiej 4–6 kart w rzędzie.
--->
-<!-- ![Preview](https://github.com/user-attachments/assets/REPLACE_ME) -->
+1. Click the button below to automatically add the repository to your HACS:
+
+<a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=Piotras1&repository=piotras-smart-button&category=plugin">
+    <img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance">
+</a>
+
+2. Click **Add** in the pop-up window.
+3. Once the repository page opens, click **Download**.
+4. After downloading, do a **Hard reload** of your browser.
+
+### Method 2: Manual Installation
+
+1. Download this repository as a ZIP file and extract it.
+2. Inside your Home Assistant `config/www/` directory, create a new folder named `piotras-smart-button`.
+3. Copy the compiled files (from `dist/` folder) into `config/www/piotras-smart-button/`.
+4. Go to **Settings → Dashboards → Resources**.
+5. Click **Add Resource** and enter:
+```
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.0.0
+```
+- Resource type: **JavaScript Module**
+6. Hard reload your browser (`Ctrl+Shift+R`).
 
 ---
 
@@ -35,55 +50,14 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 
 ---
 
-## 📦 Installation
-
-### Manual
-
-1. Download `piotras-smart-button-card.js` and `smart-button-card-editor.js`.
-2. Copy both files to `/config/www/` in your Home Assistant instance.
-3. Add the resource in **Settings → Dashboards → Resources**:
-
-```yaml
-url: /local/piotras-smart-button-card.js
-type: module
-```
-
-4. Reload the browser. Add the card via the UI or YAML:
-
-```yaml
-type: custom:smart-button-card
-entity: light.living_room
-name: Living Room
-icon: mdi:lightbulb
-```
-
-### HACS
-
-> Add this repository as a custom repository in HACS → Frontend.
-
----
-
 ## 🧩 The 9-Grid Layout System
 
 Position Icon, Name, and State independently using a 3×3 grid (positions 1–9):
 
-```
-┌───────┬───────┬───────┐
-│ 1 ↖   │  2 ↑  │ 3 ↗   │
-├───────┼───────┼───────┤
-│ 4 ←   │  5 ·  │ 6 →   │   ← default center
-├───────┼───────┼───────┤
-│ 7 ↙   │  8 ↓  │ 9 ↘   │
-└───────┴───────┴───────┘
-```
+![Zrzut ekranu (1190)](https://github.com/user-attachments/assets/1f66c380-280f-4242-86f8-cd03f11fa073)
 
 Elements sharing the same position are stacked vertically: `icon → name → state`.  
 When `show_more: true` is active, elements in the bottom row shift up automatically to avoid the Control Zone.
-
-<!--
-  ZDJĘCIE 2: Schemat siatki 3×3 lub zrzut z edytora (zakładka Layout z widocznymi gridami).
--->
-<!-- ![Layout Grid](https://github.com/user-attachments/assets/REPLACE_ME) -->
 
 ```yaml
 # Classic: icon top-left, name + state bottom-center
@@ -100,13 +74,15 @@ value_mode: 5
 ---
 
 ## 🧭 Navigation Mode (Neumorphic Style)
-### The card works equally well as a navigation controller — icon-only, circular, with a tactile press-and-hold feel.
-### Key features:
 
-- **Active State Glow** — the current page highlights with a colored glow, immediately visible where you are
-- **Press & Hold feedback** — button stays visually pressed ~500ms before redirecting
-- **Minimalist look** — icon-only with border_radius: 50 for a perfect circle, no clutter
-- **Still functional** — navigation buttons can still show background statuses (show_service, entity_watts) in real-time
+The card works equally well as a navigation controller — icon-only, circular, with a tactile press-and-hold feel.
+
+Key features:
+
+- **Active State Glow** — the current page highlights with a colored glow, immediately visible where you are.
+- **Press & Hold feedback** — button stays visually pressed ~500ms before redirecting.
+- **Minimalist look** — icon-only with `border_radius: 50` for a perfect circle, no clutter.
+- **Still functional** — navigation buttons can still show background statuses (`show_service`, `entity_watts`) in real-time.
 
 ![Zrzut ekranu (1174)a](https://github.com/user-attachments/assets/d4a332d1-9811-47a7-8f61-7adacb4270b9)
 
@@ -152,6 +128,231 @@ tap_action:
 
 ---
 
+## 🔌 Socket & Power Monitoring
+
+Real-time power consumption bar for smart plugs and sockets. Tap toggles the socket on or off. Hold triggers an optional service call (e.g. a boiler heating script) with a countdown timer and card blockade.
+
+![Zrzut ekranu (1177)](https://github.com/user-attachments/assets/3f273068-c126-4333-9879-cdb9f824ecc4)
+
+*From left to right: icon-only layout → full image background → dark overlay with watt bar → expanded layout with timer bar*
+
+![Zrzut ekranu (1178)](https://github.com/user-attachments/assets/8e362b2d-0a7b-4ae5-8a87-426c843c522a)
+
+*Active state: colored icon glow, watt reading, animated countdown bar (seconds), and state label*
+
+![Zrzut ekranu (1179)](https://github.com/user-attachments/assets/1e49a8d1-d191-4a8a-9033-f3841203eedc)
+
+*Countdown running — card is blocked from re-triggering the service during this period*
+
+- **Dynamic Fill** — the power bar fills proportionally to `max_watts`.
+- **Pulse Warning** — bar pulses when consumption exceeds `con_warning` (%). Set to `false` to disable.
+- **Card Blockade** — when `blockade_card: true`, re-triggering the service call is blocked for the full timer duration. Tap actions (toggle, more-info) still work normally.
+
+```yaml
+type: custom:piotras-smart-button
+entity: switch.your_socket_entity
+entity_watts: sensor.your_power_sensor
+name: Boiler
+icon: mdi:water-boiler
+icon_color_on: "#ff8080"
+card_width: 180
+card_height: 120
+border_width: 1
+icon_size: 40
+icon_wrap_size: 50
+icon_color: "#c0c0c0"
+show_icon_full: false
+icon_over_size: 4
+font_style: 4
+name_size: 20
+state_size: 15
+icon_mode: 1
+name_mode: 3
+value_mode: 3
+show_image: true
+background_image_on: /local/your_background.jpg
+show_filter: true
+show_more: true
+con_warning: false
+max_watts: 2000
+show_service: true
+time_service: 20
+service_style: bar
+blockade_card: true
+tap_action:
+  action: toggle
+hold_action:
+  action: call-service
+  service: script.your_script
+```
+
+---
+
+## 💡 Light & Auto-Dimmer Slider
+
+When the card detects a `light` entity with brightness support, it automatically renders a brightness slider in the Control Zone — no extra configuration needed. Tap toggles the light. The slider adjusts brightness directly by dragging. Double-tap or hold can trigger an optional service call with a countdown timer running alongside the slider.
+
+![Zrzut ekranu (1180)](https://github.com/user-attachments/assets/e15eda84-2154-4371-aa75-74099743dd0e)
+
+*From left to right: icon-only layout → full image background → dark overlay with brightness slider at 0% → expanded layout*
+
+![Zrzut ekranu (1181)](https://github.com/user-attachments/assets/5e8239f0-2708-419e-b991-39625f65c949)
+
+*Light on at 65% brightness — icon glows, slider shows current level, state label reads DIM*
+
+![Zrzut ekranu (1182)](https://github.com/user-attachments/assets/5d624c7a-80d0-4f8c-8317-db58ac1be7d0)
+
+*Service countdown bar running above the brightness slider — both visible simultaneously*
+
+![Zrzut ekranu (1183)](https://github.com/user-attachments/assets/859ebdb3-590f-4515-a1d6-f10f4b02c826)
+
+*Countdown still visible after light turned off — timer and slider coexist independently*
+
+- **Auto-detected** — no slider configuration needed, the card detects `brightness` automatically.
+- **Live feedback** — slider position reflects current brightness in real time.
+- **Countdown + slider** — `service_style: bar` renders the timer above the slider, both active at the same time.
+
+```yaml
+type: custom:piotras-smart-button
+entity: light.your_light_entity
+name: Living room
+icon: mdi:ceiling-light
+icon_color_on: "#ffff80"
+card_width: 180
+card_height: 120
+border_width: 1
+icon_size: 40
+icon_wrap_size: 50
+icon_color: "#c0c0c0"
+font_style: 2
+name_size: 20
+state_size: 15
+icon_mode: 1
+name_mode: 5
+value_mode: 3
+show_image: true
+show_filter: true
+background_image_on: /local/your_background.jpg
+show_more: true
+con_warning: false
+show_icon_full: false
+icon_over_size: 6.5
+show_service: true
+service_style: bar
+time_service: 20
+tap_action:
+  action: toggle
+hold_action:
+  action: more-info
+double_tap_action:
+  action: call-service
+  service: script.your_script
+```
+
+---
+
+## 📜 Script Button
+
+A dedicated layout for triggering scripts — no entity required. The card uses `name_on` and `name_off` to display custom state labels (e.g. "Ready Script" / "Progress Script") and shows an animated countdown immediately on tap.
+
+Two countdown styles depending on layout:
+
+- **`circle`** — SVG ring centered on the card, used when there is no entity and `show_more: false`. Ideal for icon-only or gradient background cards.
+- **`bar`** — progress bar at the bottom, used alongside a background image.
+
+Both styles can appear on different cards in the same dashboard simultaneously, each with its own `time_service` duration.
+
+![Zrzut ekranu (1184)](https://github.com/user-attachments/assets/bad9ae77-257c-4708-9e29-15033216f324)
+
+*From left to right: gradient background → solid dark → dark with background image OFF → expanded with background image OFF*
+
+![Zrzut ekranu (1185)](https://github.com/user-attachments/assets/1264b8db-721d-4f09-a52a-39423bf93dd6)
+
+*Countdown active: SVG circle on gradient card · bar style on image cards · custom label "Progress Script" visible*
+
+```yaml
+type: custom:piotras-smart-button
+name: Script
+icon: mdi:script
+card_width: 180
+card_height: 120
+border_width: 1
+icon_size: 45
+icon_wrap_size: 60
+icon_color: "#c0c0c0"
+font_style: 2
+name_size: 20
+state_size: 15
+icon_mode: 1
+name_mode: 5
+value_mode: 5
+show_service: true
+time_service: 20
+service_style: circle
+show_filter: true
+name_off: "Ready Script"
+name_on: "Progress Script"
+show_image: true
+background_image_on: /local/your_image_on.png
+background_image_off: /local/your_image_off.png
+show_icon_full: false
+tap_action:
+  action: call-service
+  service: script.your_script
+```
+
+---
+
+## 🔊 Media Player
+
+When the card detects a `media_player` entity, it automatically renders a volume slider in the Control Zone. Tap toggles playback (PLAY/STOP). The slider adjusts volume level directly by dragging. State label reflects the current playback state using `name_on` / `name_off` or the entity state directly.
+
+![Zrzut ekranu (1186)](https://github.com/user-attachments/assets/5f67ec1f-95eb-4514-9d24-671c1b00d6b7)
+
+*Left: gradient background with icon and STOP label · Right: expanded layout with background image*
+
+![Zrzut ekranu (1188)](https://github.com/user-attachments/assets/13220e11-c6db-43c1-acb2-8e1f64f86b44)
+
+*Playback active: icon glows, volume slider at 27%, state label reads PLAY*
+
+- **Auto-detected** — `volume_level` slider requires no extra configuration.
+- **Different backgrounds per state** — `background_image_off` and `background_image_on` show a different image when stopped vs playing.
+- **Full toggle** — tap starts or stops playback; hold opens more-info for full media controls.
+
+```yaml
+type: custom:piotras-smart-button
+entity: media_player.your_media_player
+name: Speaker Bedroom
+icon: mdi:radio
+icon_color_on: "#ff8000"
+card_width: 180
+card_height: 120
+border_width: 1
+icon_size: 40
+icon_wrap_size: 50
+icon_over_size: 5
+icon_color: "#c0c0c0"
+font_style: 2
+name_size: 20
+state_size: 20
+icon_mode: 1
+name_mode: 5
+value_mode: 3
+show_image: true
+show_filter: true
+show_service: false
+show_more: true
+show_icon_full: false
+background_image_off: /local/your_image_off.png
+background_image_on: /local/your_image_on.png
+tap_action:
+  action: toggle
+hold_action:
+  action: more-info
+```
+
+---
+
 ## ⚡ Service Countdown
 
 When any action is set to `call-service` and `show_service: true` is enabled, the card displays an animated countdown for the duration set by `time_service`.
@@ -160,18 +361,16 @@ Two display styles:
 
 | `service_style` | Description |
 |---|---|
-| `circle` *(default)* | Animated SVG ring centered on the card in `icon_color_on`. Available when `entity` is empty and `show_more: false`. Size follows `icon_wrap_size`. |
-| `bar` | Classic progress bar docked at the bottom of the card. |
+| `circle` *(default)* | Animated SVG ring centered on the card in `icon_color_on`. Only available when `entity` is not set and `show_more: false`. Ring diameter = `icon_wrap_size + 5px`. |
+| `bar` | Progress bar docked at the bottom of the card. Works with any entity and is compatible with `show_more: true`. |
+
+> **Note:** When using `entity` (e.g. a switch or socket) together with `show_more: true`, always use `service_style: bar`. The `circle` style requires an empty card without a power bar.
 
 `time_service` supports two formats:
 - `10` — countdown from 10 s, bar scale = 10 s
 - `"10/20"` — countdown from 10 s, visual scale is 20 s (bar starts at 50%)
 
-<!--
-  ZDJĘCIE 3: Karta bez entity z aktywnym kółkiem SVG na środku (tryb circle).
-  Najlepiej GIF pokazujący animację odliczania.
--->
-<!-- ![Circle Countdown](https://github.com/user-attachments/assets/REPLACE_ME) -->
+When `blockade_card: true` is set, re-triggering the service call is blocked for the entire countdown duration. All other tap actions (toggle, navigate, more-info) remain fully functional during this time.
 
 ```yaml
 type: custom:piotras-smart-button
@@ -187,31 +386,6 @@ tap_action:
   service: switch.turn_on
   service_data:
     entity_id: switch.boiler
-```
-
----
-
-## 🔌 Power & Safety Monitor
-
-Real-time power consumption bar for smart plugs and sockets.
-
-- **Dynamic Fill** — bar fills proportionally to `max_watts`.
-- **Pulse Warning** — bar pulses when consumption exceeds `con_warning` (%). Set to `false` to disable.
-
-<!--
-  ZDJĘCIE 4: Karta z paskiem mocy wypełnionym wysoko + widoczne miganie ostrzeżenia.
--->
-<!-- ![Power Bar](https://github.com/user-attachments/assets/REPLACE_ME) -->
-
-```yaml
-type: custom:piotras-smart-button
-entity: switch.coffee_maker
-name: Coffee Machine
-icon: mdi:coffee
-entity_watts: sensor.coffee_machine_power
-max_watts: 2500
-con_warning: 85
-show_more: true
 ```
 
 ---
@@ -313,8 +487,8 @@ Auto-detected sliders: `brightness`, `color_temp`, `volume_level`, `current_posi
 |---|---|---|---|
 | `show_service` | boolean | `false` | Enable countdown after `call-service` |
 | `time_service` | number / string | `10` | Seconds, or `"remaining/scale"` e.g. `"10/20"` |
-| `service_style` | string | `"circle"` | `"circle"` SVG ring (requires no entity + `show_more: false`) · `"bar"` bottom bar |
-| `blockade_card` | boolean | `false` | Block re-triggering while countdown is active |
+| `service_style` | string | `"circle"` | `"circle"` SVG ring (requires no entity + `show_more: false`) · `"bar"` bottom bar (works with any entity) |
+| `blockade_card` | boolean | `false` | Block re-triggering the service call while countdown is active — other tap actions remain functional |
 
 ### Actions
 
@@ -332,10 +506,7 @@ Supported actions: `toggle`, `more-info`, `navigate`, `call-service`.
 
 The card ships with a full visual editor accessible directly in the Home Assistant dashboard UI.
 
-<!--
-  ZDJĘCIE 5: Zrzut edytora — np. zakładka Service z widocznym podglądem kółka na karcie po prawej.
--->
-<!-- ![Visual Editor](https://github.com/user-attachments/assets/REPLACE_ME) -->
+![Zrzut ekranu (1191)](https://github.com/user-attachments/assets/d2e2b454-9019-4ccd-aaa6-d119f4b24612)
 
 Tabs available: **General · Size · Background · Icon · Text · Layout · Slider & Power · Filters · Actions · Service**
 
