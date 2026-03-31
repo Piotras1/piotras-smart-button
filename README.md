@@ -3,7 +3,8 @@
 
 **Most cards go silent after calling a service. This one tells you it worked.**
 
-![Zrzut ekranu (1196)](https://github.com/user-attachments/assets/2bcd4b88-1a4b-49b8-a750-4b528201de40)
+![Zrzut ekranu (1222)](https://github.com/user-attachments/assets/a7b07b54-730c-4821-8396-dc8a030987a7)
+![Zrzut ekranu (1223)](https://github.com/user-attachments/assets/cb632061-915c-4bbe-90ad-bb6e1bb3665e)
 
 A Home Assistant button card with 9-grid layout · auto-detecting sliders · dynamic backgrounds · service countdown · visual editor included.
 
