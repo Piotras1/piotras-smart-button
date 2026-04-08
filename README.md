@@ -33,7 +33,7 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.0.0
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.1.0
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
