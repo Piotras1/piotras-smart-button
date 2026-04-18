@@ -1,7 +1,8 @@
 ## Piotras Smart Button
-### Release v1.1.0
+### Release v1.2.0
 
 **Most cards go silent after calling a service. This one tells you it worked.**
+
 ### Cards are OFF
 ![Zrzut ekranu (1222)](https://github.com/user-attachments/assets/a7b07b54-730c-4821-8396-dc8a030987a7)
 ### Cards are ON
@@ -33,7 +34,7 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.1.0
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.0
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -49,6 +50,10 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 - **Smart Filter Engine** — CSS filters (brightness, saturation, grayscale) applied automatically per ON/OFF state.
 - **Service Countdown** — animated SVG circle or progress bar after `call-service`, with optional card blockade.
 - **Power Monitoring** — real-time consumption bar with configurable pulse warning threshold.
+- **Person & Device Tracker** — last state change time displayed in the Control Zone. Icon color follows home/away state.
+- **Battery Monitoring** — dynamic icon auto-adjusted to charge level, color bar, optional charging state entity.
+- **Thermostat Control** — temperature buttons in the Control Zone, room temperature as state badge, ON when heating or cooling.
+- **Dual Icon Mode** — separate icons for ON and OFF states via `icon_on`.
 - **Font Styles** — 4 text presets for Name and State labels.
 - **Advanced Action Engine** — Tap, Double-Tap, and Hold, optimized for both mobile and desktop.
 
@@ -90,6 +95,8 @@ Key features:
 
 ![Zrzut ekranu (1174)a](https://github.com/user-attachments/assets/d4a332d1-9811-47a7-8f61-7adacb4270b9)
 
+![Zrzut ekranu (1175)](https://github.com/user-attachments/assets/7856887a-f315-4faf-9a49-18947315f8dc)
+
 ```yaml
 type: custom:piotras-smart-button
 icon: mdi:folder-home
@@ -109,27 +116,6 @@ tap_action:
   navigation_path: /dashboard-home/0
 ```
 
-![Zrzut ekranu (1175)](https://github.com/user-attachments/assets/7856887a-f315-4faf-9a49-18947315f8dc)
-
-```yaml
-type: custom:piotras-smart-button
-icon: mdi:folder-home
-icon_color: "#5badff"
-show_filter: false
-show_state: false
-show_name: false
-show_image: false
-background_color1: "#ffffff"
-card_width: 52
-card_height: 52
-border_radius: 50
-icon_size: 44
-icon_wrap_size: 48
-tap_action:
-  action: navigate
-  navigation_path: /dashboard-home/0
-```
-
 ---
 
 ## 🔌 Socket & Power Monitoring
@@ -138,15 +124,9 @@ Real-time power consumption bar for smart plugs and sockets. Tap toggles the soc
 
 ![Zrzut ekranu (1177)](https://github.com/user-attachments/assets/3f273068-c126-4333-9879-cdb9f824ecc4)
 
-*From left to right: icon-only layout → full image background → dark overlay with watt bar → expanded layout with timer bar*
-
 ![Zrzut ekranu (1178)](https://github.com/user-attachments/assets/8e362b2d-0a7b-4ae5-8a87-426c843c522a)
 
-*Active state: colored icon glow, watt reading, animated countdown bar (seconds), and state label*
-
 ![Zrzut ekranu (1179)](https://github.com/user-attachments/assets/1e49a8d1-d191-4a8a-9033-f3841203eedc)
-
-*Countdown running — card is blocked from re-triggering the service during this period*
 
 - **Dynamic Fill** — the power bar fills proportionally to `max_watts`.
 - **Pulse Warning** — bar pulses when consumption exceeds `con_warning` (%). Set to `false` to disable.
@@ -194,23 +174,15 @@ hold_action:
 
 ## 💡 Light & Auto-Dimmer Slider
 
-When the card detects a `light` entity with brightness support, it automatically renders a brightness slider in the Control Zone — no extra configuration needed. Tap toggles the light. The slider adjusts brightness directly by dragging. Double-tap or hold can trigger an optional service call with a countdown timer running alongside the slider.
+When the card detects a `light` entity with brightness support, it automatically renders a brightness slider in the Control Zone — no extra configuration needed. Tap toggles the light. The slider adjusts brightness directly by dragging.
 
 ![Zrzut ekranu (1180)](https://github.com/user-attachments/assets/e15eda84-2154-4371-aa75-74099743dd0e)
 
-*From left to right: icon-only layout → full image background → dark overlay with brightness slider at 0% → expanded layout*
-
 ![Zrzut ekranu (1181)](https://github.com/user-attachments/assets/5e8239f0-2708-419e-b991-39625f65c949)
-
-*Light on at 65% brightness — icon glows, slider shows current level, state label reads DIM*
 
 ![Zrzut ekranu (1182)](https://github.com/user-attachments/assets/5d624c7a-80d0-4f8c-8317-db58ac1be7d0)
 
-*Service countdown bar running above the brightness slider — both visible simultaneously*
-
 ![Zrzut ekranu (1183)](https://github.com/user-attachments/assets/859ebdb3-590f-4515-a1d6-f10f4b02c826)
-
-*Countdown still visible after light turned off — timer and slider coexist independently*
 
 - **Auto-detected** — no slider configuration needed, the card detects `brightness` automatically.
 - **Live feedback** — slider position reflects current brightness in real time.
@@ -238,7 +210,6 @@ show_image: true
 show_filter: true
 background_image_on: /local/your_background.jpg
 show_more: true
-con_warning: false
 show_icon_full: false
 icon_over_size: 6.5
 show_service: true
@@ -268,11 +239,7 @@ Both styles can appear on different cards in the same dashboard simultaneously, 
 
 ![Zrzut ekranu (1184)](https://github.com/user-attachments/assets/bad9ae77-257c-4708-9e29-15033216f324)
 
-*From left to right: gradient background → solid dark → dark with background image OFF → expanded with background image OFF*
-
 ![Zrzut ekranu (1185)](https://github.com/user-attachments/assets/1264b8db-721d-4f09-a52a-39423bf93dd6)
-
-*Countdown active: SVG circle on gradient card · bar style on image cards · custom label "Progress Script" visible*
 
 ```yaml
 type: custom:piotras-smart-button
@@ -309,15 +276,10 @@ tap_action:
 
 ## 🔊 Media Player
 
-When the card detects a `media_player` entity, it automatically renders a volume slider in the Control Zone. Tap toggles playback (PLAY/STOP). The slider adjusts volume level directly by dragging. State label reflects the current playback state using `name_on` / `name_off` or the entity state directly.
+When the card detects a `media_player` entity, it automatically renders a volume slider in the Control Zone. Tap toggles playback (PLAY/STOP). The slider adjusts volume level directly by dragging.
 
-![Zrzut ekranu (1186)](https://github.com/user-attachments/assets/5f67ec1f-95eb-4514-9d24-671c1b00d6b7)
+![Zrzut ekranu (1186)](https://github.com/user-attachments/assets/5f67ec1f-95eb-4514-9d24-671c1b00d6b7)![Zrzut ekranu (1188)](https://github.com/user-attachments/assets/13220e11-c6db-43c1-acb2-8e1f64f86b44)
 
-*Left: gradient background with icon and STOP label · Right: expanded layout with background image*
-
-![Zrzut ekranu (1188)](https://github.com/user-attachments/assets/13220e11-c6db-43c1-acb2-8e1f64f86b44)
-
-*Playback active: icon glows, volume slider at 27%, state label reads PLAY*
 
 - **Auto-detected** — `volume_level` slider requires no extra configuration.
 - **Different backgrounds per state** — `background_image_off` and `background_image_on` show a different image when stopped vs playing.
@@ -344,7 +306,6 @@ name_mode: 5
 value_mode: 3
 show_image: true
 show_filter: true
-show_service: false
 show_more: true
 show_icon_full: false
 background_image_off: /local/your_image_off.png
@@ -352,6 +313,112 @@ background_image_on: /local/your_image_on.png
 tap_action:
   action: toggle
 hold_action:
+  action: more-info
+```
+
+---
+
+## 👤 Person & Device Tracker
+
+When the card detects a `person` or `device_tracker` entity, the Control Zone displays the **last state change time** (HH:MM format) alongside a dynamic icon — home or away. No extra configuration needed beyond enabling `show_more: true`.
+
+Icon colors follow the existing color variables — `icon_color_on` when home, `icon_color` when away — so the bar stays visually consistent with the rest of the card.
+
+![Zrzut ekranu (1292)](https://github.com/user-attachments/assets/51bf40ea-e274-4534-bb04-ab9b0d294421)![Zrzut ekranu (1281)](https://github.com/user-attachments/assets/9805f891-8e9c-409d-941c-173006059b9a)
+
+- `mdi:home` in `icon_color_on` when state is `home`
+- `mdi:walk` in `icon_color` when state is `away` / `not_home`
+- Time shown as `HH:MM` — language-neutral, no translation needed
+- `name_on` / `name_off` and `tap_action` work normally
+
+```yaml
+type: custom:piotras-smart-button
+entity: person.jan
+name: Jan
+icon: mdi:account
+icon_color: "#aaaaaa"
+icon_color_on: "#43d14a"
+card_width: 140
+card_height: 140
+show_image: true
+background_image_on: /local/persons/jan.jpg
+show_filter: true
+show_more: true
+slider_height: 26
+name_on: In Home
+name_off: Outside
+tap_action:
+  action: more-info
+```
+
+---
+
+## 🔋 Battery
+
+When the card detects a `sensor` entity with `device_class: battery`, the Control Zone displays a **color-coded charge bar** (red → yellow → green) and the current charge percentage. The main card icon is automatically replaced with a dynamic battery icon matching the charge level.
+
+For full charging state support, add an optional `entity_battery_state` pointing to a sensor that reports `charging`, `discharging`, `full`, or `not_charging`.
+
+![Zrzut ekranu (1293)](https://github.com/user-attachments/assets/03390d5f-f975-499e-b2b9-e2fdd25e1045)![Zrzut ekranu (1294)](https://github.com/user-attachments/assets/a9a00304-aacd-475c-9cf8-df29503ec3b9)
+
+- Icon auto-adjusts: `mdi:battery-10` through `mdi:battery`, `mdi:battery-charging` when charging
+- Card turns **ON** (active color) when `entity_battery_state` reports `charging`
+- Card turns **OFF** when `discharging`, `not_charging`, or `full`
+- `⚡` suffix appears next to percentage when charging
+- `icon_color` and `icon_color_on` still control the icon ring color
+- `name_on` / `name_off` work normally — e.g. `name_on: Charging` / `name_off: Discharging`
+
+```yaml
+type: custom:piotras-smart-button
+entity: sensor.lenovo_battery
+entity_battery_state: sensor.lenovo_battery_state
+name: Lenovo Battery
+icon_color: "#aaaaaa"
+icon_color_on: "#43d14a"
+card_width: 140
+card_height: 120
+show_more: true
+slider_height: 26
+slider_label_color: "#ffffff"
+name_on: Charging
+name_off: Discharging
+tap_action:
+  action: more-info
+```
+
+---
+
+## 🌡️ Thermostat
+
+When the card detects a `climate` entity, the Control Zone displays **temperature control buttons** — `−` on the left, target temperature in the center, `+` on the right. Each press adjusts the target temperature by **0.5°**. The state badge on the main card automatically shows the **current room temperature** instead of ON/OFF.
+
+The card turns **ON** (active color) when `hvac_action` is `heating` or `cooling`, and **OFF** when `idle` or `off`. When the thermostat is fully off, the Control Zone shows a red **OFF** label instead of the temperature buttons.
+
+![Zrzut ekranu (1319)](https://github.com/user-attachments/assets/54d1be45-ab9f-4aa7-b03a-40dc6e4e1288)![Zrzut ekranu (1319)](https://github.com/user-attachments/assets/26ac69de-5c2b-4503-b231-078f4f28d805)![Zrzut ekranu (1319)](https://github.com/user-attachments/assets/ad4757da-9654-4630-9416-572c2c9a316e)
+
+
+- Target temperature displayed `2px` larger than other bar labels for quick readability
+- `−` / `+` buttons styled as small circles, spread to card edges
+- Room temperature shown as state badge (e.g. `21.5°`) — replaces ON/OFF labels
+- `icon` and icon colors set freely — the card does not override them for climate
+- `slider_height` and `slider_label_color` apply normally
+
+```yaml
+type: custom:piotras-smart-button
+entity: climate.salon
+name: Salon
+icon: mdi:sofa
+icon_color: "#aaaaaa"
+icon_color_on: "#ff6b35"
+card_width: 160
+card_height: 140
+show_image: true
+background_image_on: /local/rooms/salon.jpg
+show_filter: true
+show_more: true
+slider_height: 32
+slider_label_color: "#ffffff"
+tap_action:
   action: more-info
 ```
 
@@ -412,9 +479,10 @@ tap_action:
 |---|---|---|---|
 | `entity` | string | — | Main entity ID |
 | `name` | string | — | Display name |
-| `icon` | string | `mdi:lightning-bolt` | MDI icon |
-| `name_on` | string | `null` | Custom state label when ON |
-| `name_off` | string | `null` | Custom state label when OFF |
+| `icon` | string | `mdi:lightning-bolt` | MDI icon (not used for `battery` — auto-dynamic) |
+| `icon_on` | string | `null` | Alternative icon when entity is ON (not used for `battery`) |
+| `name_on` | string | `null` | Custom state label when ON (not used for `climate`) |
+| `name_off` | string | `null` | Custom state label when OFF (not used for `climate`) |
 
 ### Visibility
 
@@ -424,14 +492,14 @@ tap_action:
 | `show_icon_full` | boolean | `true` | Keep icon inside card bounds |
 | `show_name` | boolean | `true` | Show / hide name label |
 | `show_state` | boolean | `true` | Show / hide state badge |
-| `show_more` | boolean | `false` | Enable Slider / Power Bar zone |
+| `show_more` | boolean | `false` | Enable Control Zone (slider / bar / person time / thermostat buttons) |
 
 ### Colors & Icon
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `icon_color` | string | `#f0c040` | Icon color when OFF (also tints wrap ring) |
-| `icon_color_on` | string | `#ffffff` | Icon color when ON (also tints wrap ring) |
+| `icon_color` | string | `#f0c040` | Icon color when OFF · away (person) · ring tint |
+| `icon_color_on` | string | `#ffffff` | Icon color when ON · home (person) · ring tint |
 | `icon_size` | number | `28` | Icon size (px) |
 | `icon_wrap_size` | number | `48` | Glow ring diameter (px) |
 | `icon_over_size` | number | `4` | Corner overlap divisor when `show_icon_full: false` |
@@ -468,14 +536,21 @@ tap_action:
 | `name_mode` | number | `5` | Name position (1–9) |
 | `value_mode` | number | `5` | State badge position (1–9) |
 
-### Sliders & Control Zone
+### Control Zone (Slider & Power)
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `show_more` | boolean | `false` | Show auto-slider or power bar zone |
-| `slider_height` | number | `26` | Control Zone height (px) |
+| `show_more` | boolean | `false` | Enable Control Zone |
+| `slider_height` | number | `26` | Control Zone height (px) — content scales proportionally via `√(height/26)` |
+| `slider_label_color` | string | `rgba(255,255,255,0.85)` | Color for all labels and icons in the Control Zone |
 
 Auto-detected sliders: `brightness`, `color_temp`, `volume_level`, `current_position` (cover), `percentage` (fan), `preset_mode` (fan).
+
+### Battery
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `entity_battery_state` | string | `null` | Optional sensor reporting `charging` / `discharging` / `full` / `not_charging` — enables dynamic icon and ON/OFF card state |
 
 ### Power Bar
 
@@ -491,8 +566,8 @@ Auto-detected sliders: `brightness`, `color_temp`, `volume_level`, `current_posi
 |---|---|---|---|
 | `show_service` | boolean | `false` | Enable countdown after `call-service` |
 | `time_service` | number / string | `10` | Seconds, or `"remaining/scale"` e.g. `"10/20"` |
-| `service_style` | string | `"circle"` | `"circle"` SVG ring (requires no entity + `show_more: false`) · `"bar"` bottom bar (works with any entity) |
-| `blockade_card` | boolean | `false` | Block re-triggering the service call while countdown is active — other tap actions remain functional |
+| `service_style` | string | `"circle"` | `"circle"` SVG ring · `"bar"` bottom bar |
+| `blockade_card` | boolean | `false` | Block re-triggering the service call while countdown is active |
 
 ### Actions
 
@@ -508,9 +583,9 @@ Supported actions: `toggle`, `more-info`, `navigate`, `call-service`.
 
 ## 🖥 Visual Editor
 
-The card ships with a full visual editor accessible directly in the Home Assistant dashboard UI.
+The card ships with a full visual editor accessible directly in the Home Assistant dashboard UI. The editor automatically detects the entity domain and adjusts available options — for example, showing battery-specific fields for `sensor` with `device_class: battery`, thermostat controls for `climate`, or person tips for `person` / `device_tracker`.
 
-![Zrzut ekranu (1191)](https://github.com/user-attachments/assets/d2e2b454-9019-4ccd-aaa6-d119f4b24612)
+![Zrzut ekranu (1191)](https://github.com/user-attachments/assets/9d9b206d-59af-4a94-b9c5-d6a00211ffae)
 
 Tabs available: **General · Size · Background · Icon · Text · Layout · Slider & Power · Filters · Actions · Service**
 
