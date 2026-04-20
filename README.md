@@ -10,6 +10,8 @@
 
 A Home Assistant button card with 9-grid layout · auto-detecting sliders · dynamic backgrounds · service countdown · visual editor included.
 
+<img width="495" height="227" alt="demo-piotras-smart-button" src="https://github.com/user-attachments/assets/23d2280f-9c87-427c-b3ec-c7ac5e931061" />
+
 ---
 
 ## ⚙️ Installation
