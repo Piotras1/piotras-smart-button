@@ -43,6 +43,11 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 
 ---
 
+### [👁️ View Smart Button Assets](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html)
+### [👁️ Piotras Kiosk: All Cards View](https://github.com/Piotras1/piotras-cards-pack)
+
+---
+
 ## ✨ Features
 
 - **Visual Editor** — full GUI with tabs: General, Size, Background, Icon, Text, Layout, Slider & Power, Filters, Actions, Service. No manual YAML needed.
