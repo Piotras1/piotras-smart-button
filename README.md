@@ -1,12 +1,7 @@
 ## Piotras Smart Button
-### Release v1.2.0
+### Release v1.2.1
 
 **Most cards go silent after calling a service. This one tells you it worked.**
-
-### Cards are OFF
-![Zrzut ekranu (1222)](https://github.com/user-attachments/assets/a7b07b54-730c-4821-8396-dc8a030987a7)
-### Cards are ON
-![Zrzut ekranu (1223)](https://github.com/user-attachments/assets/cb632061-915c-4bbe-90ad-bb6e1bb3665e)
 
 A Home Assistant button card with 9-grid layout · auto-detecting sliders · dynamic backgrounds · service countdown · visual editor included.
 
@@ -36,7 +31,7 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.0
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.1
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -60,6 +55,7 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 - **Person & Device Tracker** — last state change time displayed in the Control Zone. Icon color follows home/away state.
 - **Battery Monitoring** — dynamic icon auto-adjusted to charge level, color bar, optional charging state entity.
 - **Thermostat Control** — temperature buttons in the Control Zone, room temperature as state badge, ON when heating or cooling.
+- **Temperature & Humidity Comfort** — card turns ON/OFF based on a configurable comfort range. Control Zone icon changes color: blue (too cold/dry) · green (comfortable) · red (too hot/humid). Auto °F→°C conversion.
 - **Dual Icon Mode** — separate icons for ON and OFF states via `icon_on`.
 - **Font Styles** — 4 text presets for Name and State labels.
 - **Advanced Action Engine** — Tap, Double-Tap, and Hold, optimized for both mobile and desktop.
@@ -374,6 +370,7 @@ For full charging state support, add an optional `entity_battery_state` pointing
 - `⚡` suffix appears next to percentage when charging
 - `icon_color` and `icon_color_on` still control the icon ring color
 - `name_on` / `name_off` work normally — e.g. `name_on: Charging` / `name_off: Discharging`
+- `entity_battery_state` is **optional** — the card detects `device_class: battery` automatically and shows the dynamic icon even without it
 
 ```yaml
 type: custom:piotras-smart-button
@@ -431,6 +428,54 @@ tap_action:
 
 ---
 
+## 🌡️ Temperature & Humidity Comfort
+
+<img width="518" height="127" alt="Zrzut ekranu (1382)" src="https://github.com/user-attachments/assets/c20507ad-1463-4a26-94ee-c6cc4208d409" />
+
+When the card detects a `sensor` entity with `device_class: temperature` or `device_class: humidity`, it activates **comfort mode** — the card turns ON or OFF based on whether the current value falls within a configurable comfort range defined by `comfort_min` and `comfort_max`.
+
+The main card icon also reacts — `mdi:thermometer` / `mdi:water-percent` when comfortable, `mdi:thermometer-alert` / `mdi:water-alert` when outside the range. You can override these with `icon` and `icon_on` as usual.
+
+Temperature sensors reporting in **°F are automatically converted to °C** before the range check.
+
+If `comfort_min` or `comfort_max` is not set, comfort mode is inactive and the card behaves as a standard read-only sensor card.
+
+```yaml
+type: custom:piotras-smart-button
+entity: sensor.salon_temperature
+name: Salon Temperature
+show_more: true
+comfort_min: 19
+comfort_max: 25
+name_on: Comfortable
+name_off: No Comfort
+icon_color: "#5bc8f5"
+icon_color_on: "#69f0ae"
+card_width: 180
+card_height: 120
+background_color1: "#8B4513"
+background_color2: "#5C3317"
+```
+
+```yaml
+type: custom:piotras-smart-button
+entity: sensor.salon_humidity
+name: Salon Humidity
+show_more: true
+comfort_min: 40
+comfort_max: 60
+name_on: Comfortable
+name_off: No Comfort
+icon_color: "#5bc8f5"
+icon_color_on: "#69f0ae"
+card_width: 180
+card_height: 120
+background_color1: "#2c3e6b"
+background_color2: "#1a2a4a"
+```
+
+---
+
 ## ⚡ Service Countdown
 
 When any action is set to `call-service` and `show_service: true` is enabled, the card displays an animated countdown for the duration set by `time_service`.
@@ -479,6 +524,7 @@ tap_action:
 | `border_radius` | number | `12` | Corner radius (px) |
 | `border_width` | number | `0` | Border thickness (px) |
 | `border_color` | string | `rgba(255,255,255,0.2)` | Border color |
+| `box_shadow` | string | `null` | CSS box-shadow — e.g. `0px 0px 15px 0px rgba(0,0,0,0.5)` |
 
 ### Entity & Labels
 
@@ -486,10 +532,10 @@ tap_action:
 |---|---|---|---|
 | `entity` | string | — | Main entity ID |
 | `name` | string | — | Display name |
-| `icon` | string | `mdi:lightning-bolt` | MDI icon (not used for `battery` — auto-dynamic) |
-| `icon_on` | string | `null` | Alternative icon when entity is ON (not used for `battery`) |
-| `name_on` | string | `null` | Custom state label when ON (not used for `climate`) |
-| `name_off` | string | `null` | Custom state label when OFF (not used for `climate`) |
+| `icon` | string | auto | MDI icon — auto-detected for `battery`, `temperature`, `humidity` |
+| `icon_on` | string | `null` | Alternative icon when entity is ON |
+| `name_on` | string | `null` | Custom state label when ON |
+| `name_off` | string | `null` | Custom state label when OFF |
 
 ### Visibility
 
@@ -553,11 +599,20 @@ tap_action:
 
 Auto-detected sliders: `brightness`, `color_temp`, `volume_level`, `current_position` (cover), `percentage` (fan), `preset_mode` (fan).
 
+### Temperature & Humidity Comfort
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `comfort_min` | number | `null` | Lower bound of comfort range — activates comfort mode when set together with `comfort_max` |
+| `comfort_max` | number | `null` | Upper bound of comfort range — activates comfort mode when set together with `comfort_min` |
+
+> Comfort mode is active only when **both** `comfort_min` and `comfort_max` are set. Applies to `sensor` entities with `device_class: temperature` or `device_class: humidity`. Temperature sensors reporting in °F are automatically converted to °C before comparison.
+
 ### Battery
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `entity_battery_state` | string | `null` | Optional sensor reporting `charging` / `discharging` / `full` / `not_charging` — enables dynamic icon and ON/OFF card state |
+| `entity_battery_state` | string | `null` | Optional sensor reporting `charging` / `discharging` / `full` / `not_charging` — enables ON/OFF card state based on charging. Dynamic icon works without this option. |
 
 ### Power Bar
 
@@ -590,7 +645,7 @@ Supported actions: `toggle`, `more-info`, `navigate`, `call-service`.
 
 ## 🖥 Visual Editor
 
-The card ships with a full visual editor accessible directly in the Home Assistant dashboard UI. The editor automatically detects the entity domain and adjusts available options — for example, showing battery-specific fields for `sensor` with `device_class: battery`, thermostat controls for `climate`, or person tips for `person` / `device_tracker`.
+The card ships with a full visual editor accessible directly in the Home Assistant dashboard UI. The editor automatically detects the entity domain and adjusts available options — for example, showing battery-specific fields for `sensor` with `device_class: battery`, thermostat controls for `climate`, comfort range fields for `temperature` and `humidity` sensors, or person tips for `person` / `device_tracker`.
 
 ![Zrzut ekranu (1191)](https://github.com/user-attachments/assets/9d9b206d-59af-4a94-b9c5-d6a00211ffae)
 
