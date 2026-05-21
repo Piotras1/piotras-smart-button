@@ -13,7 +13,7 @@
 [![Assets Gallery](https://img.shields.io/badge/Assets%20Gallery-Smart%20Button-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html)
 [![MDI Icons](https://img.shields.io/badge/HA%20Icons-Search%20Gallery-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html)
 ## Piotras Smart Button
-### Release v1.2.1
+### Release v1.2.2
 
 **Most cards go silent after calling a service. This one tells you it worked.**
 
@@ -25,19 +25,23 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 
 ## ⚙️ Installation
 
-### Method 1: Via HACS (Recommended)
+### Method 1: Via HACS Store (Recommended)
+1. Open HACS in Home Assistant
+2. Search for **"Piotras Smart Button"** in the store
+3. Click **Download**
+4. Hard reload your browser (`Ctrl+Shift+R`)
 
-1. Click the button below to automatically add the repository to your HACS:
+### Method 2: Via HACS Link
+1. Click the button below:
 
 <a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=Piotras1&repository=piotras-smart-button&category=plugin">
     <img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance">
 </a>
 
-2. Click **Add** in the pop-up window.
-3. Once the repository page opens, click **Download**.
-4. After downloading, do a **Hard reload** of your browser.
+2. Click **Add** → **Download**
+3. Hard reload your browser
 
-### Method 2: Manual Installation
+### Method 3: Manual Installation
 
 1. Download this repository as a ZIP file and extract it.
 2. Inside your Home Assistant `config/www/` directory, create a new folder named `piotras-smart-button`.
@@ -45,15 +49,10 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.1
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.2
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
-
----
-
-### [👁️ View Smart Button Assets](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html)
-### [👁️ Piotras Kiosk: All Cards View](https://github.com/Piotras1/piotras-cards-pack)
 
 ---
 
