@@ -13,7 +13,7 @@
 [![Assets Gallery](https://img.shields.io/badge/Assets%20Gallery-Smart%20Button-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html)
 [![MDI Icons](https://img.shields.io/badge/HA%20Icons-Search%20Gallery-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html)
 ## Piotras Smart Button
-### Release v1.2.2
+### Release v1.2.3
 
 **Most cards go silent after calling a service. This one tells you it worked.**
 
@@ -49,7 +49,7 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.2
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.3
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -489,6 +489,24 @@ background_color2: "#1a2a4a"
 
 ---
 
+## 🎨 Icon Wrap Style
+
+<img width="387" height="159" alt="smart-button-icon" src="https://github.com/user-attachments/assets/eba48567-78c5-4b94-a119-243a0fa6e8a7" />
+
+The icon_style option controls how the icon wrap looks — you can choose from 5 styles, from a classic colored badge to a clean borderless floating effect.
+
+When icon_style is not set, the card defaults to circle_color — the classic colored circle you already know.
+
+The icon wrap color always follows your icon_color (OFF state) and icon_color_on (ON state) settings regardless of the chosen style.
+
+- **circle_color** — Circle with colored background and border. Classic, clear, works great on any card.
+- **circle** — No background, no border. Just a soft drop shadow. The icon appears to float above the card — looks especially good on cards with a background image.
+- **square_color** — Same as circle_color but with a rounded square shape. Great for a more structured dashboard layout.
+- **square** — Rounded square with shadow only, no background or border.
+- **none** — No wrap at all. Pure icon with no background, border or shadow. Perfect for minimalist cards or decorative buttons where the background image speaks for itself.
+
+---
+
 ## ⚡ Service Countdown
 
 When any action is set to `call-service` and `show_service: true` is enabled, the card displays an animated countdown for the duration set by `time_service`.
@@ -532,7 +550,7 @@ tap_action:
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `card_width` | number | `140` | Card width (px) |
+| `card_width` | number / string | `140` | Card width (px) or `"auto"` |
 | `card_height` | number / string | `120` | Card height (px) or `"auto"` |
 | `border_radius` | number | `12` | Corner radius (px) |
 | `border_width` | number | `0` | Border thickness (px) |
@@ -569,6 +587,7 @@ tap_action:
 | `icon_size` | number | `28` | Icon size (px) |
 | `icon_wrap_size` | number | `48` | Glow ring diameter (px) |
 | `icon_over_size` | number | `4` | Corner overlap divisor when `show_icon_full: false` |
+| `icon_style` | string | `circle_color` | Icon style `circle_color`, `circler`,  `square_color`, `square`, `none` |
 | `text_color` | string | `#ffffff` | Color for Name and State labels |
 | `name_size` | number | `14` | Name font size (px) |
 | `state_size` | number | `12` | State badge font size (px) |
