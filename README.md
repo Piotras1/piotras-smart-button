@@ -13,7 +13,7 @@
 [![Assets Gallery](https://img.shields.io/badge/Assets%20Gallery-Smart%20Button-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html)
 [![MDI Icons](https://img.shields.io/badge/HA%20Icons-Search%20Gallery-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html)
 ## Piotras Smart Button
-### Release v1.2.3
+### Release v1.2.4
 
 **Most cards go silent after calling a service. This one tells you it worked.**
 
@@ -49,7 +49,7 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.3
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.4
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -72,6 +72,10 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 - **Dual Icon Mode** — separate icons for ON and OFF states via `icon_on`.
 - **Font Styles** — 4 text presets for Name and State labels.
 - **Advanced Action Engine** — Tap, Double-Tap, and Hold, optimized for both mobile and desktop.
+- **Integrated Clock & Calendar** — real-time time display alongside a clean, multi-language monthly calendar grid with a distinct current-day highlight indicator.
+- **Mini Weather Card** — compact weather dashboard showing current temperature, conditions (with matching theme-colored icons), humidity level, and wind speed.
+- **Smart Vacuum Status** — dedicated support for vacuum entities featuring a dynamic spinning icon during cleaning/sweeping. Includes full state mapping flexibility via `vacuum_states_labels` and customizable `vacuum_states_on` triggers to seamlessly support various hardware brands (Roborock, Xiaomi, Dreame, etc.).
+- **Advanced Alarm Status** — comprehensive security monitoring supporting multi-state tracking (`disarmed`, `arming`, `armed`, `vacation`) with dynamic background pulsing animations, native Home Assistant translation support, and clear visual indicators.
 
 ---
 
@@ -238,6 +242,55 @@ hold_action:
 double_tap_action:
   action: call-service
   service: script.your_script
+```
+
+---
+
+## 🕒 Clock Display
+
+To activate the clock mode, simply pass on.clock into the entity field. The card transforms into an elegant digital clock, offering a clean, real-time hours and minutes display that fits perfectly into any dashboard layout.
+
+<img width="302" height="132" alt="Zrzut ekranu (1683)" src="https://github.com/user-attachments/assets/2c99ea1e-9839-4a45-97d2-ff9acf7a83a0" />
+<img width="303" height="133" alt="Zrzut ekranu (1684)" src="https://github.com/user-attachments/assets/42b63ae5-a377-4518-accf-e94b7175fb7c" />
+
+- Dedicated virtual entity — uses **on.clock** to instantly switch the card into a standalone timekeeper.
+- Real-time update — high-precision internal clock ensures the time is always accurate without stressing your HA database.
+- Adaptive layout — text scaling and visual elements auto-adjust to maintain crisp legibility regardless of card size.
+
+```yaml
+type: custom:piotras-smart-button
+entity: on.clock
+icon_mode: 1
+show_state: false
+icon_wrap_size: 28
+name_size: 40
+icon: mdi:timetable
+icon_style: none
+show_more: true
+```
+
+---
+
+## 📅 Calendar Grid
+
+To activate the calendar grid, simply pass on.calendar into the entity field. It displays a compact monthly calendar overview directly inside the card, automatically handling day names and layout formatting while providing a clear visual indicator for the current date.
+
+<img width="302" height="234" alt="Zrzut ekranu (1685)" src="https://github.com/user-attachments/assets/a5f2bfb7-fd83-40ea-a923-c205709d368e" /><img width="267" height="237" alt="Zrzut ekranu (1689)" src="https://github.com/user-attachments/assets/5118c90d-b23b-4fd2-bcb0-0d88d9fee6d7" />
+
+- Dedicated virtual entity — uses on.calendar to instantly switch the card into a standalone calendar grid.
+- Multi-language support — localizes month and day headers automatically based on system settings.
+- Current day highlight — applies a distinct visual badge to the current date for instant tracking.
+- Grid optimization — clean 7-column layout engineered to fit beautifully inside standard grid sizes.
+
+```yaml
+type: custom:piotras-smart-button
+entity: on.calendar
+card_height: 250
+card_width: 260
+background_color1: "#804000"
+icon_color: "#00ff00"
+icon_color_on: "#ff0000"
+text_color: "#ffffff"
 ```
 
 ---
