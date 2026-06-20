@@ -16,7 +16,6 @@ Full list of all configuration options available for `custom:piotras-smart-butto
 | `border_width` | number | `0` | Border thickness (px) |
 | `border_color` | string | `rgba(255,255,255,0.2)` | Border color |
 | `box_shadow` | string | `null` | CSS box-shadow — e.g. `0px 0px 15px 0px rgba(0,0,0,0.5)` |
-| `show_shadow` | boolean | `true` | Enable the inner dark overlay gradient on the card background |
 
 ### Entity & Labels
 
@@ -63,6 +62,7 @@ Full list of all configuration options available for `custom:piotras-smart-butto
 | `background_color2` | string | `""` | Second gradient color |
 | `background_color3` | string | `""` | Third gradient color |
 | `background_gradient_angle` | number | `135` | Gradient angle (degrees) |
+| `show_shadow` | boolean | `true` | Enable the inner dark overlay gradient on the card background |
 
 ### Background Images & Filters
 
