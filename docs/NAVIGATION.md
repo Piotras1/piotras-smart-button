@@ -1,5 +1,4 @@
 ## 🧭 Navigation Mode (Neumorphic Style)
-> 🔙 Back to the [Main README](../README.md)
 
 The card works equally well as a navigation controller — icon-only, circular, with a tactile press-and-hold feel.
 
@@ -32,3 +31,12 @@ tap_action:
   action: navigate
   navigation_path: /dashboard-home/0
 ```
+
+
+Looking for more inspiration or advanced configurations for Navigation Mode? Check out these community guides:
+
+> 🧭 [Advanced Navigation Mode Guide (Extended Topic)](https://github.com/Piotras1/piotras-smart-button/discussions/2)
+ 
+> 💬 [Community Dashboards & Showcases (Show and Tell)](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+
+> 🔙 Back to the [Main README](../README.md)
