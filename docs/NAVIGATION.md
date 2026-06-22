@@ -9,9 +9,9 @@ Key features:
 - **Minimalist look** — icon-only with `border_radius: 50` for a perfect circle, no clutter.
 - **Still functional** — navigation buttons can still show background statuses (`show_service`, `entity_watts`) in real-time.
 
-![Zrzut ekranu (1174)a](https://github.com/user-attachments/assets/d4a332d1-9811-47a7-8f61-7adacb4270b9)
+![Piotras Smart Button - Neumorphic Navigation Home Page Active State](../img/piotras-smart-button-navigation-1.jpg)
 
-![Zrzut ekranu (1175)](https://github.com/user-attachments/assets/7856887a-f315-4faf-9a49-18947315f8dc)
+![Piotras Smart Button - Neumorphic Navigation Vacuum Page Active State](../img/piotras-smart-button-navigation-2.jpg)
 
 ```yaml
 type: custom:piotras-smart-button
