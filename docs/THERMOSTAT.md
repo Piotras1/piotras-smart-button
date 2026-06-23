@@ -4,8 +4,7 @@ When the card detects a `climate` entity, the Control Zone displays **temperatur
 
 The card turns **ON** (active color) when `hvac_action` is `heating` or `cooling`, and **OFF** when `idle` or `off`. When the thermostat is fully off, the Control Zone shows a red **OFF** label instead of the temperature buttons.
 
-![Zrzut ekranu (1319)](https://github.com/user-attachments/assets/54d1be45-ab9f-4aa7-b03a-40dc6e4e1288)![Zrzut ekranu (1319)](https://github.com/user-attachments/assets/26ac69de-5c2b-4503-b231-078f4f28d805)![Zrzut ekranu (1319)](https://github.com/user-attachments/assets/ad4757da-9654-4630-9416-572c2c9a316e)
-
+![Piotras Smart Button - Thermostat Control States](../img/piotras-smart-button-thermostat.jpg)
 
 - Target temperature displayed `2px` larger than other bar labels for quick readability
 - `−` / `+` buttons styled as small circles, spread to card edges
