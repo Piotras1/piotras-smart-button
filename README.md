@@ -23,7 +23,38 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 
 ---
 
+## ✨ Features
+
+<details>
+<summary><b>🔍 Click here to view the full text-based features list (SEO & Indexing)</b></summary>
+
+### 🚀 Complete Features Specifications
+
+*   **🎨 Visual Editor (No YAML Needed)** — Full GUI configuration with native tabs: General, Size, Background, Icon, Text, Layout, Slider & Power, Filters, Actions, and Service.
+*   **📐 9-Grid Layout System** — Position your Icon, Name, and State badge completely independently across a 3×3 matrix.
+*   **🎛️ Adaptive Auto-Sliders** — Smart auto-detection for Brightness, Color Temperature, Volume, Cover Position, and Fan Speed.
+*   **🖼️ Dynamic Backgrounds & Smart Filters** — Solid colors, 2/3-color gradients, or full-res images with automated CSS filters (brightness, saturation, grayscale) based on state.
+*   **⏱️ Service Countdown System** — Animated SVG circle or progress bar after a call-service, with an optional card blockade.
+*   **⚡ Power Monitoring & Pulsing Alerts** — Real-time consumption bar with a configurable pulsing warning threshold for power spikes.
+*   **🚧 Gate & Garage Mode (New in v1.2.5)** — Specialized cover layout with dynamic directional arrows tracking opening/closing states.
+*   **🕹️ Interactive Action Buttons (New in v1.2.5)** — Clickable sub-button grids embedded directly into the Control Zone for rooms, scenes, or media.
+*   **👥 Person & Device Tracking** — Displays the precise time since the last state change inside the Control Zone with home/away icon colors.
+*   **🔋 Battery Monitoring** — Dynamic icon auto-adjusted to charge level, color bars, and optional charging state integration.
+*   **🌡️ Thermostat & Climate Control** — Dedicated temperature adjustment buttons in the Control Zone and real-time room temp as a state badge.
+*   **🟢 Comfort Zone Engine** — Card shifts state and changes icon colors based on custom comfort ranges: blue (too cold/dry), green (comfortable), red (too hot/humid).
+*   **🕒 Integrated Clock & Calendar (`on.clock`)** — Standalone digital timekeeper with a clean, multi-language monthly calendar grid.
+*   **🌦️ Mini Weather Dashboard** — Compact layout showing temperature, conditions, theme-colored icons, humidity, and wind speed.
+*   **🧹 Smart Vacuum Status** — Dedicated support for vacuums featuring a dynamic spinning icon during sweeping and hardware-brand mapping.
+*   **🚨 Advanced Alarm Status** — Security monitoring for disarmed, arming, armed, and vacation states with dynamic pulsing animations.
+
+</details>
+
+---
+
 ## ⚙️ Installation
+
+<details>
+<summary><b>📦 Click here to view Installation Instructions (HACS & Manual)</b></summary>
 
 ### Method 1: Via HACS Store (Recommended)
 1. Open HACS in Home Assistant
@@ -54,30 +85,9 @@ A Home Assistant button card with 9-grid layout · auto-detecting sliders · dyn
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
 
----
+</details>
 
-## ✨ Features
-
-- **Visual Editor** — full GUI with tabs: General, Size, Background, Icon, Text, Layout, Slider & Power, Filters, Actions, Service. No manual YAML needed.
-- **9-Grid Layout System** — place Icon, Name, and State badge independently across a 3×3 matrix.
-- **Adaptive Auto-Sliders** — smart detection of Brightness, Color Temp, Volume, Cover Position, Fan Speed. Zero configuration required.
-- **Dynamic Backgrounds** — solid color, 2/3-color gradients, or full-resolution background images.
-- **Smart Filter Engine** — CSS filters (brightness, saturation, grayscale) applied automatically per ON/OFF state.
-- **Service Countdown** — animated SVG circle or progress bar after `call-service`, with optional card blockade.
-- **Power Monitoring** — real-time consumption bar with configurable pulse warning threshold.
-- **Person & Device Tracker** — last state change time displayed in the Control Zone. Icon color follows home/away state.
-- **Battery Monitoring** — dynamic icon auto-adjusted to charge level, color bar, optional charging state entity.
-- **Thermostat Control** — temperature buttons in the Control Zone, room temperature as state badge, ON when heating or cooling.
-- **Temperature & Humidity Comfort** — card turns ON/OFF based on a configurable comfort range. Control Zone icon changes color: blue (too cold/dry) · green (comfortable) · red (too hot/humid). Auto °F→°C conversion.
-- **Dual Icon Mode** — separate icons for ON and OFF states via `icon_on`.
-- **Font Styles** — 4 text presets for Name and State labels.
-- **Advanced Action Engine** — Tap, Double-Tap, and Hold, optimized for both mobile and desktop.
-- **Integrated Clock & Calendar** — real-time time display alongside a clean, multi-language monthly calendar grid with a distinct current-day highlight indicator.
-- **Mini Weather Card** — compact weather dashboard showing current temperature, conditions (with matching theme-colored icons), humidity level, and wind speed.
-- **Smart Vacuum Status** — dedicated support for vacuum entities featuring a dynamic spinning icon during cleaning/sweeping. Includes full state mapping flexibility via `vacuum_states_labels` and customizable `vacuum_states_on` triggers to seamlessly support various hardware brands (Roborock, Xiaomi, Dreame, etc.).
-- **Advanced Alarm Status** — comprehensive security monitoring supporting multi-state tracking (`disarmed`, `arming`, `armed`, `vacation`) with dynamic background pulsing animations, native Home Assistant translation support, and clear visual indicators.
-
----
+--- 
 
 ## 🧩 The 9-Grid Layout System
 
@@ -113,12 +123,10 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🎛️ Socket & Power Monitoring
 
-<img src="img/piotras-smart-button-socket-3.jpg" alt="Piotras Smart Button - Socket & Power Monitoring Preview">
+<img src="img/piotras-smart-button-socket-2.jpg" alt="Piotras Smart Button - Socket & Power Monitoring Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Socket & Power Monitoring Documentation](docs/SOCKET.md)**
-
----
 
 ---
 
