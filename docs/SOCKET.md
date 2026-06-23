@@ -2,11 +2,21 @@
 
 Real-time power consumption bar for smart plugs and sockets. Tap toggles the socket on or off. Hold triggers an optional service call (e.g. a boiler heating script) with a countdown timer and card blockade.
 
-![Zrzut ekranu (1177)](https://github.com/user-attachments/assets/3f273068-c126-4333-9879-cdb9f824ecc4)
+### 🖼️ Interface States & Evolution
 
-![Zrzut ekranu (1178)](https://github.com/user-attachments/assets/8e362b2d-0a7b-4ae5-8a87-426c843c522a)
+#### 1. Device Standard OFF State
+> Clean layout supporting both solid/gradient backgrounds and custom dimmed background images while the socket is idle.
+![Piotras Smart Button - Socket OFF States](../img/piotras-smart-button-socket-1_2.jpg)
 
-![Zrzut ekranu (1179)](https://github.com/user-attachments/assets/1e49a8d1-d191-4a8a-9033-f3841203eedc)
+#### 2. Active ON State (Power Monitoring & Active Timer)
+> High-visibility active icon glow combined with live wattage feedback (1413W), dynamic color power bar, and active service countdown tracking (`19s`).
+![Piotras Smart Button - Socket Active ON State](../img/piotras-smart-button-socket-2_2.jpg)
+
+#### 3. Card Blockade & Cooldown State
+> When the device turns OFF (`0W`), the card blockade remains active for the remaining duration of the timer (`6s`), preventing accidental re-triggering of the service.
+![Piotras Smart Button - Socket Blockade State](../img/piotras-smart-button-socket-3_2.jpg)
+
+---
 
 - **Dynamic Fill** — the power bar fills proportionally to `max_watts`.
 - **Pulse Warning** — bar pulses when consumption exceeds `con_warning` (%). Set to `false` to disable.
