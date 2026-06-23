@@ -111,7 +111,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ---
 
-## 🔌 Socket & Power Monitoring
+## 🎛️ Socket & Power Monitoring
 
 <img src="img/piotras-smart-button-socket-3.jpg" alt="Piotras Smart Button - Socket & Power Monitoring Preview">
 
