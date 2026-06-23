@@ -1,4 +1,4 @@
-## 🔌 Socket & Power Monitoring
+## 🎛️ Socket & Power Monitoring
 
 Real-time power consumption bar for smart plugs and sockets. Tap toggles the socket on or off. Hold triggers an optional service call (e.g. a boiler heating script) with a countdown timer and card blockade.
 
