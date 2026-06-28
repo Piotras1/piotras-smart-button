@@ -2,8 +2,8 @@
 
 When the card detects a `media_player` entity, it automatically renders a volume slider in the Control Zone. Tap toggles playback (PLAY/STOP). The slider adjusts volume level directly by dragging.
 
-![Zrzut ekranu (1186)](https://github.com/user-attachments/assets/5f67ec1f-95eb-4514-9d24-671c1b00d6b7)![Zrzut ekranu (1188)](https://github.com/user-attachments/assets/13220e11-c6db-43c1-acb2-8e1f64f86b44)
-
+<img src="../img/piotras-smart-button-media-1.jpg" alt="Piotras Smart Button - Media Player OFF Preview">
+<img src="../img/piotras-smart-button-media-2.jpg" alt="Piotras Smart Button - Media Player ON Preview">
 
 - **Auto-detected** — `volume_level` slider requires no extra configuration.
 - **Different backgrounds per state** — `background_image_off` and `background_image_on` show a different image when stopped vs playing.
