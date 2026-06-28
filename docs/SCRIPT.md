@@ -9,9 +9,9 @@ Two countdown styles depending on layout:
 
 Both styles can appear on different cards in the same dashboard simultaneously, each with its own `time_service` duration.
 
-![Zrzut ekranu (1184)](https://github.com/user-attachments/assets/bad9ae77-257c-4708-9e29-15033216f324)
+<img src="../img/piotras-smart-button-script-1.jpg" alt="Piotras Smart Button - Script Button 1 Preview">
 
-![Zrzut ekranu (1185)](https://github.com/user-attachments/assets/1264b8db-721d-4f09-a52a-39423bf93dd6)
+<img src="../img/piotras-smart-button-script-2.jpg" alt="Piotras Smart Button - Script Button 2 Preview">
 
 ```yaml
 type: custom:piotras-smart-button
