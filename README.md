@@ -157,6 +157,24 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ---
 
+## 🔊 Media Player
+
+<img src="img/piotras-smart-button-media-2.jpg" alt="Piotras Smart Button - Media Player Preview">
+
+For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
+> 🔗 **[Detailed Media Player Documentation](docs/MEDIA.md)**
+
+---  
+
+## 📜 Script Button
+
+<img src="img/piotras-smart-button-script-2.jpg" alt="Piotras Smart Button - Script Button Preview">
+
+For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
+> 🔗 **[Detailed Script Button Documentation](docs/SCRIPT.md)**
+
+---
+
 ## 🌤️ Mini Weather Card
 
 Provide any standard Home Assistant weather entity (e.g., weather.your_weather_entity) to enable a highly compact weather station dashboard. It automatically aggregates crucial meteorological data and translates raw attributes into a beautiful, scannable summary.
@@ -180,98 +198,6 @@ icon_wrap_size: 40
 card_width: 250
 show_more: true
 slider_height: 30
-```
-
----    
-
-## 📜 Script Button
-
-A dedicated layout for triggering scripts — no entity required. The card uses `name_on` and `name_off` to display custom state labels (e.g. "Ready Script" / "Progress Script") and shows an animated countdown immediately on tap.
-
-Two countdown styles depending on layout:
-
-- **`circle`** — SVG ring centered on the card, used when there is no entity and `show_more: false`. Ideal for icon-only or gradient background cards.
-- **`bar`** — progress bar at the bottom, used alongside a background image.
-
-Both styles can appear on different cards in the same dashboard simultaneously, each with its own `time_service` duration.
-
-![Zrzut ekranu (1184)](https://github.com/user-attachments/assets/bad9ae77-257c-4708-9e29-15033216f324)
-
-![Zrzut ekranu (1185)](https://github.com/user-attachments/assets/1264b8db-721d-4f09-a52a-39423bf93dd6)
-
-```yaml
-type: custom:piotras-smart-button
-name: Script
-icon: mdi:script
-card_width: 180
-card_height: 120
-border_width: 1
-icon_size: 45
-icon_wrap_size: 60
-icon_color: "#c0c0c0"
-font_style: 2
-name_size: 20
-state_size: 15
-icon_mode: 1
-name_mode: 5
-value_mode: 5
-show_service: true
-time_service: 20
-service_style: circle
-show_filter: true
-name_off: "Ready Script"
-name_on: "Progress Script"
-show_image: true
-background_image_on: /local/your_image_on.png
-background_image_off: /local/your_image_off.png
-show_icon_full: false
-tap_action:
-  action: call-service
-  service: script.your_script
-```
-
----
-
-## 🔊 Media Player
-
-When the card detects a `media_player` entity, it automatically renders a volume slider in the Control Zone. Tap toggles playback (PLAY/STOP). The slider adjusts volume level directly by dragging.
-
-![Zrzut ekranu (1186)](https://github.com/user-attachments/assets/5f67ec1f-95eb-4514-9d24-671c1b00d6b7)![Zrzut ekranu (1188)](https://github.com/user-attachments/assets/13220e11-c6db-43c1-acb2-8e1f64f86b44)
-
-
-- **Auto-detected** — `volume_level` slider requires no extra configuration.
-- **Different backgrounds per state** — `background_image_off` and `background_image_on` show a different image when stopped vs playing.
-- **Full toggle** — tap starts or stops playback; hold opens more-info for full media controls.
-
-```yaml
-type: custom:piotras-smart-button
-entity: media_player.your_media_player
-name: Speaker Bedroom
-icon: mdi:radio
-icon_color_on: "#ff8000"
-card_width: 180
-card_height: 120
-border_width: 1
-icon_size: 40
-icon_wrap_size: 50
-icon_over_size: 5
-icon_color: "#c0c0c0"
-font_style: 2
-name_size: 20
-state_size: 20
-icon_mode: 1
-name_mode: 5
-value_mode: 3
-show_image: true
-show_filter: true
-show_more: true
-show_icon_full: false
-background_image_off: /local/your_image_off.png
-background_image_on: /local/your_image_on.png
-tap_action:
-  action: toggle
-hold_action:
-  action: more-info
 ```
 
 ---
