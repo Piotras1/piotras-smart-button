@@ -1,6 +1,6 @@
 ## 🌡️ Temperature & Humidity Comfort
 
-<img width="518" height="127" alt="Zrzut ekranu (1382)" src="https://github.com/user-attachments/assets/c20507ad-1463-4a26-94ee-c6cc4208d409" />
+<img src="../img/piotras-smart-button-temperature.jpg" alt="Piotras Smart Button - Temperature & Humidity Comfort Preview">
 
 When the card detects a `sensor` entity with `device_class: temperature` or `device_class: humidity`, it activates **comfort mode** — the card turns ON or OFF based on whether the current value falls within a configurable comfort range defined by `comfort_min` and `comfort_max`.
 
