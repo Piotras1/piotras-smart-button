@@ -1,4 +1,4 @@
-# custom:piotras-smart-button -- Visual Editor Guide
+# 🖥 Visual Editor
 
 The Visual Editor allows configuring `custom:piotras-smart-button`
 directly from the Home Assistant interface.
@@ -9,494 +9,68 @@ depending on the selected entity.
 
 ------------------------------------------------------------------------
 
-## Sections
+## 1. General
 
-1.  General
-2.  Size
-3.  Background
-4.  Icon
-5.  Text
-6.  Layout
-7.  Slider & Power
-8.  Filters
-9.  Actions
-10. Service
+| General Configuration & Description | Preview |
+| :--- | :--- |
+| Configure primary settings and element visibility for the card.<br><br>**Entity and Name:**<br>• **Entity:** Selects the Home Assistant object displayed or controlled by the card.<br>• **Display name:** Sets a custom label for the card (e.g., `All Home`).<br><br>**Visibility Options:**<br>• **Show icon:** Toggles icon visibility.<br>• **Show name:** Toggles name visibility.<br>• **Show entity state:** Toggles the state label visibility. | <img src="../img/piotras-smart-button-edytor-1.jpg" width="350"> |
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 1. General
+## 2. Size
 
-Basic card configuration.
-
-Options:
-
--   Entity
--   Name
--   Icon
--   State Labels
-
-The Entity field selects the Home Assistant object displayed or
-controlled by the card.
-
-Examples:
-
-``` yaml
-sensor.temperature
-switch.garage
-light.living_room
-climate.home
-```
-
-State Labels allow replacing default states with custom text.
-
-Example:
-
-``` yaml
-on: ACTIVE
-off: INACTIVE
-```
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-1.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
+| Size Configuration & Description | Preview |
+| :--- | :--- |
+| Adjust the card dimensions and outline styles to match your dashboard theme.<br><br>**Size Card:**<br>• **Card width:** Sets the width of the card (e.g., `auto`).<br>• **Card height (px or auto):** Sets the card height in pixels (e.g., `140`).<br><br>**Style Card:**<br>• **Border radius (px):** Defines how rounded the corners are (e.g., `12`).<br>• **Border width (px):** Sets the thickness of the border line (e.g., `1`).<br>• **Border color:** Standard HEX color picker for the card outline (e.g., `#804040`).<br>• **Box shadow (outer):** Advanced outer shadow effect using CSS styling. | <img src="../img/piotras-smart-button-edytor-2.jpg" width="350"> |
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 2. Size
+## 3. Background
 
-Controls card dimensions and appearance.
-
-Available options:
-
--   Card width
--   Card height
--   Border radius
--   Border width
--   Shadow
-
-Used to match the card with the dashboard theme.
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-2.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
+| Background Configuration & Description | Preview |
+| :--- | :--- |
+| Manage card background options, including solid colors, multi-color linear gradients, and image behavior.<br><br>**General Settings:**<br>• **Enable background image:** Toggles the use of a background photo or texture.<br>• **Enable image filters:** Activates custom visual filters (ideal for unique ON/OFF state styles).<br>• **Card inner shadow:** Toggles the inner glow/shadow effect of the card background.<br><br>**Gradient Settings:**<br>• **color 1 / 2 / 3:** Setting just `color 1` creates a solid color background. Adding `color 2` or `color 3` automatically triggers a Linear Gradient mode.<br>• **Angle (°):** Controls the direction of the color transitions (e.g., `133`). | <img src="../img/piotras-smart-button-edytor-3.jpg" width="350"> |
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 3. Background
+## 4. Icon
 
-Controls the card background.
-
-Features:
-
--   background colors
--   gradients
--   ON/OFF images
--   image filters
-
-Allows creating dynamic dashboard styles.
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-3.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
+| Icon Configuration & Description | Preview |
+| :--- | :--- |
+| Customize the behavior, appearance, and placement of the icon for different device states.<br><br>**Style Icon:**<br>• **Icon (mdi:...):** Sets the default icon name from the Material Design Icons library (e.g., `mdi:lightbulb`).<br>• **Icon when ON (mdi:...):** Defines an alternative icon for the `ON` state (e.g., `mdi:lightbulb-on`). Leave empty to use the same icon for both states.<br>• **Icon color (OFF) / (ON):** Assigns separate HEX colors for each state.<br><br>**Size Icon:**<br>• **Icon size (px):** Sets the size of the icon itself (e.g., `44`).<br>• **Wrap size (px):** Controls the dimensions of the icon's container bounding box.<br>• **Icon style:** Applies pre-defined styles or custom shapes to the icon container.<br>• **Icon inside card:** Toggles containment. Disabling this allows the icon to overflow outside the card boundaries or into the corners. | <img src="../img/piotras-smart-button-edytor-4.jpg" width="350"> |
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 4. Icon
+## 5. Text
 
-Controls icon appearance.
-
-Available styles:
-
--   circle_color
--   circle
--   square_color
--   square
--   none
-
-Additional settings:
-
--   icon size
--   icon color
--   ON state color
--   wrapper size
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-4.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
+| Text Configuration & Description | Preview |
+| :--- | :--- |
+| Manage typography, colors, and custom text labels for both the card name and state badges.<br><br>**Name and Badge:**<br>• **Font style (1-4):** Selects the global text formatting style (`1.normal`, `2.small-caps`, `3.monospace`, `4.uppercase`).<br><br>**Name:**<br>• **Name font size (px):** Sets the size of the main display name (e.g., `22`).<br>• **Text color:** HEX color picker for the primary card title text.<br><br>**State Badge:**<br>• **State font size (px):** Sets the text size for the device state label (e.g., `18`).<br>• **Value color:** HEX color picker for the state text value.<br>• **Custom state (ON) / (OFF):** Overrides default Home Assistant states with custom labels. Leave empty to auto-detect labels (like DIM, PLAY, HEAT) dynamically. | <img src="../img/piotras-smart-button-edytor-5.jpg" width="350"> |
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 5. Text
+## 6. Layout
 
-Controls displayed text.
-
-Options:
-
--   name size
--   state size
--   text colors
--   value colors
--   alignment
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-5.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 6. Layout
+## 7. Slider & Power
 
-The Layout tab uses a 3x3 positioning system.
-
-    1 2 3
-    4 5 6
-    7 8 9
-
-Elements:
-
--   Icon
--   Name
--   State
-
-Each element can be positioned independently.
-
-When multiple elements use the same position they are automatically
-stacked.
-
-Example:
-
-``` yaml
-icon_mode: 1
-name_mode: 8
-value_mode: 8
-```
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-6.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 7. Slider & Power
+## 8. Filters
 
-The Control Zone provides additional information and controls.
-
-Used for:
-
--   batteries
--   lights
--   climate
--   devices with adjustable values
-
-Battery support:
-
--   charging
--   discharging
--   full
--   not_charging
-
-Example:
-
-``` yaml
-entity_battery_state: sensor.device_battery_state
-```
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-7.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 8. Filters
+## 9. Actions
 
-Controls visual effects.
-
-Examples:
-
--   state based appearance
--   image adjustments
--   additional styling
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-8.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
 
 ------------------------------------------------------------------------
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 9. Actions
+## 10. Service
 
-Defines card interactions.
-
-Supported actions:
-
--   tap
--   hold
--   double tap
-
-Examples:
-
--   toggle entity
--   open more-info
--   navigate
--   call service
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-9.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
-
-------------------------------------------------------------------------
-
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-# 10. Service
-
-Service countdown configuration.
-
-Used for temporary actions.
-
-Options:
-
--   countdown time
--   circle style
--   progress bar style
-
-Example:
-
-``` yaml
-time_service: 30
-```
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-`<img src="../img/piotras-smart-button-edytor-10.jpg">`{=html}
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
 
 ------------------------------------------------------------------------
 
