@@ -4,7 +4,8 @@ When the card detects a `person` or `device_tracker` entity, the Control Zone di
 
 Icon colors follow the existing color variables — `icon_color_on` when home, `icon_color` when away — so the bar stays visually consistent with the rest of the card.
 
-![Zrzut ekranu (1292)](https://github.com/user-attachments/assets/51bf40ea-e274-4534-bb04-ab9b0d294421)![Zrzut ekranu (1281)](https://github.com/user-attachments/assets/9805f891-8e9c-409d-941c-173006059b9a)
+![Piotras Smart Button - Person & Device Tracker 1](../img/piotras-smart-button-person-1.jpg)
+![Piotras Smart Button - Person & Device Tracker 2](../img/piotras-smart-button-person-2.jpg)
 
 - `mdi:home` in `icon_color_on` when state is `home`
 - `mdi:walk` in `icon_color` when state is `away` / `not_home`
