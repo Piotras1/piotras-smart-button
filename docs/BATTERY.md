@@ -4,7 +4,8 @@ When the card detects a `sensor` entity with `device_class: battery`, the Contro
 
 For full charging state support, add an optional `entity_battery_state` pointing to a sensor that reports `charging`, `discharging`, `full`, or `not_charging`.
 
-![Zrzut ekranu (1293)](https://github.com/user-attachments/assets/03390d5f-f975-499e-b2b9-e2fdd25e1045)![Zrzut ekranu (1294)](https://github.com/user-attachments/assets/a9a00304-aacd-475c-9cf8-df29503ec3b9)
+<img src="../img/piotras-smart-button-battery-1.jpg" alt="Piotras Smart Button - Battery OFF Preview">
+<img src="../img/piotras-smart-button-battery-2.jpg" alt="Piotras Smart Button - Battery ON Preview">
 
 - Icon auto-adjusts: `mdi:battery-10` through `mdi:battery`, `mdi:battery-charging` when charging
 - Card turns **ON** (active color) when `entity_battery_state` reports `charging`
