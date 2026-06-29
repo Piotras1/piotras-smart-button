@@ -3,7 +3,6 @@
 Provide any standard Home Assistant weather entity (e.g., weather.your_weather_entity) to enable a highly compact weather station dashboard. It automatically aggregates crucial meteorological data and translates raw attributes into a beautiful, scannable summary.
 
 <img src="../img/piotras-smart-button-weather-1.jpg" alt="Piotras Smart Button - Mini Weather Card Preview">
-
 <img src="../img/piotras-smart-button-weather-2.jpg" alt="Piotras Smart Button - Mini Weather Card 2 Preview">
 
 - Rich data layout — displays current temperature, weather conditions, humidity percentage, and wind speed simultaneously.
