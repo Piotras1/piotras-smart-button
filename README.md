@@ -107,6 +107,15 @@ value_mode: 5
 
 ---
 
+## 👤 Person & Device Tracker
+
+<img src="img/piotras-smart-button-person-2.jpg" alt="Piotras Smart Button - Person & Device Tracker Preview">
+
+For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
+> 🔗 **[Detailed Person & Device Tracker Documentation](docs/WEATHER.md)**
+
+---
+
 ## 🧭 Navigation Mode (Neumorphic Style)
 
 <img src="img/piotras-smart-button-navigation-2.jpg" alt="Piotras Smart Button - Neumorphic Navigation Menu Preview">
@@ -185,15 +194,6 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Mini Weather Card Documentation](docs/WEATHER.md)**
-
----
-
-## 👤 Person & Device Tracker
-
-<img src="img/piotras-smart-button-person-2.jpg" alt="Piotras Smart Button - Person & Device Tracker Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Person & Device Tracker Documentation](docs/WEATHER.md)**
 
 ---
 
