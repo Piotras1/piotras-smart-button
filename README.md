@@ -13,13 +13,8 @@
 [![Assets Gallery](https://img.shields.io/badge/Assets%20Gallery-Smart%20Button-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html)
 [![MDI Icons](https://img.shields.io/badge/HA%20Icons-Search%20Gallery-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html)
 ## Piotras Smart Button
-### Release v1.2.4
 
-**Most cards go silent after calling a service. This one tells you it worked.**
-
-A Home Assistant button card with 9-grid layout · auto-detecting sliders · dynamic backgrounds · service countdown · visual editor included.
-
-<img width="495" height="227" alt="demo-piotras-smart-button" src="https://github.com/user-attachments/assets/23d2280f-9c87-427c-b3ec-c7ac5e931061" />
+<img src="img/piotras-smart-button.jpg" alt="Piotras Smart Button - Preview">
 
 ---
 
