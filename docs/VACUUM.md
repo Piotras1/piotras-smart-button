@@ -2,10 +2,7 @@
 
 Provide your standard Home Assistant vacuum entity (e.g., vacuum.your_vacuum) or a dedicated status sensor (e.g., sensor.dreame_mc1808_3504_status) to track your robotic cleaner. This layout is designed specifically to handle the messy, inconsistent, or poorly translated states returned by various hardware brands (Roborock, Xiaomi, Dreame, etc.).
 
-<img width="215" height="140" alt="Zrzut ekranu (1678)" src="https://github.com/user-attachments/assets/f6023e07-fbe3-4fa8-9355-a3cef179538e" />
-<img width="214" height="140" alt="Zrzut ekranu (1677)" src="https://github.com/user-attachments/assets/3bb74ff3-39d9-4b54-8fe3-46e4d26bea29" />
-<img width="211" height="138" alt="Zrzut ekranu (1680)" src="https://github.com/user-attachments/assets/a5c0c1c0-de3b-4c0d-9a03-bd405f194435" />
-<img width="212" height="137" alt="Zrzut ekranu (1679)" src="https://github.com/user-attachments/assets/a0c983b9-4a3e-44c0-9335-222f3b76aac9" />
+<img src="../img/piotras-smart-button-vacuum-2.jpg" alt="Piotras Smart Button - Vacuum Status Preview">
 
 - Flexible Entity Support — works seamlessly with both native vacuum. domain entities and standard sensor. state entities.
 - Kinetic Icon Feedback — the vacuum icon dynamically spins in real time whenever the active status matches your cleaning states.
