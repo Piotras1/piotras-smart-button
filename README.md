@@ -82,29 +82,6 @@
 
 </details>
 
---- 
-
-## 🧩 The 9-Grid Layout System
-
-Position Icon, Name, and State independently using a 3×3 grid (positions 1–9):
-
-![Zrzut ekranu (1190)](https://github.com/user-attachments/assets/1f66c380-280f-4242-86f8-cd03f11fa073)
-
-Elements sharing the same position are stacked vertically: `icon → name → state`.  
-When `show_more: true` is active, elements in the bottom row shift up automatically to avoid the Control Zone.
-
-```yaml
-# Classic: icon top-left, name + state bottom-center
-icon_mode: 1
-name_mode: 8
-value_mode: 8
-
-# Centered stack (default)
-icon_mode: 5
-name_mode: 5
-value_mode: 5
-```
-
 ---
 
 ## 👤 Person & Device Tracker
@@ -224,75 +201,16 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ---
 
-## 🎨 Icon Wrap Style
+## 🖥 Visual Editor
 
-<img width="387" height="159" alt="smart-button-icon" src="https://github.com/user-attachments/assets/eba48567-78c5-4b94-a119-243a0fa6e8a7" />
-
-The icon_style option controls how the icon wrap looks — you can choose from 5 styles, from a classic colored badge to a clean borderless floating effect.
-
-When icon_style is not set, the card defaults to circle_color — the classic colored circle you already know.
-
-The icon wrap color always follows your icon_color (OFF state) and icon_color_on (ON state) settings regardless of the chosen style.
-
-- **circle_color** — Circle with colored background and border. Classic, clear, works great on any card.
-- **circle** — No background, no border. Just a soft drop shadow. The icon appears to float above the card — looks especially good on cards with a background image.
-- **square_color** — Same as circle_color but with a rounded square shape. Great for a more structured dashboard layout.
-- **square** — Rounded square with shadow only, no background or border.
-- **none** — No wrap at all. Pure icon with no background, border or shadow. Perfect for minimalist cards or decorative buttons where the background image speaks for itself.
-
----
-
-## ⚡ Service Countdown
-
-When any action is set to `call-service` and `show_service: true` is enabled, the card displays an animated countdown for the duration set by `time_service`.
-
-Two display styles:
-
-| `service_style` | Description |
-|---|---|
-| `circle` *(default)* | Animated SVG ring centered on the card in `icon_color_on`. Only available when `entity` is not set and `show_more: false`. Ring diameter = `icon_wrap_size + 5px`. |
-| `bar` | Progress bar docked at the bottom of the card. Works with any entity and is compatible with `show_more: true`. |
-
-> **Note:** When using `entity` (e.g. a switch or socket) together with `show_more: true`, always use `service_style: bar`. The `circle` style requires an empty card without a power bar.
-
-`time_service` supports two formats:
-- `10` — countdown from 10 s, bar scale = 10 s
-- `"10/20"` — countdown from 10 s, visual scale is 20 s (bar starts at 50%)
-
-When `blockade_card: true` is set, re-triggering the service call is blocked for the entire countdown duration. All other tap actions (toggle, navigate, more-info) remain fully functional during this time.
-
-```yaml
-type: custom:piotras-smart-button
-name: Boiler
-icon: mdi:water-boiler
-icon_color_on: "#ff6b35"
-show_service: true
-time_service: "30/60"
-service_style: circle
-blockade_card: true
-tap_action:
-  action: call-service
-  service: switch.turn_on
-  service_data:
-    entity_id: switch.boiler
-```
+**For the full list of parameters, check the:**
+> 👉 [Edytor Guide](docs/EDYTOR.md)
 
 ---
 
 ## ⚙️ Configuration Reference
 **For the full list of parameters, check the:**
 > 👉 [Configuration Reference Guide](docs/CONFIGURATION.md)
-
-
----
-
-## 🖥 Visual Editor
-
-The card ships with a full visual editor accessible directly in the Home Assistant dashboard UI. The editor automatically detects the entity domain and adjusts available options — for example, showing battery-specific fields for `sensor` with `device_class: battery`, thermostat controls for `climate`, comfort range fields for `temperature` and `humidity` sensors, or person tips for `person` / `device_tracker`.
-
-![Zrzut ekranu (1191)](https://github.com/user-attachments/assets/9d9b206d-59af-4a94-b9c5-d6a00211ffae)
-
-Tabs available: **General · Size · Background · Icon · Text · Layout · Slider & Power · Filters · Actions · Service**
 
 ---
 
