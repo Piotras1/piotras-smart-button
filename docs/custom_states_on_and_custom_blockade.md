@@ -1,5 +1,7 @@
 # `custom_states_on` and `custom_blockade` — how they work
 
+> 🔙 Back to the [Main README](../README.md)
+
 These two options are independent from `custom_states_labels` (covered in a separate document) — they don't change any label's text, only the card's visual "active" state (`custom_states_on`) and whether interaction is blocked (`custom_blockade`). They can be freely combined with `custom_states_labels`, but work fully on their own.
 
 ## `custom_states_on` — forcing the "active" visual state for any entity
