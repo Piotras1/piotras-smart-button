@@ -1,5 +1,7 @@
 # 🖥 Visual Editor
 
+> 🔙 Back to the [Main README](../README.md)
+
 The Visual Editor allows configuring `custom:piotras-smart-button`
 directly from the Home Assistant interface.
 
@@ -101,3 +103,5 @@ For best results:
 
 The Visual Editor exposes the most common options while advanced YAML
 configuration remains available for advanced users.
+
+> 🔙 Back to the [Main README](../README.md)
