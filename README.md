@@ -201,6 +201,15 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ---
 
+## 🚪 Entry Gate & Garage Control
+
+<img src="img/piotras-smart-button-garage-1.jpg" alt="Piotras Smart Button - Entry Gate & Garage Control Preview">
+
+For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
+> 🔗 **[Detailed Entry Gate & Garage Control Documentation](docs/GARAGE.md)**
+
+---
+
 ## 🖥 Visual Editor
 
 **For the full list of parameters, check the:**
@@ -211,6 +220,24 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 ## ⚙️ Configuration Reference
 **For the full list of parameters, check the:**
 > 👉 [Configuration Reference Guide](docs/CONFIGURATION.md)
+
+---
+
+## 🏷️ Custom State Labels
+
+<img src="img/piotras-smart-button-custom-labels.jpg" alt="Piotras Smart Button - Custom State Labels Preview">
+
+For full documentation on matching rules, HTML labels, climate/weather value2, and clock greetings, check out the dedicated guide:
+> 🔗 **[Detailed Custom State Labels Documentation](docs/custom_states_labels.md)**
+
+---
+
+## 🎛️ Custom States On & Blockade
+
+<img src="img/piotras-smart-button-custom-states.jpg" alt="Piotras Smart Button - Custom States On & Blockade Preview">
+
+For full documentation on forcing the active visual state and locking card interaction, check out the dedicated guide:
+> 🔗 **[Detailed Custom States On & Blockade Documentation](docs/custom_states_on_and_custom_blockade.md)**
 
 ---
 
