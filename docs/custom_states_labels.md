@@ -1,5 +1,7 @@
 # `custom_states_labels` — matching rules
 
+> 🔙 Back to the [Main README](../README.md)
+
 `custom_states_labels` lets you provide custom text labels shown on the card, depending on the entity's current state. Three key types are supported:
 
 | Key type | Example | Meaning |
@@ -323,3 +325,5 @@ With a sensor like `{{ now().strftime('%H:%M') }}`, the match is done against th
 - Keys starting with `>` **must** be quoted (`">27"`), because `>` is a reserved YAML character (folded block scalar indicator), and without quotes the configuration won't load correctly.
 - Keys starting with `<` **may** be unquoted (`<17`), but for readability and consistency it's better to quote all operator keys: `"<17"`, `">27"`, `">=30"`, `"<=5"`.
 - Text keys (e.g. for `vacuum`, `media_player`: `playing`, `paused`, `off`) don't require quotes.
+
+> 🔙 Back to the [Main README](../README.md)
