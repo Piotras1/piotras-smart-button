@@ -1,8 +1,8 @@
 # ⚙️ Configuration Reference — Piotras Smart Button
 
-Full list of all configuration options available for `custom:piotras-smart-button`, matching the **v1.2.5** release.
+Full list of all configuration options available for `custom:piotras-smart-button`.
 
-> Looking for the main overview, installation steps, or entity-mode examples (light, switch, climate, vacuum, etc.)? Go back to the [main README](../README.md).
+> 🔙 Back to the [Main README](../README.md)
 
 ---
 
@@ -153,3 +153,5 @@ Supported actions: `toggle`, `more-info`, `navigate`, `call-service`, `none`.
 > If `tap_action`, `hold_action`, and `double_tap_action` are all set to `none` (or left at their defaults of `none` for hold/double-tap), the card also disables the pressed/scale visual feedback — it stops looking clickable.
 
 > **Advanced / YAML-only options:** `custom_blockade`, `custom_states_on`, and `custom_states_labels` are intentionally not exposed in the visual editor. Using them effectively requires knowing your entity's exact state values (check **Developer Tools → States** in Home Assistant) — these options are aimed at advanced users who are already comfortable editing YAML directly.
+
+> 🔙 Back to the [Main README](../README.md)
