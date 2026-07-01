@@ -132,3 +132,4 @@ custom_states_on:
 
 ⚠️ An `input_number` entity's state is a **string**, not a number — and it often includes a trailing zero after the decimal point (e.g. `"3.0"`, not `"3"`), depending on the `step` configured for that `input_number`. The match is exact (though case-insensitive, which doesn't matter for numbers) — `"3.0"` will not match a state of `"3"` or vice versa. Check the exact format in Home Assistant's Developer Tools → States before typing the value into the card's config.
 
+> 🔙 Back to the [Main README](../README.md)
