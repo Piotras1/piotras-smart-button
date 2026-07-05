@@ -11,7 +11,7 @@
  *   - ES module and classic script loading
  */
 
-const VERSION = '1.2.4';
+const VERSION = '1.2.5';
 const COMPONENT = 'piotras-smart-button';
 
 // ── Base path detection ───────────────────────────────────────────────────────
@@ -38,7 +38,7 @@ if (!window.customCards.some(c => c.type === COMPONENT)) {
   window.customCards.push({
     type:        COMPONENT,
     name:        'Piotras Smart Button',
-    description: 'A high-performance button card for Home Assistant — Most cards go silent after calling a service. This one tells you it worked',
+    description: 'A high-performance button card for Home Assistant, built for maximum customizability. Design unique layouts, create conditional colors, and map custom states for any entity.',
     preview:     false,
   });
 }
