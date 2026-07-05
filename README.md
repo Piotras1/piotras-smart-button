@@ -14,7 +14,7 @@
 [![MDI Icons](https://img.shields.io/badge/HA%20Icons-Search%20Gallery-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html)
 ## Piotras Smart Button
 
-<img src="img/piotras-smart-button.jpg" alt="Piotras Smart Button - Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button.jpg" alt="Piotras Smart Button - Preview">
 
 ---
 
@@ -86,7 +86,7 @@
 
 ## 👤 Person & Device Tracker
 
-<img src="img/piotras-smart-button-person-2.jpg" alt="Piotras Smart Button - Person & Device Tracker Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-person-2.jpg" alt="Piotras Smart Button - Person & Device Tracker Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Person & Device Tracker Documentation](docs/WEATHER.md)**
@@ -95,7 +95,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🧭 Navigation Mode (Neumorphic Style)
 
-<img src="img/piotras-smart-button-navigation-2.jpg" alt="Piotras Smart Button - Neumorphic Navigation Menu Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-navigation-2.jpg" alt="Piotras Smart Button - Neumorphic Navigation Menu Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Navigation Mode Documentation](docs/NAVIGATION.md)**
@@ -104,7 +104,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🎛️ Socket & Power Monitoring
 
-<img src="img/piotras-smart-button-socket-2.jpg" alt="Piotras Smart Button - Socket & Power Monitoring Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-socket-2.jpg" alt="Piotras Smart Button - Socket & Power Monitoring Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Socket & Power Monitoring Documentation](docs/SOCKET.md)**
@@ -113,7 +113,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 💡 Light & Auto-Dimmer Slider
 
-<img src="img/piotras-smart-button-lighting-4.jpg" alt="Piotras Smart Button - Light & Auto-Dimmer Slider Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-lighting-4.jpg" alt="Piotras Smart Button - Light & Auto-Dimmer Slider Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Light & Auto-Dimmer Documentation](docs/LIGHT.md)**
@@ -122,7 +122,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🕒📅 Clock & Calendar Display
 
-<img src="img/piotras-smart-button-clock.jpg" alt="Piotras Smart Button - Clock & Calendar Grid Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-clock.jpg" alt="Piotras Smart Button - Clock & Calendar Grid Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Clock & Calendar Documentation](docs/CLOCK-CALENDAR.md)**
@@ -131,7 +131,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🌡️ Thermostat
 
-<img src="img/piotras-smart-button-thermostat.jpg" alt="Piotras Smart Button - Thermostat Control Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-thermostat.jpg" alt="Piotras Smart Button - Thermostat Control Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Thermostat Documentation](docs/THERMOSTAT.md)**
@@ -140,7 +140,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🔊 Media Player
 
-<img src="img/piotras-smart-button-media-2.jpg" alt="Piotras Smart Button - Media Player Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-media-2.jpg" alt="Piotras Smart Button - Media Player Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Media Player Documentation](docs/MEDIA.md)**
@@ -149,7 +149,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 📜 Script Button
 
-<img src="img/piotras-smart-button-script-2.jpg" alt="Piotras Smart Button - Script Button Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-script-2.jpg" alt="Piotras Smart Button - Script Button Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Script Button Documentation](docs/SCRIPT.md)**
@@ -158,7 +158,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🚨 Advanced Alarm Status
 
-<img src="img/piotras-smart-button-alarm-2.jpg" alt="Piotras Smart Button - Advanced Alarm Status Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-alarm-2.jpg" alt="Piotras Smart Button - Advanced Alarm Status Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Advanced Alarm Status Documentation](docs/ALARM.md)**
@@ -167,7 +167,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🌤️ Mini Weather Card
 
-<img src="img/piotras-smart-button-weather-2.jpg" alt="Piotras Smart Button - Mini Weather Card Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-weather-2.jpg" alt="Piotras Smart Button - Mini Weather Card Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Mini Weather Card Documentation](docs/WEATHER.md)**
@@ -176,7 +176,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🔋 Battery
 
-<img src="img/piotras-smart-button-battery-2.jpg" alt="Piotras Smart Button - Battery Card Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-battery-2.jpg" alt="Piotras Smart Button - Battery Card Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Battery Card Documentation](docs/BATTERY.md)**
@@ -185,7 +185,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🌡️ Temperature & Humidity Comfort
 
-<img src="img/piotras-smart-button-temperature.jpg" alt="Piotras Smart Button - Temperature & Humidity Comfort Card Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-temperature.jpg" alt="Piotras Smart Button - Temperature & Humidity Comfort Card Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Temperature & Humidity Comfort Card Documentation](docs/TEMPERATURE.md)**
@@ -194,7 +194,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🧹 Smart Vacuum Status
 
-<img src="img/piotras-smart-button-vacuum-1.jpg" alt="Piotras Smart Button - Smart Vacuum Status Card Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-vacuum-1.jpg" alt="Piotras Smart Button - Smart Vacuum Status Card Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Smart Vacuum Status Card Documentation](docs/VACUUM.md)**
@@ -203,7 +203,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🚪 Entry Gate & Garage Control
 
-<img src="img/piotras-smart-button-garage-1.jpg" alt="Piotras Smart Button - Entry Gate & Garage Control Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-garage-1.jpg" alt="Piotras Smart Button - Entry Gate & Garage Control Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
 > 🔗 **[Detailed Entry Gate & Garage Control Documentation](docs/GARAGE.md)**
@@ -225,7 +225,7 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🏷️ Custom State Labels
 
-<img src="img/piotras-smart-button-custom-labels.jpg" alt="Piotras Smart Button - Custom State Labels Preview">
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-custom-labels.jpg" alt="Piotras Smart Button - Custom State Labels Preview">
 
 For full documentation on matching rules, HTML labels, climate/weather value2, and clock greetings, check out the dedicated guide:
 > 🔗 **[Detailed Custom State Labels Documentation](docs/custom_states_labels.md)**
@@ -233,8 +233,6 @@ For full documentation on matching rules, HTML labels, climate/weather value2, a
 ---
 
 ## 🎛️ Custom States On & Blockade
-
-<img src="img/piotras-smart-button-custom-states.jpg" alt="Piotras Smart Button - Custom States On & Blockade Preview">
 
 For full documentation on forcing the active visual state and locking card interaction, check out the dedicated guide:
 > 🔗 **[Detailed Custom States On & Blockade Documentation](docs/custom_states_on_and_custom_blockade.md)**
