@@ -75,7 +75,7 @@
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.4
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.5
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
