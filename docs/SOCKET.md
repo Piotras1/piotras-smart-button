@@ -54,6 +54,7 @@ hold_action:
 ```
 
 Looking for more inspiration or advanced configurations for Socket & Power Monitoring? Check out these community guides:
+> 🧭 [Socket & Power Monitoring Guide (Extended Tutorial)](https://github.com/Piotras1/piotras-smart-button/discussions/12)
  
 > 💬 [Community Dashboards & Showcases (Show and Tell)](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
 
