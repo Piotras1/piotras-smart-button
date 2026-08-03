@@ -89,7 +89,7 @@
 <img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-person-2.jpg" alt="Piotras Smart Button - Person & Device Tracker Preview">
 
 For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Person & Device Tracker Documentation](docs/WEATHER.md)**
+> 🔗 **[Detailed Person & Device Tracker Documentation](docs/PERSON.md)**
 
 ---
 
