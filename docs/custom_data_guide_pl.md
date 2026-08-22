@@ -458,3 +458,5 @@ text_color: customData.color
 ---
 
 Jeśli utkniesz — sprawdź konsolę przeglądarki (F12 → Console). Silnik karty zawsze loguje ostrzeżenie opisujące dokładnie, co poszło nie tak, zamiast po cichu psuć całą kartę.
+
+> Biblioteka [**Custom Data & Modules**](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) (odtwarzacze multimedialne, zegary powitalne, przyciski radiowe z okładkami itp.) jest celowo oparta na jednej zasadzie:
