@@ -303,6 +303,48 @@ A few practical notes:
 - This works identically for every entity type described above (`climate`, `weather`, `light`/`fan`/`cover`, `on.clock`, exact match/operators/ranges) — HTML is just the label's content, it doesn't affect the matching logic.
 - As always: `\n` won't work as a line break — only `<br>` does.
 
+## 🆕 Using `custom_data` / templates as label values
+
+The **key** in `custom_states_labels` (the thing being matched — an exact state, an operator, or a range) is always a static string, evaluated as described above. But the **value** (the label text/HTML actually shown) doesn't have to be static — each individual value can instead be:
+
+- a **reference to `custom_data`** (`customData.someKey`, including nested paths like `customData.Configuration.label`), or
+- a **`p{{{ ... }}}q` template block**, re-evaluated whenever the card's state updates.
+
+This lets a label's text, color, or content react to something other than the matched key itself — e.g. showing a different greeting depending on the day of the week, or pulling a translated string from a `custom_data` lookup table, while the key still only matches on the entity's raw state/hour/percentage as usual.
+
+```yaml
+custom_data:
+  weekendGreeting: |-
+    p{{{
+      const day = new Date().getDay();   // 0 = Sunday, 6 = Saturday
+      return (day === 0 || day === 6) ? "Lazy weekend morning ☕" : "Good morning! ☕";
+    }}}q
+
+custom_states_labels:
+  "5-9": customData.weekendGreeting
+  "9-17": "Have a great day! 👋"
+```
+
+```yaml
+custom_data:
+  hotLabel: |-
+    p{{{
+      return `<span style="color:#ef4444;font-weight:bold;">Hot! 🔥</span>`;
+    }}}q
+
+custom_states_labels:
+  "> 26": customData.hotLabel
+  "22-26": "Warm! T-shirt and shorts."
+```
+
+A few important points:
+
+- **Only the value can be a template/reference — never the key.** The key (`"5-9"`, `">26"`, `off`, etc.) is always matched as a plain string against the entity's state/hour/percentage; you cannot make a key itself dynamic.
+- **`states` is not available inside a template used as a label value.** Exactly like any other field outside `custom_data` (see section 4 of the `custom_data` guide), a `p{{{ }}}q` block placed directly as a label value only has access to `customData` — not `states`. If the label needs to read another entity, do that read inside `custom_data` first, then reference the result.
+- This applies identically to `vacuum_states_labels` (the legacy equivalent of `custom_states_labels`).
+- All the same rules from the `custom_data` guide apply here too — most importantly, if the referenced `custom_data` key is itself computed from another `custom_data` key, it must be **defined earlier in the YAML**, or it will resolve to `undefined` (see the `custom_data` guide, section 8).
+- Mixing static text and a template/reference inside the **same** label value doesn't work — just like any other templated field, the value must be either a plain static string, a full `customData.key` reference, or a full `p{{{ }}}q` block, not a combination of them in one string.
+
 ## Midnight-wrapping ranges (e.g. hours 22-0)
 
 If a range's lower bound is **greater** than its upper bound (e.g. `"22-0"`), the card automatically interprets it as a range that wraps around a boundary point (e.g. midnight) — the match works as "value ≥ lower **OR** value ≤ upper", rather than a standard "in between".
