@@ -462,3 +462,5 @@ text_color: customData.color
 If you get stuck — check your browser's console (F12 → Console). The card's engine always logs a warning describing exactly what went wrong, instead of silently breaking the whole card.
 
 > 🔙 Back to the [Main README](../README.md)
+
+> The [**Custom Data & Modules library**](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) (media players, greeting clocks, radio buttons with cover art, etc.) is built around one rule, on purpose:
