@@ -1,77 +1,77 @@
 # `custom_states_labels` — zasady dopasowania
 
-`custom_states_labels` pozwala podać własne etykiety tekstowe wyświetlane w karcie, w zależności od aktualnego stanu encji. Obsługiwane są trzy typy kluczy:
+`custom_states_labels` pozwala podać własne etykiety tekstowe pokazywane na karcie, zależnie od aktualnego stanu encji. Obsługiwane są trzy typy kluczy:
 
 | Typ klucza | Przykład | Znaczenie |
 |---|---|---|
 | Dopasowanie dokładne | `"25": OK` | stan równy dokładnie `25` |
-| Operator porównania | `">25": Ciepło` | stan większy/mniejszy od podanej liczby |
-| Zakres | `"10-25": Normalnie` | stan w przedziale domkniętym `[10, 25]` |
+| Operator porównania | `">25": Warm` | stan większy/mniejszy od podanej liczby |
+| Zakres | `"10-25": Normal` | stan w przedziale domkniętym `[10, 25]` |
 
 Dozwolone operatory: `>`, `<`, `>=`, `<=`.
 
 ## ⚠️ NAJWAŻNIEJSZA ZASADA: kolejność wpisów ma znaczenie
 
-Karta sprawdza klucze **w takiej kolejności, w jakiej są zapisane w YAML, od góry do dołu**, i zwraca etykietę dla **pierwszego dopasowania, jakie znajdzie**. Nie szuka „najlepszego" ani „najbardziej szczegółowego" warunku — bierze pierwszy z rzędu, który jest prawdziwy.
+Karta sprawdza klucze **w kolejności, w jakiej są zapisane w YAML, od góry do dołu**, i zwraca etykietę dla **pierwszego znalezionego dopasowania**. Nie szuka "najlepszego" ani "najbardziej precyzyjnego" warunku — bierze pierwszy z brzegu, który jest prawdziwy.
 
-Wyjątek: dopasowanie **dokładne** (np. `"25"`) jest sprawdzane jako pierwsze, niezależnie od pozycji w pliku — dopiero gdy nie znajdzie dokładnego dopasowania, przechodzi do sprawdzania operatorów/zakresów po kolei.
+Wyjątek: dopasowanie **dokładne** (np. `"25"`) jest sprawdzane jako pierwsze, niezależnie od jego pozycji w pliku — dopiero gdy nie znajdzie się dopasowanie dokładne, karta przechodzi do sprawdzania operatorów/zakresów po kolei.
 
-ℹ️ Dopasowanie dokładne (tekstowe) jest **niezależne od wielkości liter** — klucz `open` złapie stan `open`, `Open` i `OPEN` jednakowo. Dotyczy to każdego miejsca, gdzie karta robi dopasowanie tekstowe: stanu encji, `hvac_action`, `preset_mode`, itd.
+ℹ️ Dopasowanie dokładne (tekstowe) jest **niewrażliwe na wielkość liter** — klucz `open` dopasuje jednakowo stany `open`, `Open` i `OPEN`. Dotyczy to wszędzie tam, gdzie karta wykonuje dopasowanie tekstowe: stan encji, `hvac_action`, `preset_mode` itd.
 
-### Operatory `>` i `>=` → zapisuj progi malejąco (od najwyższego do najniższego)
+### Operatory `>` i `>=` → zapisuj progi w kolejności malejącej (od najwyższego do najniższego)
 
 ```yaml
 custom_states_labels:
-  ">30": Gorąco      # sprawdzane jako pierwsze
-  ">20": Ciepło      # sprawdzane jako drugie
-  ">10": Chłodno     # sprawdzane jako trzecie
+  ">30": Hot       # sprawdzane jako pierwsze
+  ">20": Warm      # sprawdzane jako drugie
+  ">10": Cool      # sprawdzane jako trzecie
 ```
 
-❌ Źle (rosnąco) — `>10` złapie wszystko od 10 w górę, zanim dojdzie do `>20` czy `>30`:
+❌ Źle (rosnąco) — `>10` złapie wszystko od 10 wzwyż, zanim karta w ogóle dotrze do `>20` czy `>30`:
 ```yaml
 custom_states_labels:
-  ">10": Chłodno     # to złapie WSZYSTKO powyżej 10, łącznie z 25 i 35!
-  ">20": Ciepło      # nigdy nie zostanie sprawdzone dla wartości > 20
-  ">30": Gorąco      # nigdy nie zostanie sprawdzone dla wartości > 30
+  ">10": Cool      # to łapie WSZYSTKO powyżej 10, w tym 25 i 35!
+  ">20": Warm      # nigdy nie sprawdzane dla wartości > 20
+  ">30": Hot       # nigdy nie sprawdzane dla wartości > 30
 ```
 
-### Operatory `<` i `<=` → zapisuj progi rosnąco (od najniższego do najwyższego)
+### Operatory `<` i `<=` → zapisuj progi w kolejności rosnącej (od najniższego do najwyższego)
 
 ```yaml
 custom_states_labels:
-  "<10": Zimno       # sprawdzane jako pierwsze
-  "<20": Chłodno     # sprawdzane jako drugie
-  "<30": Ciepło      # sprawdzane jako trzecie
+  "<10": Cold      # sprawdzane jako pierwsze
+  "<20": Cool      # sprawdzane jako drugie
+  "<30": Warm      # sprawdzane jako trzecie
 ```
 
-❌ Źle (malejąco) — `<30` złapie wszystko poniżej 30, łącznie z 5 i 15.
+❌ Źle (malejąco) — `<30` złapie wszystko poniżej 30, w tym 5 i 15.
 
-### Zakresy (`min-max`) → unikaj nakładających się granic
+### Zakresy (`min-max`) → unikaj nachodzących na siebie granic
 
-Jeśli zakresy się stykają na tej samej liczbie (np. `17-18` i `18-19`), wartość graniczna (tu: `18`) zawsze trafi do **zakresu wcześniejszego** w pliku, bo on jest sprawdzany pierwszy.
+Jeśli dwa zakresy stykają się na tej samej liczbie (np. `17-18` i `18-19`), wartość graniczna (tutaj: `18`) zawsze trafi do **wcześniejszego** zakresu w pliku, bo jest sprawdzany jako pierwszy.
 
-❌ Granice się nakładają (18 zawsze da „Zimno", nie „Chłodno"):
+❌ Granice nachodzą na siebie (18 zawsze da "Cold", nie "Cool"):
 ```yaml
 custom_states_labels:
-  "17-18": Zimno
-  "18-19": Chłodno
+  "17-18": Cold
+  "18-19": Cool
 ```
 
-✅ Granice się nie nakładają — każda wartość trafia tam, gdzie się tego oczekuje:
+✅ Granice się nie nakładają — każda wartość trafia tam, gdzie się spodziewasz:
 ```yaml
 custom_states_labels:
-  "17-17.9": Zimno
-  "18-18.9": Chłodno
+  "17-17.9": Cold
+  "18-18.9": Cool
 ```
 
 ## Dopasowanie dla dowolnej encji (input_select, sensor tekstowy, lock, switch itd.)
 
-`custom_states_labels` nie jest ograniczone do `light`/`fan`/`cover`/`climate`/`weather`/`on.clock` — to są tylko domeny ze **specjalną** obsługą (procenty, druga linia value2, godzina). Dla **każdej innej** encji (np. `input_select`, `sensor` z tekstowymi stanami, `lock`, `switch`, `person`, `media_player`, `vacuum`...) `custom_states_labels` działa jako **główna etykieta** (ta sama, która domyślnie pokazuje `ON`/`OFF`/`PLAY`/`STOP` itd.) — karta sprawdza dokładne dopasowanie do surowego stanu encji **zawsze jako pierwszy krok**, przed jakąkolwiek logiką domyślną danej domeny.
+`custom_states_labels` nie jest ograniczone do `light`/`fan`/`cover`/`climate`/`weather`/`on.clock` — to tylko domeny ze **specjalną** obsługą (procenty, druga linia value2, godzina). Dla **wszystkich innych** encji (np. `input_select`, `sensor` ze stanami tekstowymi, `lock`, `switch`, `person`, `media_player`, `vacuum`...) `custom_states_labels` działa jako **główna etykieta** (ta sama, która domyślnie pokazuje `ON`/`OFF`/`PLAY`/`STOP` itd.) — karta sprawdza dopasowanie dokładne do surowego stanu encji **zawsze jako pierwszy krok**, przed jakąkolwiek domyślną logiką danej domeny.
 
 ```yaml
 type: custom:piotras-smart-button
-entity: input_select.brama_garazowa_status
-name: Garaż
+entity: input_select.garage_door_status
+name: Garage
 icon: mdi:garage
 icon_on: mdi:garage-open
 custom_states_on:
@@ -84,15 +84,15 @@ custom_states_labels:
   closing: <b>Going down! <br>🛑
 ```
 
-ℹ️ `custom_states_on` widoczne w powyższym przykładzie to osobna opcja (steruje ikoną/podświetleniem „aktywności", nie treścią etykiety) — opisana szczegółowo w dokumencie **`custom_states_on i custom_blockade`**.
+ℹ️ `custom_states_on` pokazane w przykładzie powyżej to osobna opcja (kontroluje ikonę/podświetlenie "aktywne", nie tekst etykiety) — opisana szczegółowo w dokumencie **`custom_states_on and custom_blockade`**.
 
-W tym przykładzie `custom_states_labels` zwyczajnie podmienia tekst etykiety w zależności od dokładnego stanu `input_select` (`closed`/`open`/`opening`/`closing`) — i, jak widać, treść etykiety może zawierać HTML (`<b>`, `<br>`, emoji) tak jak opisano w sekcji „Pełny HTML w etykietach" wyżej.
+W tym przykładzie `custom_states_labels` po prostu zamienia tekst etykiety w zależności od dokładnego stanu `input_select` (`closed`/`open`/`opening`/`closing`) — i jak widać, zawartość etykiety może zawierać HTML (`<b>`, `<br>`, emoji), dokładnie tak jak opisano w sekcji "Pełny HTML w etykietach" poniżej.
 
-Ten sam mechanizm działa identycznie dla `alarm_control_panel` — encja ma swoje własne nazwy stanów (`disarmed`, `armed_home`, `arming`, `armed_away`, `armed_night`, `triggered`...), więc można im po prostu nadać dowolne, klimatyczne etykiety:
+Ten sam mechanizm działa identycznie dla `alarm_control_panel` — encja ma własne nazwy stanów (`disarmed`, `armed_home`, `arming`, `armed_away`, `armed_night`, `triggered`...), więc możesz po prostu nadać im dowolne, tematyczne etykiety:
 
 ```yaml
 type: custom:piotras-smart-button
-entity: alarm_control_panel.dom
+entity: alarm_control_panel.home
 name: Alarm
 custom_states_labels:
   disarmed: Free to roam! 🔓
@@ -103,80 +103,80 @@ custom_states_labels:
   triggered: INTRUDER! RELEASE THE HOUNDS! 🐕💥
 ```
 
-Wizualny stan „aktywny" (podświetlenie, `icon_on`) dla alarmu ustawia się automatycznie na podstawie stanów `armed_*`/`pending`/`arming`/`triggered` — bez potrzeby dodawania `custom_states_on`, choć możesz go nadpisać, jeśli chcesz inną logikę.
+"Aktywny" stan wizualny (podświetlenie, `icon_on`) dla alarmu jest ustawiany automatycznie na podstawie stanów `armed_*`/`pending`/`arming`/`triggered` — nie trzeba dodawać `custom_states_on`, choć nadal możesz to nadpisać, jeśli chcesz innej logiki.
 
-## Encje `light` — etykiety zależne od jasności (brightness)
+## Encje `light` — etykiety zależne od jasności
 
-Stan encji `light` to zawsze tylko `on` albo `off` — żeby rozróżnić poziomy jasności (np. „Półmrok", „Ciemno", „Jasno", „Max"), karta dodatkowo sprawdza atrybut `brightness` (przeliczony na %), jeśli samo dopasowanie po stanie `on`/`off` nie zwróci etykiety.
+Stan encji `light` to zawsze tylko `on` albo `off` — żeby rozróżnić poziomy jasności (np. "Dim", "Dark", "Bright", "Max"), karta dodatkowo sprawdza atrybut `brightness` (przeliczony na %), jeśli dopasowanie do samego stanu `on`/`off` nie zwróci etykiety.
 
 ```yaml
 type: custom:piotras-smart-button
 entity: light.lsc_outdoor_neon_strip_3m
 name: living room
 custom_states_labels:
-  off: Wyłączony
-  "<10": Ciemno
-  "10-40": Półmrok
-  "40-80": Jasno
+  off: Off
+  "<10": Dark
+  "10-40": Dim
+  "40-80": Bright
   ">80": Max
 ```
 
 Kolejność sprawdzania dla `light`:
-1. Dopasowanie **dokładne** po stanie (`off`, `on` — jeśli podane jako klucz) — ma absolutny priorytet.
-2. Jeśli nie znaleziono i światło jest `on` z atrybutem `brightness`, przeliczenie na % i dopasowanie do zakresów/operatorów `custom_states_labels` (te same zasady kolejności co wyżej: `>` malejąco, `<` rosnąco, zakresy bez nakładających się granic).
-3. Jeśli nic nie dopasowano — domyślne `DIM`/`ON`/`OFF`.
+1. Dopasowanie **dokładne** do stanu (`off`, `on` — jeśli podane jako klucz) — ma absolutny priorytet.
+2. Jeśli nie znaleziono i światło jest `on` z atrybutem `brightness`, przelicz na % i dopasuj do zakresów/operatorów w `custom_states_labels` (te same zasady kolejności co powyżej: `>` malejąco, `<` rosnąco, niezachodzące na siebie zakresy).
+3. Jeśli nic nie pasuje — domyślne `DIM`/`ON`/`OFF`.
 
-⚠️ Jeśli podasz klucz `on: cokolwiek`, **zawsze wygra** on nad dopasowaniem procentowym jasności (dopasowanie dokładne ma najwyższy priorytet) — do rozróżniania poziomów jasności nie dodawaj klucza `on`, tylko same zakresy/operatory liczbowe + `off`.
+⚠️ Jeśli podasz klucz `on: coś`, **zawsze wygra** on nad dopasowaniem procentowym jasności (dopasowanie dokładne ma najwyższy priorytet) — żeby rozróżnić poziomy jasności, nie dodawaj klucza `on`, tylko liczbowe zakresy/operatory + `off`.
 
-## Domeny z procentami: `light`, `fan`, `cover`
+## Domeny oparte na procentach: `light`, `fan`, `cover`
 
-Ten sam mechanizm (dopasowanie po stanie, a jeśli nie znaleziono — po wartości procentowej) działa dla trzech domen:
+Ten sam mechanizm (dopasowanie do stanu, a jeśli nie znaleziono — do wartości procentowej) działa dla trzech domen:
 
-| Domena | Atrybut źródłowy | Przeliczanie na % |
+| Domena | Atrybut źródłowy | Przeliczenie na % |
 |---|---|---|
 | `light` | `brightness` (0–255) | `brightness / 255 * 100` |
-| `fan` | `percentage` (0–100) | bez przeliczania |
-| `cover` | `current_position` (0–100) | bez przeliczania |
+| `fan` | `percentage` (0–100) | brak przeliczenia |
+| `cover` | `current_position` (0–100) | brak przeliczenia |
 
 Przykład dla wentylatora:
 ```yaml
 type: custom:piotras-smart-button
-entity: fan.wentylator_salon
-name: Wentylator
+entity: fan.living_room_fan
+name: Fan
 custom_states_labels:
-  off: Wyłączony
-  "<20": Wolno
-  "20-60": Średnio
-  ">60": Mocno
+  off: Off
+  "<20": Slow
+  "20-60": Medium
+  ">60": Strong
 ```
 
-Kolejność sprawdzania jest identyczna jak dla `light` opisana wyżej (dopasowanie dokładne po stanie ma priorytet, potem wartość procentowa, te same zasady malejąco/rosnąco dla operatorów).
+Kolejność sprawdzania jest identyczna jak dla `light` opisanego powyżej (dopasowanie dokładne do stanu ma priorytet, potem wartość procentowa, te same zasady malejąco/rosnąco dla operatorów).
 
 ## `climate` — druga linia wartości (value2) z custom_states_labels
 
-Dla encji `climate` główna wartość (`state-badge`) **zawsze pokazuje aktualną temperaturę** (`current_temperature`) — to się nie zmienia. Jeśli jednak podasz `custom_states_labels`, pod temperaturą pojawi się **dodatkowa, mniejsza linia** z dopasowaną etykietą.
+Dla encji `climate` główna wartość (`state-badge`) **zawsze pokazuje aktualną temperaturę** (`current_temperature`) — to się nie zmienia. Jeśli jednak podasz `custom_states_labels`, pod temperaturą pojawia się **dodatkowa, mniejsza linia** z dopasowaną etykietą.
 
 ```yaml
 type: custom:piotras-smart-button
-entity: climate.salon
-name: Salon
+entity: climate.living_room
+name: Living Room
 custom_states_labels:
-  off: Wyłączony
-  heating: Ogrzewa
-  idle: Bezczynny
-  comfort: Komfort
+  off: Off
+  heating: Heating
+  idle: Idle
+  comfort: Comfort
   eco: Eco
-  none: Ręczny
+  none: Manual
 ```
 
-Zasady działania:
-- Dopasowanie sprawdza po kolei trzy źródła i zwraca etykietę z **pierwszego, które ma dopasowanie** w `custom_states_labels`:
-  1. `hvac_action` — co urządzenie faktycznie robi w tej chwili (`heating`/`cooling`/`idle`/`drying`/`fan`/`off`) — najwyższy priorytet, bo to najdokładniejsza informacja o stanie urządzenia.
-  2. `state` — aktualny tryb HVAC, jeden z `hvac_modes` (`heat`/`cool`/`auto`/`off`) — fallback, gdy `hvac_action` nie jest dostępny lub nie ma dopasowania.
-  3. `preset_mode` — aktualnie wybrany tryb z `preset_modes` (np. `none`/`away`/`comfort`/`eco`/`home`/`sleep`/`activity`) — fallback na końcu, gdy ani `hvac_action` ani `state` nie dają dopasowania.
-- Jeśli nie ma dopasowania w żadnym z trzech źródeł (np. zdefiniowałeś tylko `heating`/`cooling`, a urządzenie jest w stanie `drying`) — druga linia po prostu **się nie wyświetla**, temperatura jest pokazywana normalnie.
-- Jeśli nie podasz `custom_states_labels` w ogóle — nic się nie zmienia, dostajesz tylko temperaturę jak dotychczas.
-- Rozmiar czcionki drugiej linii domyślnie to `state_size - 5` (px), z minimum 8px. Możesz go nadpisać opcją `value2_size`:
+Jak to działa:
+- Dopasowanie sprawdza trzy źródła po kolei i zwraca etykietę z **pierwszego, które ma dopasowanie** w `custom_states_labels`:
+  1. `hvac_action` — co urządzenie faktycznie teraz robi (`heating`/`cooling`/`idle`/`drying`/`fan`/`off`) — najwyższy priorytet, bo to najdokładniejsza informacja o stanie urządzenia.
+  2. `state` — aktualny tryb HVAC, jeden z `hvac_modes` (`heat`/`cool`/`auto`/`off`) — awaryjne rozwiązanie, gdy `hvac_action` jest niedostępny lub nie ma dopasowania.
+  3. `preset_mode` — aktualnie wybrany tryb z `preset_modes` (np. `none`/`away`/`comfort`/`eco`/`home`/`sleep`/`activity`) — ostatnia deska ratunku, gdy ani `hvac_action`, ani `state` nie pasują.
+- Jeśli żadne z trzech źródeł nie pasuje (np. zdefiniowano tylko `heating`/`cooling`, a urządzenie jest w stanie `drying`) — druga linia po prostu **nie pokazuje się**, a temperatura wyświetla się normalnie.
+- Jeśli w ogóle nie podasz `custom_states_labels` — nic się nie zmienia, dostajesz temperaturę jak dotychczas.
+- Domyślny rozmiar czcionki drugiej linii to `state_size - 5` (px), z minimum 8px. Możesz go nadpisać opcją `value2_size`:
 
 ```yaml
 custom_states_labels:
@@ -184,13 +184,13 @@ custom_states_labels:
 value2_size: 10
 ```
 
-⚠️ **Dla `climate` dopasowanie jest wyłącznie dokładne (tekstowe) — nie numeryczne.** Karta porównuje wartości `hvac_action`/`state`/`preset_mode` jako stringi z kluczami w `custom_states_labels`. Zakresy (`"10-25"`) i operatory (`">25"`, `"<10"`) **nie działają** dla `climate` — to nie ma sensu, bo te trzy źródła to nazwy stanów/trybów (`heating`, `eco`, `comfort`...), a nie liczby. Jeśli chcesz reagować na temperaturę, robisz to dla `sensor` z aktualną temperaturą jako osobnej encji, nie dla samej `climate`.
+⚠️ **Dla `climate` dopasowanie jest wyłącznie dokładne (tekstowe) — nie liczbowe.** Karta porównuje wartości `hvac_action`/`state`/`preset_mode` jako stringi z kluczami w `custom_states_labels`. Zakresy (`"10-25"`) i operatory (`">25"`, `"<10"`) **nie działają** dla `climate` — co ma sens, bo te trzy źródła to nazwy stanów/trybów (`heating`, `eco`, `comfort`...), nie liczby. Jeśli chcesz reagować na temperaturę, zrób to na encji `sensor` z aktualną temperaturą, a nie na samej encji `climate`.
 
-Inny przykład — termostat z trzema warstwami dopasowania i pustą etykietą dla `off` (żeby druga linia po prostu się nie wyświetlała, gdy ogrzewanie jest wyłączone):
+Kolejny przykład — termostat z trzema warstwami dopasowania i pustą etykietą dla `off` (żeby druga linia po prostu nie pokazywała się, gdy ogrzewanie jest wyłączone):
 
 ```yaml
 type: custom:piotras-smart-button
-entity: climate.termostat_salon_gn
+entity: climate.living_room_thermostat
 name: living room
 icon: mdi:thermostat
 custom_states_labels:
@@ -199,93 +199,93 @@ custom_states_labels:
   comfort: comfort
 ```
 
-Można dodać tyle stanów, ile potrzeba — termostat ma swoje własne `hvac_modes` i `preset_modes`, więc lista kluczy zależy od konkretnego urządzenia (np. `away`, `home`, `sleep`, `boost`, `manual` itd.). Mechanizm sprawdzania zostaje ten sam — trzy „pętle" po kolei:
-1. `hvac_action` — jeśli nie znajdzie dopasowania w `custom_states_labels`, przechodzi do (2).
-2. `state` (czyli `hvac_modes`) — jeśli nie znajdzie, przechodzi do (3).
+Możesz dodać tyle stanów, ile potrzeba — termostat ma własne `hvac_modes` i `preset_modes`, więc lista kluczy zależy od konkretnego urządzenia (np. `away`, `home`, `sleep`, `boost`, `manual` itd.). Mechanizm sprawdzania pozostaje ten sam — trzy "pętle" po kolei:
+1. `hvac_action` — jeśli nie znaleziono dopasowania w `custom_states_labels`, przejdź do (2).
+2. `state` (czyli `hvac_modes`) — jeśli brak dopasowania, przejdź do (3).
 3. `preset_mode` — ostatnia szansa na dopasowanie.
 
-Pusty string (`""`) jako wartość klucza jest w pełni poprawny i powoduje, że dla tego konkretnego stanu druga linia po prostu nie pojawia się na karcie (tak jakby nie było dopasowania), mimo że technicznie dopasowanie zostało znalezione już w pierwszej pętli.
+Pusty string (`""`) jako wartość klucza jest w pełni poprawny i sprawia, że druga linia po prostu nie pojawia się na karcie dla tego konkretnego stanu (tak jakby nie było dopasowania), mimo że technicznie dopasowanie już zostało znalezione w pierwszej pętli.
 
 ## `weather` — druga linia wartości (value2) na podstawie temperatury
 
-Działa tym samym mechanizmem co `climate`, tylko dopasowanie odbywa się po atrybucie `temperature` encji `weather`. Główna wartość (przetłumaczony stan pogody, np. "Słonecznie") zostaje bez zmian — dodaje się tylko druga, mniejsza linia pod nią.
+Działa przez ten sam mechanizm co `climate`, z tą różnicą, że dopasowanie odbywa się do atrybutu `temperature` encji `weather`. Główna wartość (przetłumaczony stan pogody, np. "Słonecznie") pozostaje bez zmian — pod nią dodawana jest tylko druga, mniejsza linia.
 
 ```yaml
 type: custom:piotras-smart-button
-entity: weather.forecast_dom
+entity: weather.home_forecast
 name: Speaker Bedroom
 font_style: 2
 custom_states_labels:
-  < -5: Syberia! Kurtka zimowa, czapka, rękawice i szalik obligatoryjnie.
-  "-5 - 5": Zimno! Gruby płaszcz/kurtka, warstwy i coś na głowę.
-  5 - 12: Chłodno. Kurtka przejściowa lub grubszy płaszcz, lekki szalik.
-  12 - 17: Wiosennie/Jesiennie. Lekka kurtka, bomberka lub grubsza bluza.
-  17 - 22: Komfortowo. Długi rękaw, lekki sweter lub t-shirt + bluza.
-  22 - 26: Ciepło! T-shirt i krótkie spodenki lekka sukienka.
-  "> 26": Upał! Lekko i przewiewnie, okulary przeciwsłoneczne i czapka z daszkiem.
+  < -5: Siberia! Winter jacket, beanie, gloves, and scarf are mandatory.
+  "-5 - 5": Cold! Thick coat/jacket, layers, and headwear recommended.
+  5 - 12: Chilly. Transitional jacket or thicker coat, light scarf.
+  12 - 17: Mild weather. Light jacket, bomber, or thick hoodie.
+  17 - 22: Comfortable. Long sleeve, light sweater, or t-shirt + hoodie.
+  22 - 26: Warm! T-shirt and shorts, light dress.
+  "> 26": Hot! Light and breezy, sunglasses and baseball cap.
 ```
 
-Jeśli nie podasz `custom_states_labels` — nic się nie zmienia, dostajesz tylko przetłumaczony stan pogody jak dotychczas. Jeśli temperatura nie ma dopasowania w żadnym z zakresów — druga linia po prostu się nie wyświetla.
+Jeśli nie podasz `custom_states_labels` — nic się nie zmienia, dostajesz przetłumaczony stan pogody jak dotychczas. Jeśli temperatura nie ma dopasowania w żadnym zakresie — druga linia po prostu się nie pokazuje.
 
-## Tryb zegara (`entity: on.clock`) — powitanie na podstawie godziny
+## Tryb zegara (`entity: on.clock`) — powitanie zależne od pory dnia
 
-`on.clock` to nie jest realna encja Home Assistant — to wbudowany w kartę zegar, liczący czas po stronie przeglądarki (aktualizowany co sekundę). Jeśli podasz `custom_states_labels` z zakresami godzin, pod cyframi zegara pojawi się powitanie dopasowane do aktualnej godziny — i **aktualizuje się na żywo**, bez przeładowania karty.
+`on.clock` nie jest prawdziwą encją Home Assistant — to zegar wbudowany w kartę, działający na czasie po stronie przeglądarki (aktualizowany co sekundę). Jeśli podasz `custom_states_labels` z zakresami godzin, pod cyframi zegara pojawia się powitanie pasujące do aktualnej godziny — i **aktualizuje się na żywo**, bez przeładowania karty.
 
 ```yaml
 type: custom:piotras-smart-button
 entity: on.clock
-name: Zegar
+name: Clock
 custom_states_labels:
-  "0-5": "Cisza nocna... 🌙"
-  "5-9": "Dzień dobry! ☕"
-  "9-17": "Miłego dnia! 👋"
-  "17-22": "Dobry wieczór! 🌆"
-  "22-0": "Dobrej nocy! ✨"
+  "0-5": "Quiet night... 🌙"
+  "5-9": "Good morning! ☕"
+  "9-17": "Have a great day! 👋"
+  "17-22": "Good evening! 🌆"
+  "22-0": "Good night! ✨"
 ```
 
-Dopasowanie odbywa się po aktualnej godzinie (`0–23`, bez minut), z tymi samymi zasadami co wszędzie (kolejność zapisu, zakresy przez północ jak `"22-0"`, auto-zawijanie tekstu, `<br>`). Jeśli żaden zakres nie pasuje do bieżącej godziny — powitanie po prostu się nie wyświetla. Jeśli nie podasz `custom_states_labels` — zegar działa jak dotychczas, bez zmian.
+Dopasowanie odbywa się do aktualnej godziny (`0–23`, minuty są ignorowane), z tymi samymi zasadami co wszędzie indziej (kolejność wpisów, zakresy przechodzące przez północ jak `"22-0"`, automatyczne zawijanie tekstu, `<br>`). Jeśli żaden zakres nie pasuje do aktualnej godziny — powitanie po prostu się nie pokazuje. Jeśli nie podasz `custom_states_labels` — zegar działa dokładnie tak jak wcześniej, bez zmian.
 
-## Pełny przykład — karta temperatury
+## Pełny przykład — karta z temperaturą
 
 ```yaml
 type: custom:piotras-smart-button
 name: living room
-entity: sensor.sonoff_termometr_salon_temperature
+entity: sensor.living_room_thermometer_temperature
 custom_states_labels:
-  "<17": Włącz Ogrzewanie
-  "17-17.9": Zimno
-  "18-18.9": Chłodno
-  "19-24.9": Komfortowo
-  "25-25.9": Ciepło
-  "26-26.9": Gorąco
-  ">=27": Włącz Klimę
+  "<17": Turn On Heating
+  "17-17.9": Cold
+  "18-18.9": Cool
+  "19-24.9": Comfortable
+  "25-25.9": Warm
+  "26-26.9": Hot
+  ">=27": Turn On AC
 ```
 
 ## Łamanie linii — automatyczne i ręczne
 
-Tekst etykiety **zawija się automatycznie**, jeśli nie mieści się w szerokości karty — nie trzeba już niczego specjalnego robić. Jeśli chcesz **wymusić** złamanie linii w konkretnym miejscu (np. żeby nie urywało w nieładnym momencie), użyj `<br>` w treści etykiety:
+Tekst etykiety **zawija się automatycznie**, jeśli nie mieści się w szerokości karty — bez dodatkowych działań. Jeśli chcesz **wymusić** złamanie linii w konkretnym miejscu (np. żeby uniknąć niezgrabnego zawinięcia), użyj `<br>` w treści etykiety:
 
 ```yaml
 custom_states_labels:
-  "22 - 26": "Ciepło! T-shirt i krótkie spodenki <br> lekka sukienka."
+  "22 - 26": "Warm! T-shirt and shorts <br> light dress."
 ```
 
-`<br>` działa, bo etykieta trafia na kartę jako prawdziwy HTML, a nie zwykły tekst. Znak `\n` (nowa linia w YAML) **nie zadziała** — przeglądarka go zignoruje.
+`<br>` działa, ponieważ etykieta jest wstawiana do karty jako prawdziwy HTML, a nie zwykły tekst. Znak `\n` (nowa linia w YAML) **nie zadziała** — przeglądarka go ignoruje.
 
 ## Pełny HTML w etykietach ✅ (potwierdzone działanie)
 
-Etykieta z `custom_states_labels` nie musi być samym tekstem — może zawierać **dowolny znacznik HTML wraz z inline-stylami** (`<span style="...">`, `<br>`, emoji, zagnieżdżone elementy itd.), bo karta wstawia ją bezpośrednio jako HTML, a nie jako plain text. Dzięki temu można np. zrobić „plakietkę" z kolorowym tłem dla głównej etykiety i osobno wystylizować drugą linię z opisem — dokładnie tak jak na poniższym, realnym przykładzie z karty pogodowej:
+Etykieta w `custom_states_labels` nie musi być zwykłym tekstem — może zawierać **dowolny tag HTML ze stylami inline** (`<span style="...">`, `<br>`, emoji, zagnieżdżone elementy itd.), ponieważ karta wstawia ją bezpośrednio jako HTML, a nie jako zwykły tekst. Dzięki temu możesz np. zbudować kolorową "plakietkę" dla głównej etykiety i osobno stylować drugą linię z opisem — dokładnie jak w tym rzeczywistym przykładzie z karty pogodowej:
 
-> Efekt: czerwona plakietka **"Hot! 🔥"**, pod nią jasnoszary podpis "Light and breezy, sunglasses and baseball cap.", a temperatura (28.5°C) wyświetlana osobno, jak zwykle, na dole karty.
+> Wynik: czerwona plakietka **"Hot! 🔥"**, jasnoszary podpis pod nią z tekstem "Light and breezy, sunglasses and baseball cap.", oraz temperatura (28.5°C) pokazana osobno, jak zwykle, na dole karty.
 
 ```yaml
 custom_states_labels:
   "< -5": >-
     <span style='background: rgba(0,0,0,0.5); padding: 4px 10px;
     border-radius: 6px; display: inline-block; font-size: 19px;
-    color: #00ffff; font-weight: bold;'>Syberia! 🥶</span><br>
-    <span style='font-size: 15px; opacity: 0.85;'>Kurtka zimowa, czapka,
-    rękawice i szalik obligatoryjnie.</span>
+    color: #00ffff; font-weight: bold;'>Siberia! 🥶</span><br>
+    <span style='font-size: 15px; opacity: 0.85;'>Winter jacket, beanie,
+    gloves, and scarf are mandatory.</span>
   "> 26": >-
     <span style='background: rgba(0,0,0,0.5); padding: 4px 10px;
     border-radius: 6px; display: inline-block; font-size: 19px;
@@ -294,32 +294,74 @@ custom_states_labels:
     sunglasses and baseball cap.</span>
 ```
 
-Kilka uwag praktycznych:
+Kilka praktycznych uwag:
 
-- **Cudzysłowy w `style`** — używaj apostrofów (`style='...'`) wewnątrz HTML-a, żeby nie kolidowały z cudzysłowami otaczającymi klucz YAML (np. `"< -5"`). Mieszanie `"` w kluczu i `"` w stylu psuje parsowanie YAML.
-- Wielowierszowy HTML w YAML wygodnie zapisać blokiem składanym ze spłaszczeniem `>-` (folded block scalar) — łamie linie wewnątrz pliku, ale skleja je w jeden ciąg przed wysłaniem do karty. `<br>` w treści wciąż działa normalnie, bo to jawny znacznik HTML, niezależny od łamania linii w samym YAML.
-- Działa to identycznie dla wszystkich typów encji opisanych wyżej (`climate`, `weather`, `light`/`fan`/`cover`, `on.clock`, dopasowanie dokładne/operatory/zakresy) — HTML jest tylko treścią etykiety, nie wpływa na logikę dopasowania.
-- Jak zawsze: znak `\n` nie zadziała jako łamanie linii — tylko `<br>`.
+- **Cudzysłowy wewnątrz `style`** — użyj pojedynczych cudzysłowów (`style='...'`) wewnątrz HTML, żeby nie kolidowały z podwójnymi cudzysłowami otaczającymi klucz YAML (np. `"< -5"`). Mieszanie `"` w kluczu i `"` w stylu psuje parsowanie YAML.
+- Wieloliniowy HTML w YAML wygodnie zapisuje się jako złożony blok skalarny (folded) za pomocą `>-` — łamie linie w pliku, ale przed wysłaniem do karty zwija je w jeden string. `<br>` w treści nadal działa normalnie, bo to jawny tag HTML, niezależny od łamania linii w samym YAML.
+- To działa identycznie dla każdego typu encji opisanego powyżej (`climate`, `weather`, `light`/`fan`/`cover`, `on.clock`, dopasowanie dokładne/operatory/zakresy) — HTML to po prostu zawartość etykiety, nie wpływa na logikę dopasowania.
+- Jak zawsze: `\n` nie zadziała jako złamanie linii — działa tylko `<br>`.
 
-## Zakresy przez północ / „zawijane" (np. godziny 22-0)
+## 🆕 Użycie `custom_data` / szablonów jako wartości etykiet
 
-Jeśli dolna granica zakresu jest **większa** od górnej (np. `"22-0"`), karta automatycznie interpretuje to jako zakres przechodzący przez punkt zawijania (np. przez północ) — dopasowanie działa jako „wartość ≥ dolna **LUB** wartość ≤ górna", a nie standardowo „pomiędzy".
+**Klucz** w `custom_states_labels` (to, co jest dopasowywane — dokładny stan, operator albo zakres) zawsze jest statycznym stringiem, ocenianym tak jak opisano powyżej. Ale **wartość** (tekst/HTML etykiety faktycznie pokazywany) nie musi być statyczna — każda pojedyncza wartość może zamiast tego być:
+
+- **odwołaniem do `custom_data`** (`customData.jakisKlucz`, w tym zagnieżdżonymi ścieżkami jak `customData.Configuration.label`), albo
+- **blokiem szablonu `p{{{ ... }}}q`**, ponownie obliczanym za każdym razem, gdy aktualizuje się stan karty.
+
+Dzięki temu tekst, kolor lub zawartość etykiety mogą reagować na coś innego niż sam dopasowany klucz — np. pokazywać inne powitanie w zależności od dnia tygodnia albo pobierać przetłumaczony tekst z tabeli w `custom_data` — podczas gdy klucz nadal dopasowuje wyłącznie do surowego stanu encji/godziny/procentu, tak jak dotychczas.
+
+```yaml
+custom_data:
+  weekendGreeting: |-
+    p{{{
+      const day = new Date().getDay();   // 0 = niedziela, 6 = sobota
+      return (day === 0 || day === 6) ? "Leniwy weekendowy poranek ☕" : "Dzień dobry! ☕";
+    }}}q
+
+custom_states_labels:
+  "5-9": customData.weekendGreeting
+  "9-17": "Miłego dnia! 👋"
+```
+
+```yaml
+custom_data:
+  hotLabel: |-
+    p{{{
+      return `<span style="color:#ef4444;font-weight:bold;">Gorąco! 🔥</span>`;
+    }}}q
+
+custom_states_labels:
+  "> 26": customData.hotLabel
+  "22-26": "Ciepło! Koszulka i szorty."
+```
+
+Kilka ważnych punktów:
+
+- **Tylko wartość może być szablonem/odwołaniem — nigdy klucz.** Klucz (`"5-9"`, `">26"`, `off` itd.) zawsze jest dopasowywany jako zwykły string do stanu/godziny/procentu encji; nie da się zrobić samego klucza dynamicznym.
+- **`states` nie jest dostępne wewnątrz szablonu użytego jako wartość etykiety.** Dokładnie tak jak w każdym innym polu poza `custom_data` (patrz sekcja 4 poradnika `custom_data`), blok `p{{{ }}}q` umieszczony bezpośrednio jako wartość etykiety ma dostęp tylko do `customData` — nie do `states`. Jeśli etykieta ma odczytać inną encję, zrób ten odczyt najpierw wewnątrz `custom_data`, a potem odwołaj się do wyniku.
+- To dotyczy identycznie `vacuum_states_labels` (starszego odpowiednika `custom_states_labels`).
+- Obowiązują tu też wszystkie te same zasady z poradnika `custom_data` — przede wszystkim, jeśli odwoływany klucz `custom_data` sam jest obliczany na podstawie innego klucza `custom_data`, musi być **zdefiniowany wcześniej w YAML**, inaczej zwróci `undefined` (patrz poradnik `custom_data`, sekcja 8).
+- Zmieszanie statycznego tekstu z szablonem/odwołaniem w **tej samej** wartości etykiety nie działa — tak jak w każdym innym templatowalnym polu, wartość musi być albo zwykłym statycznym stringiem, albo pełnym odwołaniem `customData.klucz`, albo pełnym blokiem `p{{{ }}}q`, a nie ich kombinacją w jednym stringu.
+
+## Zakresy przechodzące przez północ (np. godziny 22-0)
+
+Jeśli dolna granica zakresu jest **większa** niż górna (np. `"22-0"`), karta automatycznie interpretuje to jako zakres przechodzący przez punkt graniczny (np. północ) — dopasowanie działa jako "wartość ≥ dolna **LUB** wartość ≤ górna", a nie jako standardowe "pomiędzy".
 
 ```yaml
 type: custom:piotras-smart-button
-entity: sensor.godzina
+entity: sensor.hour
 custom_states_labels:
-  "0-5": "Cisza nocna... 🌙"
-  "5-9": "Dzień dobry! ☕"
-  "9-17": "Miłego dnia! 👋"
-  "17-22": "Dobry wieczór! 🌆"
-  "22-0": "Dobrej nocy! ✨"
+  "0-5": "Quiet night... 🌙"
+  "5-9": "Good morning! ☕"
+  "9-17": "Have a great day! 👋"
+  "17-22": "Good evening! 🌆"
+  "22-0": "Good night! ✨"
 ```
 
-Przy sensorze typu `{{ now().strftime('%H:%M') }}` dopasowanie odbywa się po **godzinie** (minuty są ignorowane przy parsowaniu liczby) — czyli `23:45` i `23:05` dają ten sam wynik.
+Przy sensorze takim jak `{{ now().strftime('%H:%M') }}`, dopasowanie odbywa się do **godziny** (minuty są ignorowane przy parsowaniu liczby) — więc `23:45` i `23:05` dają ten sam wynik.
 
-## Ważne przy zapisie w YAML
+## Ważne uwagi dotyczące pisania YAML
 
-- Klucze zaczynające się od `>` **muszą** być w cudzysłowie (`">27"`), bo `>` jest zarezerwowanym znakiem YAML (wskaźnik bloku składanego) i bez cudzysłowu konfiguracja się nie wczyta poprawnie.
-- Klucze zaczynające się od `<` **mogą** być bez cudzysłowu (`<17`), ale dla czytelności i konsekwencji lepiej cytować wszystkie klucze z operatorami: `"<17"`, `">27"`, `">=30"`, `"<=5"`.
-- Klucze tekstowe (np. dla `vacuum`, `media_player`: `playing`, `paused`, `off`) nie wymagają cudzysłowu.
+- Klucze zaczynające się od `>` **muszą** być w cudzysłowach (`">27"`), ponieważ `>` to zarezerwowany znak YAML (wskaźnik złożonego bloku skalarnego typu folded), a bez cudzysłowów konfiguracja nie wczyta się poprawnie.
+- Klucze zaczynające się od `<` **mogą** być bez cudzysłowów (`<17`), ale dla czytelności i spójności lepiej ująć w cudzysłów wszystkie klucze operatorowe: `"<17"`, `">27"`, `">=30"`, `"<=5"`.
+- Klucze tekstowe (np. dla `vacuum`, `media_player`: `playing`, `paused`, `off`) nie wymagają cudzysłowów.
