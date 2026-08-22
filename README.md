@@ -14,6 +14,8 @@
 [![MDI Icons](https://img.shields.io/badge/HA%20Icons-Search%20Gallery-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html)
 ## Piotras Smart Button
 
+### 🆕 **New in v2.0.0:** Custom Data & Templates engine, Conditional Visibility (`visible_if`), Media Player Controls, 4-style Clock Display, image-based icons. See the [Changelog](docs/CHANGELOG.md) for full details.
+
 <img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button.jpg" alt="Piotras Smart Button - Preview">
 
 ---
@@ -31,8 +33,8 @@
 *   **🖼️ Dynamic Backgrounds & Smart Filters** — Solid colors, 2/3-color gradients, or full-res images with automated CSS filters (brightness, saturation, grayscale) based on state.
 *   **⏱️ Service Countdown System** — Animated SVG circle or progress bar after a call-service, with an optional card blockade.
 *   **⚡ Power Monitoring & Pulsing Alerts** — Real-time consumption bar with a configurable pulsing warning threshold for power spikes.
-*   **🚧 Gate & Garage Mode (New in v1.2.5)** — Specialized cover layout with dynamic directional arrows tracking opening/closing states.
-*   **🕹️ Interactive Action Buttons (New in v1.2.5)** — Clickable sub-button grids embedded directly into the Control Zone for rooms, scenes, or media.
+*   **🚧 Gate & Garage Mode** — Specialized cover layout with dynamic directional arrows tracking opening/closing states.
+*   **🕹️ Interactive Action Buttons** — Clickable sub-button grids embedded directly into the Control Zone for rooms, scenes, or media.
 *   **👥 Person & Device Tracking** — Displays the precise time since the last state change inside the Control Zone with home/away icon colors.
 *   **🔋 Battery Monitoring** — Dynamic icon auto-adjusted to charge level, color bars, and optional charging state integration.
 *   **🌡️ Thermostat & Climate Control** — Dedicated temperature adjustment buttons in the Control Zone and real-time room temp as a state badge.
@@ -41,6 +43,8 @@
 *   **🌦️ Mini Weather Dashboard** — Compact layout showing temperature, conditions, theme-colored icons, humidity, and wind speed.
 *   **🧹 Smart Vacuum Status** — Dedicated support for vacuums featuring a dynamic spinning icon during sweeping and hardware-brand mapping.
 *   **🚨 Advanced Alarm Status** — Security monitoring for disarmed, arming, armed, and vacation states with dynamic pulsing animations.
+*   **🧩 Custom Data & Templates Engine** — Write your own JavaScript logic (`custom_data`) to read sensors, compute conditions, colors, or text, and reuse the result across almost any field on the card, including Custom State Labels.
+*   **👁️ Conditional Visibility (`visible_if`)** — Hide or show the entire card dynamically based on a boolean, `custom_data` reference, or template.
 
 </details>
 
@@ -75,7 +79,7 @@
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=1.2.5
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=2.0.0
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -223,6 +227,15 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ---
 
+## 🧩 Custom Data & Templates
+
+Write your own JavaScript logic — read sensors, build conditions, colors, or text — and reuse the result across any field on the card, including inside Custom State Labels.
+
+For the full guide (syntax, referencing rules, ready-made modules, and common mistakes), check out the dedicated guide:
+> 🔗 **[Detailed Custom Data Documentation](docs/custom_data_guide.md)**
+
+---
+
 ## 🏷️ Custom State Labels
 
 <img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-custom-labels.jpg" alt="Piotras Smart Button - Custom State Labels Preview">
@@ -236,6 +249,15 @@ For full documentation on matching rules, HTML labels, climate/weather value2, a
 
 For full documentation on forcing the active visual state and locking card interaction, check out the dedicated guide:
 > 🔗 **[Detailed Custom States On & Blockade Documentation](docs/custom_states_on_and_custom_blockade.md)**
+
+---
+
+## 👁️ Conditional Visibility
+
+Show or hide the entire card dynamically — based on a boolean, a `custom_data` reference, or a live template — without deleting it from the dashboard.
+
+For the full guide (accepted value types, the `states` access rule, and common mistakes), check out the dedicated guide:
+> 🔗 **[Detailed Conditional Visibility Documentation](docs/visible_if.md)**
 
 ---
 
