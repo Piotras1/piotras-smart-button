@@ -1,5 +1,7 @@
 # custom_data — how to write code in the card (Piotras Smart Button)
 
+> 🔙 Back to the [Main README](../README.md)
+
 This guide walks through `custom_data` — the part of the card's configuration where you write your own logic (reading sensors, conditions, colors, text) and use the result in any other field of the card.
 
 There are two ways to use this guide, depending on what you're doing:
@@ -458,3 +460,5 @@ text_color: customData.color
 ---
 
 If you get stuck — check your browser's console (F12 → Console). The card's engine always logs a warning describing exactly what went wrong, instead of silently breaking the whole card.
+
+> 🔙 Back to the [Main README](../README.md)
