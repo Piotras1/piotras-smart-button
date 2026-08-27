@@ -14,7 +14,7 @@
 [![MDI Icons](https://img.shields.io/badge/HA%20Icons-Search%20Gallery-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html)
 ## Piotras Smart Button
 
-### 🆕 **New in v2.0.0:** Custom Data & Templates engine, Conditional Visibility (`visible_if`), Media Player Controls, 4-style Clock Display, image-based icons. See the [Changelog](docs/CHANGELOG.md) for full details.
+### A powerful, all-in-one Lovelace card for Home Assistant — combining control, monitoring, visualization and custom logic in one highly configurable card.
 
 <img width="1200" height="600" alt="piotras-smart-button" src="https://github.com/user-attachments/assets/2e6c1c86-8ee6-4e69-b357-ce285ea1fbc5" />
 
