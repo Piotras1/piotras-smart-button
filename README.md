@@ -16,7 +16,7 @@
 
 ### 🆕 **New in v2.0.0:** Custom Data & Templates engine, Conditional Visibility (`visible_if`), Media Player Controls, 4-style Clock Display, image-based icons. See the [Changelog](docs/CHANGELOG.md) for full details.
 
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button.jpg" alt="Piotras Smart Button - Preview">
+<img width="1200" height="600" alt="piotras-smart-button" src="https://github.com/user-attachments/assets/2e6c1c86-8ee6-4e69-b357-ce285ea1fbc5" />
 
 ---
 
