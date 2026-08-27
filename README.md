@@ -18,6 +18,20 @@
 
 <img width="1200" height="600" alt="piotras-smart-button" src="https://github.com/user-attachments/assets/2e6c1c86-8ee6-4e69-b357-ce285ea1fbc5" />
 
+### 📚 Why another button card?
+
+**Piotras Smart Button is not designed for just one type of entity.
+It combines controls, status displays, visualizations and custom logic into a single highly configurable Lovelace card.
+Use it as a light controller, thermostat, media controller, weather display, clock, power monitor, gate controller, alarm indicator — or build your own use case with Custom Data.**
+
+### 🖥 Visual Editor
+
+**Configure the card directly from the Home Assistant UI.
+Adjust layout, size, icon, text, background, sliders, actions and services without manually editing YAML.**
+
+### 🧩 Build Your Own Card Logic
+**Add your own JavaScript logic to read Home Assistant states, calculate values, create conditions, generate text and colors, and reuse the results throughout the card.**
+
 ---
 
 ## ✨ Features
