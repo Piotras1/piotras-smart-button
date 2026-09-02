@@ -244,6 +244,8 @@ For full features, layout settings, and ready-to-use YAML examples, check out th
 
 ## 🧩 Custom Data & Templates
 
+<img width="514" height="235" alt="piotras-smart-button-mediaplayer" src="https://github.com/user-attachments/assets/b8090a82-e9f4-4ea9-8076-2132f778120f" />
+
 Write your own JavaScript logic — read sensors, build conditions, colors, or text — and reuse the result across any field on the card, including inside Custom State Labels.
 
 For the full guide (syntax, referencing rules, ready-made modules, and common mistakes), check out the dedicated guide:
