@@ -26,7 +26,7 @@ It combines controls, status displays, visualizations and custom logic into a si
 2. Add the card to your dashboard and pick an entity — light, cover, fan, vacuum, climate…
 3. Adjust the look and controls in the visual editor. Sliders and icons adapt to the entity.
 
-Not sure where to start? Find your device in the [supported entities table](https://github.com/Piotras1/piotras-smart-button#-supported-entities--use-cases). Levels 2 and 3 are optional.
+Not sure where to start? Find your device in the table below. Levels 2 and 3 are optional.
 
 ---
 
@@ -133,6 +133,7 @@ Each guide has screenshots and ready-to-use YAML.
 |---|---|
 | 💬 [Show & Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) | Dashboards and setups shared by the community — good for ideas. |
 | 🧩 [Custom Data Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) | Ready-made `custom_data` modules to copy and paste. |
+| 📈 [PSB History Engine](https://github.com/Piotras1/psb-history-engine) | Companion HACS integration that keeps a rolling history of any numeric entity, so you can build fast charts with `custom_data`. |
 | 🎨 [Assets Gallery](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html) | Backgrounds and images to use with the card. |
 | 🔍 [HA Icons](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html) | Searchable gallery of icons to use in the icon fields. |
 | 🧰 [My Kiosk](https://github.com/Piotras1/piotras-cards-pack) | View all my cards in one place. |
