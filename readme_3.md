@@ -20,6 +20,16 @@ It combines controls, status displays, visualizations and custom logic into a si
 
 ---
 
+## 🚀 Quick start
+
+1. Install through HACS and hard reload your browser.
+2. Add the card to your dashboard and pick an entity — light, cover, fan, vacuum, climate…
+3. Adjust the look and controls in the visual editor. Sliders and icons adapt to the entity.
+
+Not sure where to start? Find your device in the table below. Levels 2 and 3 are optional.
+
+---
+
 ## ✨ Features
 
 One card, three levels — start simple and go as deep as you like. Each level builds on the previous one, and cards from earlier versions keep working.
