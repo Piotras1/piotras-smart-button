@@ -1,0 +1,1 @@
+# Light & Auto-Dimmer Slider
