@@ -103,7 +103,8 @@ Each guide has screenshots and ready-to-use YAML.
 | 👤 People & devices | `person`, `device_tracker` | [person](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/person_3.md) |
 | 🔋 Batteries (level bar, auto icon, charging state) | `sensor` + any entity you pick for charging state | [battery](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/battery_3.md) |
 | 🎛️ Sockets & power monitoring | `switch` + power sensor | [socket](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/socket_3.md) |
-| 🌡️ Temperature & humidity comfort | `sensor` | [temperature](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/temperature_3.md) |
+| 🌡️ Temperature | `sensor` | [temperature](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/temperature_3.md) |
+| 💧 Humidity | `sensor` | [humidity](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/humidity_3.md) |
 | 📜 Scripts | `script` | [script](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/script_3.md) |
 | 🕒 Clock | `on.clock` | [clock](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/clock_3.md) |
 | 📅 Calendar | `on.calendar` | [calendar](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/calendar_3.md) |
