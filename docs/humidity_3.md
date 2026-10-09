@@ -1,19 +1,18 @@
-# 🔹 Temperature Comfort
+# 🔹 Humidity Comfort
 
-A card for temperature sensors. It works with any entity that has `device_class: temperature`. You set a comfort range, and the card shows whether the current value is inside it.
+A card for humidity sensors. It works with any entity that has `device_class: humidity`. You set a comfort range, and the card shows whether the current value is inside it.
 
-![Temperature Comfort 1](../img/piotras-smart-button-temperature-1.jpg)
-![Temperature Comfort 2](../img/piotras-smart-button-temperature-2.jpg)
+![Humidity Comfort 1](../img/piotras-smart-button-humidity-1.jpg)
+![Humidity Comfort 2](../img/piotras-smart-button-humidity-2.jpg)
 
 ## What you get
 
-- The card turns ON when the temperature is inside your comfort range (`comfort_min` to `comfort_max`, both values included). It is OFF when the value is outside the range.
+- The card turns ON when the humidity is inside your comfort range (`comfort_min` to `comfort_max`, both values included). It is OFF when the value is outside the range.
 - Without a comfort range, the card is always OFF. Set both values.
-- The comfort range is in °C. If your sensor reports °F, the card converts the value to °C before it compares it. You do not need to convert anything.
-- The icon is `mdi:thermometer` when the value is in range and `mdi:thermometer-alert` when it is not. You can replace it with your own `icon` and `icon_on`.
+- The icon is `mdi:water-percent` when the value is in range and `mdi:water-alert` when it is not. You can replace it with your own `icon` and `icon_on`.
 - The icon uses `icon_color` when the card is off and `icon_color_on` when it is on.
-- A bar at the bottom of the card shows the current value with one decimal place and the unit of the sensor, for example `21.5°C`. It appears when you switch on the slider bar.
-- The thermometer icon in the bar changes color with the range: blue when the value is below the range, green when it is inside, red when it is above. Without a comfort range, the bar icon uses the label color.
+- A bar at the bottom of the card shows the current value in percent, for example `45%`. It appears when you switch on the slider bar.
+- The icon in the bar changes color with the range: blue when the value is below the range, green when it is inside, red when it is above. Without a comfort range, the bar icon uses the label color.
 - The state badge shows `ON` when the value is in range and `OFF` when it is not.
 - Tap toggles the entity. Double-tap and hold open more-info. For a sensor, you will usually want to change tap to **More info** in the **⚡ Actions** tab.
 - These options work as usual: `name`, `name_on`, `name_off`, `icon`, `icon_on`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
@@ -22,24 +21,24 @@ A card for temperature sensors. It works with any entity that has `device_class:
 
 Open the **🎚 Slider & Power** tab and switch on **Show slider or power bar** (`show_more: true`). In the **Comfort range** section, fill in:
 
-- **Comfort min** (`comfort_min`) — the lowest comfortable temperature in °C.
-- **Comfort max** (`comfort_max`) — the highest comfortable temperature in °C.
+- **Comfort min** (`comfort_min`) — the lowest comfortable value in percent.
+- **Comfort max** (`comfort_max`) — the highest comfortable value in percent.
 
 The editor accepts values from -50 to 100 in steps of 0.5.
 
 In the same tab you can set the **Bar height** (`slider_height`, 16–60 px) and the **Label color** (`slider_label_color`).
 
-To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). For example, `Comfort` and `Too hot or cold`. Fill in both. If only one is set, the card ignores them.
+To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). For example, `Comfort` and `Check air`. Fill in both. If only one is set, the card ignores them.
 
 ## Minimal example
 
 ```yaml
 type: custom:piotras-smart-button
-entity: sensor.temperature
-name: Temperature
+entity: sensor.humidity
+name: Humidity
 show_more: true
-comfort_min: 20
-comfort_max: 24
+comfort_min: 40
+comfort_max: 60
 ```
 
 <details>
@@ -47,17 +46,17 @@ comfort_max: 24
 
 ```yaml
 type: custom:piotras-smart-button
-entity: sensor.temperature
-name: Temperature
+entity: sensor.humidity
+name: Humidity
 icon_color: "#f0c040"
 icon_color_on: "#69f0ae"
 icon_style: circle_color
 icon_size: 28
 name_on: Comfort
-name_off: Too hot or cold
+name_off: Check air
 show_more: true
-comfort_min: 20
-comfort_max: 24
+comfort_min: 40
+comfort_max: 60
 slider_height: 30
 slider_label_color: "rgba(255,255,255,0.85)"
 card_width: 140
