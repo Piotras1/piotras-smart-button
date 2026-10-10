@@ -9,7 +9,7 @@
 
 ### A powerful, all-in-one Lovelace card for Home Assistant — combining control, monitoring, visualization and custom logic in one highly configurable card.
 
-<img width="1200" height="600" alt="piotras-smart-button" src="https://github.com/user-attachments/assets/2e6c1c86-8ee6-4e69-b357-ce285ea1fbc5" />
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-v3-0.jpg" alt="Piotras Smart Button - Demo">
 
 ### 📚 Why another button card?
 
