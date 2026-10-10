@@ -13,7 +13,7 @@ A card for `climate` entities. It shows the room temperature and lets you change
 - A bar with − and + buttons appears at the bottom of the card when you switch on the slider bar. It shows the target temperature. Each tap changes it by 0.5°.
 - The bar respects the minimum and maximum temperature of the thermostat. If the thermostat does not report them, the card uses 5° and 35°.
 - When the thermostat is off, the bar shows `OFF` and has no buttons.
-- Tap toggles the entity. Double-tap and hold open more-info. You can change all three in the **⚡ Actions** tab.
+- Tap toggles the entity. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
 - These options work as usual: `name`, `icon`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
 
 ## Setup

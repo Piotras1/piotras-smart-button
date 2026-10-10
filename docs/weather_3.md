@@ -10,10 +10,10 @@ A card for `weather` entities. It shows the current temperature, the weather con
 - The card switches to weather mode on its own when the entity starts with `weather.`.
 - The temperature replaces the name. It shows one decimal place and the unit from the weather entity, for example `21.5°C`. You set its size with **Name font size** in the **📝 Text** tab.
 - The icon follows the weather condition, for example `mdi:weather-sunny`, `mdi:weather-rainy` or `mdi:weather-snowy`. For an unknown condition, the card shows `mdi:weather-cloudy`. You can replace it with your own `icon`.
-- The icon color can follow the condition too: gold for sunny, blue for rainy, light blue for snowy, and so on. To turn this on, set **Icon color (OFF)** (`icon_color`) to `auto` with the **A** button in the **💡 Icon** tab. A color you pick yourself is used for every condition.
+- The icon color can follow the condition too: gold for sunny, blue for rainy, light blue for snowy, and so on. To turn this on, type `auto` in the **Icon color (OFF)** field (`icon_color`) in the **💡 Icon** tab. A color you pick yourself is used for every condition.
 - The state badge shows the weather condition as a word, in the language of Home Assistant.
 - A bar at the bottom of the card shows humidity and wind speed, for example `60%` and `12 km/h`. If a value is missing, the bar shows `--`. The bar appears when you switch on the slider bar.
-- Tap, double-tap and hold open more-info for the weather entity. You can change them in the **⚡ Actions** tab. The **Toggle** action also opens more-info.
+- Tap opens more-info for the weather entity. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab. The **Toggle** action also opens more-info.
 - These options work as usual: `icon_style`, `tap_action`, `double_tap_action`, `hold_action`, `show_state`.
 
 The `name` option does not show on this card, because the temperature takes its place.

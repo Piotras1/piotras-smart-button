@@ -14,7 +14,7 @@ A card for humidity sensors. It works with any entity that has `device_class: hu
 - A bar at the bottom of the card shows the current value in percent, for example `45%`. It appears when you switch on the slider bar.
 - The icon in the bar changes color with the range: blue when the value is below the range, green when it is inside, red when it is above. Without a comfort range, the bar icon uses the label color.
 - The state badge shows `ON` when the value is in range and `OFF` when it is not.
-- Tap toggles the entity. Double-tap and hold open more-info. For a sensor, you will usually want to change tap to **More info** in the **⚡ Actions** tab.
+- Tap toggles the entity. Double-tap and hold do nothing by default. For a sensor, you will usually want to change tap to **More info** in the **⚡ Actions** tab.
 - These options work as usual: `name`, `name_on`, `name_off`, `icon`, `icon_on`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
 
 ## Setup

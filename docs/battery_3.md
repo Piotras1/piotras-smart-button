@@ -12,7 +12,7 @@ A card for battery sensors. It works with any entity that has `device_class: bat
 - The icon uses `icon_color` when the device is not charging and `icon_color_on` when it is charging.
 - A bar at the bottom of the card shows the charge in percent. The bar color goes from red (empty) to green (full). A `⚡` sign appears next to the percent when the device is charging. The bar appears when you switch on the slider bar.
 - The state badge shows `ON` when the device is charging and `OFF` in every other case.
-- Tap toggles the entity. Double-tap and hold open more-info. For a sensor, you will usually want to change tap to **More info** in the **⚡ Actions** tab.
+- Tap toggles the entity. Double-tap and hold do nothing by default. For a sensor, you will usually want to change tap to **More info** in the **⚡ Actions** tab.
 - These options work as usual: `name`, `name_on`, `name_off`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
 
 The icon is chosen by the card. The **💡 Icon** tab does not offer `icon` and `icon_on` for battery entities.

@@ -12,7 +12,7 @@ A card for `person` and `device_tracker` entities. It shows whether someone is h
 - The state badge shows `ON` or `OFF`. To show `Home` and `Away` instead, use `name_on` and `name_off` (see Setup).
 - A bar at the bottom of the card shows when the state last changed. It appears when you switch on the slider bar.
 - The bar has its own icon: a house when the person is home, a walking figure when away. It uses the same colors as the main icon.
-- Tap toggles the entity. Double-tap and hold open more-info. For a tracker, you will usually want to change tap to **More info** in the **⚡ Actions** tab.
+- Tap toggles the entity. Double-tap and hold do nothing by default. For a tracker, you will usually want to change tap to **More info** in the **⚡ Actions** tab.
 - These options work as usual: `name`, `icon`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
 
 ## Setup

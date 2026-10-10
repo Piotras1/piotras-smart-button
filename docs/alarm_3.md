@@ -12,7 +12,7 @@ A card for `alarm_control_panel` entities. It shows the alarm state as a short w
 - The state badge shows a short word for each state, in the language of Home Assistant.
 - In every ON state, the icon pulses with a red glow.
 - The icon uses `icon_color` when the alarm is disarmed and `icon_color_on` in the ON states. You can set a different icon for the on state with `icon_on`.
-- Tap toggles the entity. Double-tap and hold open more-info. For an alarm panel, you will usually want to set tap to **More info** in the **⚡ Actions** tab.
+- Tap toggles the entity. Double-tap and hold do nothing by default. For an alarm panel, you will usually want to set tap to **More info** in the **⚡ Actions** tab.
 - These options work as usual: `name`, `icon`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
 
 If you do not set `icon`, the card shows the default `mdi:lightning-bolt`.

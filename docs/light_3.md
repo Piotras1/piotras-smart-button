@@ -7,7 +7,7 @@ A card for `light` entities. It shows the light state and adds sliders for brigh
 
 ## What you get
 
-- Tap toggles the light. Double-tap and hold open more-info. You can change all three in the **⚡ Actions** tab.
+- Tap toggles the light. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
 - The state badge shows `OFF` when the light is off, `DIM` when it is on and supports brightness, and `ON` when it is on without brightness.
 - The icon uses `icon_color` when the light is off and `icon_color_on` when it is on. You can set a different icon for the on state with `icon_on`.
 - A brightness slider (1–100%) appears automatically if the light reports brightness.

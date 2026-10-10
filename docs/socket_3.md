@@ -7,7 +7,7 @@ A card for smart sockets. It works with `switch` entities and shows a live power
 
 ## What you get
 
-- Tap toggles the socket. Double-tap and hold open more-info. You can change all three in the **⚡ Actions** tab.
+- Tap toggles the socket. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
 - The state badge shows `ON` or `OFF`.
 - The icon uses `icon_color` when the socket is off and `icon_color_on` when it is on. You can set a different icon for the on state with `icon_on`.
 - A power bar appears at the bottom of the card when you add a power sensor. The label shows the current value in watts, for example `120W`.
