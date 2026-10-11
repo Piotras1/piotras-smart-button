@@ -13,9 +13,7 @@ A card for `media_player` entities. It shows whether the player is playing and a
 - When the player is off or unavailable, the player bar shows only the power button. It turns the player on. The volume slider is hidden.
 - Three layouts for the player bar. You can also change the height of the bar.
 - Tap toggles the player. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
-- These options work as usual: `name`, `name_on`, `name_off`, `icon`, `icon_on`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
-
-If you do not set `icon`, the card shows the default `mdi:lightning-bolt`. Set `icon` to something that fits, for example `mdi:speaker`.
+- Everything else works as on any other card: name, icon, colors, size and actions.
 
 ## Setup
 
