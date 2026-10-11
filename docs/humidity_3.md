@@ -1,9 +1,9 @@
-# 🔹 Humidity Comfort
+# 💧 Humidity Comfort
 
 A card for humidity sensors. It works with any entity that has `device_class: humidity`. You set a comfort range, and the card shows whether the current value is inside it.
 
-![Humidity Comfort 1](../img/piotras-smart-button-humidity-1.jpg)
-![Humidity Comfort 2](../img/piotras-smart-button-humidity-2.jpg)
+![Humidity Comfort](../img/piotras-smart-button-humidity-v3.jpg)
+
 
 ## What you get
 
@@ -30,46 +30,33 @@ In the same tab you can set the **Bar height** (`slider_height`, 16–60 px) and
 
 To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). For example, `Comfort` and `Check air`. Fill in both. If only one is set, the card ignores them.
 
-## Minimal example
+## 📋 Full example from screenshot
 
 ```yaml
 type: custom:piotras-smart-button
-entity: sensor.humidity
+entity: sensor.sonoff_termometr_salon_humidity
 name: Humidity
-show_more: true
-comfort_min: 40
-comfort_max: 60
-```
-
-<details>
-<summary>Full example</summary>
-
-```yaml
-type: custom:piotras-smart-button
-entity: sensor.humidity
-name: Humidity
-icon_color: "#f0c040"
-icon_color_on: "#69f0ae"
-icon_style: circle_color
-icon_size: 28
+card_width: 180
+card_height: 90
+icon_color: '#f0c040'
+icon_color_on: '#69f0ae'
+icon_size: 30
+icon_wrap_size: 40
+name_size: 15
+state_size: 14
+icon_mode: 1
+name_mode: 3
+value_mode: 3
 name_on: Comfort
 name_off: Check air
 show_more: true
 comfort_min: 40
 comfort_max: 60
-slider_height: 30
-slider_label_color: "rgba(255,255,255,0.85)"
-card_width: 140
-card_height: 120
+slider_height: 34
+background_color1: '#ffffff22'
 tap_action:
   action: more-info
-double_tap_action:
-  action: none
-hold_action:
-  action: more-info
 ```
-
-</details>
 
 ## Go further
 
@@ -84,6 +71,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
 
-> 🔙 Back to the [Main README](../README_3.md)
+---
+
+> 🔙 Back to the [Main README](../README.md)
