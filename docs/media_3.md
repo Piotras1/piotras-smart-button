@@ -94,7 +94,7 @@ Everything above works from the visual editor. For special options, see the guid
 - 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
-## 🛠️ Ready-to-Use Modules
+## 🛠️ Ready-to-Use
 
 > 🧩 **[Dynamic Background & Artwork (`mediaBgLogic`)](https://github.com/Piotras1/piotras-smart-button/discussions/13)**
 >
