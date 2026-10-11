@@ -2,8 +2,7 @@
 
 A card for `alarm_control_panel` entities. It shows the alarm state as a short word and marks an active alarm with a glowing icon.
 
-![Advanced Alarm Status 1](../img/piotras-smart-button-alarm-1.jpg)
-![Advanced Alarm Status 2](../img/piotras-smart-button-alarm-2.jpg)
+![Advanced Alarm Status](../img/piotras-smart-button-alarm-v3.jpg)
 
 ## What you get
 
