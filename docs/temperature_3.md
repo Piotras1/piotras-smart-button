@@ -34,7 +34,7 @@ To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`nam
 
 ```yaml
 type: custom:piotras-smart-button
-entity: sensor.sonoff_termometr_salon_temperature
+entity: sensor.living_room_temperature
 name: Temperature
 card_width: 180
 card_height: 90
