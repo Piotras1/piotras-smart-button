@@ -87,4 +87,4 @@ Some options exist only in YAML. Switch to the code editor to add them:
 
 The visual editor does not remove them. When you change something in the visual editor, the options you wrote in YAML stay in the card.
 
-> 🔙 Back to the [Main README](../README_3.md)
+> 🔙 Back to the [Main README](../README.md)
