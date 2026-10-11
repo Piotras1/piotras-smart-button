@@ -11,7 +11,7 @@
  *   - ES module and classic script loading
  */
 
-const VERSION = '2.0.0';
+const VERSION = '3.0.0';
 const COMPONENT = 'piotras-smart-button';
 
 // ── Base path detection ───────────────────────────────────────────────────────
