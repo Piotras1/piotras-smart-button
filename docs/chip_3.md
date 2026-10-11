@@ -42,26 +42,7 @@ Elements in the same place stack: icon, then name, then state. The default for a
 
 **State.** Open the **⚙️ General** tab. In the **Visibility** section, switch off **Show entity state** (`show_state: false`).
 
-## Minimal example
-
-```yaml
-type: custom:piotras-smart-button
-entity: light.living_room
-name: Living Room
-card_width: 140
-card_height: 40
-icon: mdi:lightbulb
-icon_wrap_size: 30
-icon_mode: 4
-name_mode: 6
-show_state: false
-```
-
-The minimal example uses the default icon. Add `icon: mdi:lightbulb` to set your own.
-
-<details>
-<summary>📋 <code>Full example from screenshot</code></summary>
-<br>
+## 📋 Full example from screenshot
 
 ```yaml
 type: custom:piotras-smart-button
@@ -86,7 +67,6 @@ hold_action:
 
 `icon_color_on: auto` takes the icon color from the light. In this example, hold opens more-info.
 
-</details>
 
 ## Go further
 
