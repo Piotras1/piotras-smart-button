@@ -96,6 +96,16 @@ Everything above works from the visual editor. For special options, see the guid
 - 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
+## 🛠️ Ready-to-Use Modules
+
+> 🧩 **[Dynamic Background & Artwork (`mediaBgLogic`)](https://github.com/Piotras1/piotras-smart-button/discussions/13)**
+>
+> <a href="https://github.com/Piotras1/piotras-smart-button/discussions/13"><img src="https://github.com/user-attachments/assets/cff136f0-d864-40a2-b051-a9c00636b690" width="90" alt="Dynamic Background Preview"></a>
+
+> 🧩 **[Dynamic Track Info & Text Display (`mediaInfoLogic`)](https://github.com/Piotras1/piotras-smart-button/discussions/15)**
+>
+> <a href="https://github.com/Piotras1/piotras-smart-button/discussions/15"><img src="https://github.com/user-attachments/assets/f4010e30-3a1e-49cc-b65d-6830e6e0fa5e" width="90" alt="Dynamic Track Info Preview"></a>
+
 ## More ideas
 
 * 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
