@@ -1,67 +1,49 @@
 ![HACS](https://img.shields.io/badge/HACS-Default-orange?style=flat-square)
-![HACS Downloads](https://img.shields.io/github/downloads/Piotras1/piotras-smart-button/piotras-smart-button-loader.js?logo=homeassistant&color=41BDF5&displayAssetName=false)
-![GitHub Stars](https://img.shields.io/github/stars/Piotras1/piotras-smart-button?style=flat-square&logo=github&label=stars&color=brightgreen)
-![GitHub Issues](https://img.shields.io/github/issues/Piotras1/piotras-smart-button?style=flat-square&logo=github&label=issues)
+[![HACS Downloads](https://img.shields.io/github/downloads/Piotras1/piotras-smart-button/piotras-smart-button-loader.js?logo=homeassistant&color=41BDF5&displayAssetName=false)](https://github.com/Piotras1/piotras-smart-button)
+[![GitHub Stars](https://img.shields.io/github/stars/Piotras1/piotras-smart-button?style=flat-square&logo=github&label=stars&color=brightgreen)](https://github.com/Piotras1/piotras-smart-button/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/Piotras1/piotras-smart-button?style=flat-square&logo=github&label=issues)](https://github.com/Piotras1/piotras-smart-button/issues)
 [![GitHub Release](https://img.shields.io/github/v/release/Piotras1/piotras-smart-button?style=flat-square&logo=github&label=released)](https://github.com/Piotras1/piotras-smart-button/releases)
-![GitHub Release Date](https://img.shields.io/github/release-date/Piotras1/piotras-smart-button?style=flat-square&logo=github&label=released)
+[![GitHub Discussions](https://img.shields.io/github/discussions/Piotras1/piotras-smart-button?style=flat-square&logo=github&label=discussions&color=blueviolet)](https://github.com/Piotras1/piotras-smart-button/discussions)
 
-[![Guides](https://img.shields.io/badge/Guides-Show%20%26%20Tell-olive?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
-[![Guides](https://img.shields.io/badge/Guides-Custom%20Data%20Modules-teal?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules)
-[![GitHub Discussions](https://img.shields.io/badge/Discussions-Join%20the%20community-blueviolet?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-smart-button/discussions)
-![GitHub Discussions](https://img.shields.io/github/discussions/Piotras1/piotras-smart-button?style=flat-square&logo=github&label=discussions&color=blueviolet)
-
-[![Kiosk](https://img.shields.io/badge/My%20Kiosk-View%20All%20Cards-orange?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-cards-pack)
-[![Assets Gallery](https://img.shields.io/badge/Assets%20Gallery-Smart%20Button-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html)
-[![MDI Icons](https://img.shields.io/badge/HA%20Icons-Search%20Gallery-00b4d8?style=flat-square&logo=materialdesign)](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html)
 ## Piotras Smart Button
 
 ### A powerful, all-in-one Lovelace card for Home Assistant — combining control, monitoring, visualization and custom logic in one highly configurable card.
 
-<img width="1200" height="600" alt="piotras-smart-button" src="https://github.com/user-attachments/assets/2e6c1c86-8ee6-4e69-b357-ce285ea1fbc5" />
+![Piotras Smart Button - Demo](https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/Neonowy%20baner%20Piotras%20Smart%20Button.jpg)
 
 ### 📚 Why another button card?
 
 **Piotras Smart Button is not designed for just one type of entity.
-It combines controls, status displays, visualizations and custom logic into a single highly configurable Lovelace card.
-Use it as a light controller, thermostat, media controller, weather display, clock, power monitor, gate controller, alarm indicator — or build your own use case with Custom Data.**
+It combines controls, status displays, visualizations and custom logic into a single card. Set it up in the visual editor — no YAML needed — or build your own panels with Custom Data.**
 
-### 🖥 Visual Editor
+**🆕 v3.0 adds `custom_tap`: make any element you generate clickable, keep your own state on the card and build complete panels — keypads, charts, control boards — from a single card.**
 
-**Configure the card directly from the Home Assistant UI.
-Adjust layout, size, icon, text, background, sliders, actions and services without manually editing YAML.**
+---
 
-### 🧩 Build Your Own Card Logic
-**Add your own JavaScript logic to read Home Assistant states, calculate values, create conditions, generate text and colors, and reuse the results throughout the card.**
+## 🚀 Quick start
+
+1. Install through HACS and hard reload your browser.
+2. Add the card to your dashboard and pick an entity — light, cover, fan, vacuum, climate…
+3. Adjust the look and controls in the visual editor. Sliders and icons adapt to the entity.
+
+Not sure where to start? Find your device in the table below. Levels 2 and 3 are optional.
 
 ---
 
 ## ✨ Features
 
-<details>
-<summary><b>🔍 Click here to view the full text-based features list (SEO & Indexing)</b></summary>
+One card, three levels — start simple and go as deep as you like. Each level builds on the previous one, and cards from earlier versions keep working.
 
-### 🚀 Complete Features Specifications
+### 🖥 Level 1 — Visual editor, no YAML
+Pick an entity and set everything up from the Home Assistant UI: layout, size, icon, text, background, sliders, actions and services. Sliders for brightness, color temperature, volume, position and fan speed are detected automatically. The table below lists the ready-made cards you get this way — lights, media players, thermostats, gates and blinds, vacuums, alarms, weather, clock, calendar, batteries, sockets, chip buttons and more.
 
-*   **🎨 Visual Editor (No YAML Needed)** — Full GUI configuration with native tabs: General, Size, Background, Icon, Text, Layout, Slider & Power, Filters, Actions, and Service.
-*   **📐 9-Grid Layout System** — Position your Icon, Name, and State badge completely independently across a 3×3 matrix.
-*   **🎛️ Adaptive Auto-Sliders** — Smart auto-detection for Brightness, Color Temperature, Volume, Cover Position, and Fan Speed.
-*   **🖼️ Dynamic Backgrounds & Smart Filters** — Solid colors, 2/3-color gradients, or full-res images with automated CSS filters (brightness, saturation, grayscale) based on state.
-*   **⏱️ Service Countdown System** — Animated SVG circle or progress bar after a call-service, with an optional card blockade.
-*   **⚡ Power Monitoring & Pulsing Alerts** — Real-time consumption bar with a configurable pulsing warning threshold for power spikes.
-*   **🚧 Gate & Garage Mode** — Specialized cover layout with dynamic directional arrows tracking opening/closing states.
-*   **🕹️ Interactive Action Buttons** — Clickable sub-button grids embedded directly into the Control Zone for rooms, scenes, or media.
-*   **👥 Person & Device Tracking** — Displays the precise time since the last state change inside the Control Zone with home/away icon colors.
-*   **🔋 Battery Monitoring** — Dynamic icon auto-adjusted to charge level, color bars, and optional charging state integration.
-*   **🌡️ Thermostat & Climate Control** — Dedicated temperature adjustment buttons in the Control Zone and real-time room temp as a state badge.
-*   **🟢 Comfort Zone Engine** — Card shifts state and changes icon colors based on custom comfort ranges: blue (too cold/dry), green (comfortable), red (too hot/humid).
-*   **🕒 Integrated Clock & Calendar (`on.clock`)** — Standalone digital timekeeper with a clean, multi-language monthly calendar grid.
-*   **🌦️ Mini Weather Dashboard** — Compact layout showing temperature, conditions, theme-colored icons, humidity, and wind speed.
-*   **🧹 Smart Vacuum Status** — Dedicated support for vacuums featuring a dynamic spinning icon during sweeping and hardware-brand mapping.
-*   **🚨 Advanced Alarm Status** — Security monitoring for disarmed, arming, armed, and vacation states with dynamic pulsing animations.
-*   **🧩 Custom Data & Templates Engine** — Write your own JavaScript logic (`custom_data`) to read sensors, compute conditions, colors, or text, and reuse the result across almost any field on the card, including Custom State Labels.
-*   **👁️ Conditional Visibility (`visible_if`)** — Hide or show the entire card dynamically based on a boolean, `custom_data` reference, or template.
+### 🏷️ Level 2 — Small customizations, a few lines of YAML
+No programming needed. Write your own text for each state (**Custom State Labels**, including HTML and time-of-day greetings), decide which states count as "on" and lock the card while something is running (**Custom States On & Blockade**), or hide the whole card when it doesn't matter (**Conditional Visibility**).
 
-</details>
+### 🧩 Level 3 — Pro: `custom_data` and `custom_tap` (v3.0)
+Write your own JavaScript to read any entities and compute values, text and colors (**Custom Data**), then make anything you generate clickable and keep your own state on the card (**Custom Tap**). No main entity is needed, so the card becomes a blank canvas for keypads, charts and multi-device control panels — all inside a single card.
+
+*Works with lights, media players, climate, covers, fans, vacuums, alarms, weather, sensors, scripts and more.*
 
 ---
 
@@ -94,7 +76,7 @@ Adjust layout, size, icon, text, background, sliders, actions and services witho
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=2.0.0
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=3.0.0
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -103,178 +85,59 @@ Adjust layout, size, icon, text, background, sliders, actions and services witho
 
 ---
 
-## 👤 Person & Device Tracker
+## 🃏 Supported entities & use cases
 
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-person-2.jpg" alt="Piotras Smart Button - Person & Device Tracker Preview">
+Each guide has screenshots and ready-to-use YAML.
 
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Person & Device Tracker Documentation](docs/PERSON.md)**
-
----
-
-## 🧭 Navigation Mode (Neumorphic Style)
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-navigation-2.jpg" alt="Piotras Smart Button - Neumorphic Navigation Menu Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Navigation Mode Documentation](docs/NAVIGATION.md)**
-
----
-
-## 🎛️ Socket & Power Monitoring
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-socket-2.jpg" alt="Piotras Smart Button - Socket & Power Monitoring Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Socket & Power Monitoring Documentation](docs/SOCKET.md)**
-
----
-
-## 💡 Light & Auto-Dimmer Slider
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-lighting-4.jpg" alt="Piotras Smart Button - Light & Auto-Dimmer Slider Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Light & Auto-Dimmer Documentation](docs/LIGHT.md)**
+| What you control | Entity type | Guide |
+|---|---|---|
+| 💡 Lights | `light` | [light](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/light_3.md) |
+| 🔊 Media players | `media_player` | [media](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/media_3.md) |
+| 🌡️ Thermostats & climate | `climate` | [thermostat](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/thermostat_3.md) |
+| 🚪 Gates & garage doors | `cover` | [garage](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/garage_3.md) |
+| 🪟 Blinds & shutters (position slider) | `cover` | [configuration](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/configuration_3.md) |
+| 🌀 Fans (speed slider) | `fan` | [configuration](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/configuration_3.md) |
+| 🧹 Vacuums | `vacuum` | [vacuum](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/vacuum_3.md) |
+| 🚨 Alarm panels | `alarm_control_panel` | [alarm](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/alarm_3.md) |
+| 🌤️ Weather | `weather` | [weather](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/weather_3.md) |
+| 👤 People & devices | `person`, `device_tracker` | [person](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/person_3.md) |
+| 🔋 Batteries | `sensor` + any entity you pick for charging state | [battery](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/battery_3.md) |
+| 🎛️ Sockets & power monitoring | `switch` + power sensor | [socket](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/socket_3.md) |
+| 🌡️ Temperature | `sensor` | [temperature](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/temperature_3.md) |
+| 💧 Humidity | `sensor` | [humidity](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/humidity_3.md) |
+| 📜 Scripts | `script` | [script](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/script_3.md) |
+| 🕒 Clock | `on.clock` | [clock](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/clock_3.md) |
+| 📅 Calendar | `on.calendar` | [calendar](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/calendar_3.md) |
+| 🧭 Navigation menu | — | [navigation](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/navigation_3.md) |
+| 🔘 Chip buttons | any entity | [chip](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/chip_3.md) |
+| 🧩 Anything else | no entity needed | [Custom Data](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/custom_data_guide_3.md) |
 
 ---
 
-## 🕒📅 Clock & Calendar Display
+## 🧰 Build & configure
 
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-clock.jpg" alt="Piotras Smart Button - Clock & Calendar Grid Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Clock & Calendar Documentation](docs/CLOCK-CALENDAR.md)**
-
----
-
-## 🌡️ Thermostat
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-thermostat.jpg" alt="Piotras Smart Button - Thermostat Control Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Thermostat Documentation](docs/THERMOSTAT.md)**
+| Topic | Guide |
+|---|---|
+| 🖥 Visual Editor | [Editor Guide](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/edytor_3.md) |
+| ⚙️ Configuration Reference | [Configuration](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/configuration_3.md) |
+| 🧩 Custom Data & Templates | [Custom Data](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/custom_data_guide_3.md) |
+| 🖱️ Custom Tap (v3.0) | [Custom Tap](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/custom_tap_3.md) |
+| 🏷️ Custom State Labels | [Labels](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/custom_states_labels_3.md) |
+| 🎛️ Custom States On & Blockade | [States & Blockade](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/custom_states_on_and_custom_blockade_3.md) |
+| 👁️ Conditional Visibility | [visible_if](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/visible_if_3.md) |
 
 ---
 
-## 🔊 Media Player
+## 🌐 Community & tools
 
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-media-2.jpg" alt="Piotras Smart Button - Media Player Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Media Player Documentation](docs/MEDIA.md)**
-
----  
-
-## 📜 Script Button
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-script-2.jpg" alt="Piotras Smart Button - Script Button Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Script Button Documentation](docs/SCRIPT.md)**
-
----
-
-## 🚨 Advanced Alarm Status
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-alarm-2.jpg" alt="Piotras Smart Button - Advanced Alarm Status Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Advanced Alarm Status Documentation](docs/ALARM.md)**
-
----
-
-## 🌤️ Mini Weather Card
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-weather-2.jpg" alt="Piotras Smart Button - Mini Weather Card Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Mini Weather Card Documentation](docs/WEATHER.md)**
-
----
-
-## 🔋 Battery
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-battery-2.jpg" alt="Piotras Smart Button - Battery Card Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Battery Card Documentation](docs/BATTERY.md)**
-
----
-
-## 🌡️ Temperature & Humidity Comfort
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-temperature.jpg" alt="Piotras Smart Button - Temperature & Humidity Comfort Card Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Temperature & Humidity Comfort Card Documentation](docs/TEMPERATURE.md)**
-
----
-
-## 🧹 Smart Vacuum Status
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-vacuum-1.jpg" alt="Piotras Smart Button - Smart Vacuum Status Card Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Smart Vacuum Status Card Documentation](docs/VACUUM.md)**
-
----
-
-## 🚪 Entry Gate & Garage Control
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-garage-1.jpg" alt="Piotras Smart Button - Entry Gate & Garage Control Preview">
-
-For full features, layout settings, and ready-to-use YAML examples, check out the dedicated guide:
-> 🔗 **[Detailed Entry Gate & Garage Control Documentation](docs/GARAGE.md)**
-
----
-
-## 🖥 Visual Editor
-
-**For the full list of parameters, check the:**
-> 👉 [Edytor Guide](docs/EDYTOR.md)
-
----
-
-## ⚙️ Configuration Reference
-**For the full list of parameters, check the:**
-> 👉 [Configuration Reference Guide](docs/CONFIGURATION.md)
-
----
-
-## 🧩 Custom Data & Templates
-
-<img width="514" height="235" alt="piotras-smart-button-mediaplayer" src="https://github.com/user-attachments/assets/b8090a82-e9f4-4ea9-8076-2132f778120f" />
-
-Write your own JavaScript logic — read sensors, build conditions, colors, or text — and reuse the result across any field on the card, including inside Custom State Labels.
-
-For the full guide (syntax, referencing rules, ready-made modules, and common mistakes), check out the dedicated guide:
-> 🔗 **[Detailed Custom Data Documentation](docs/custom_data_guide.md)**
-
----
-
-## 🏷️ Custom State Labels
-
-<img src="https://raw.githubusercontent.com/Piotras1/piotras-smart-button/refs/heads/main/img/piotras-smart-button-custom-labels.jpg" alt="Piotras Smart Button - Custom State Labels Preview">
-
-For full documentation on matching rules, HTML labels, climate/weather value2, and clock greetings, check out the dedicated guide:
-> 🔗 **[Detailed Custom State Labels Documentation](docs/custom_states_labels.md)**
-
----
-
-## 🎛️ Custom States On & Blockade
-
-For full documentation on forcing the active visual state and locking card interaction, check out the dedicated guide:
-> 🔗 **[Detailed Custom States On & Blockade Documentation](docs/custom_states_on_and_custom_blockade.md)**
-
----
-
-## 👁️ Conditional Visibility
-
-Show or hide the entire card dynamically — based on a boolean, a `custom_data` reference, or a live template — without deleting it from the dashboard.
-
-For the full guide (accepted value types, the `states` access rule, and common mistakes), check out the dedicated guide:
-> 🔗 **[Detailed Conditional Visibility Documentation](docs/visible_if.md)**
+| | |
+|---|---|
+| 💬 [Show & Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) | Dashboards and setups shared by the community — good for ideas. |
+| 🧩 [Custom Data Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) | Ready-made `custom_data` modules to copy and paste. |
+| 📈 [PSB History Engine](https://github.com/Piotras1/psb-history-engine) | Companion HACS integration that keeps a rolling history of any numeric entity, <br>so you can build fast charts with `custom_data`. |
+| 🎨 [Assets Gallery](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html) | Backgrounds and images to use with the card. |
+| 🔍 [HA Icons](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html) | Searchable gallery of icons to use in the icon fields. |
+| 🧰 [My Kiosk](https://github.com/Piotras1/piotras-cards-pack) | View all my cards in one place. |
 
 ---
 
