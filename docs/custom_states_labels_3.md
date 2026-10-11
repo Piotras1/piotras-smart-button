@@ -109,4 +109,4 @@ The greeting needs **Show entity state** to be on (it is on by default). You can
 - 🧩 [Custom Data & Templates](custom_data_guide_3.md) — your own logic in JavaScript
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
-> 🔙 Back to the [Main README](../README_3.md)
+> 🔙 Back to the [Main README](../README.md)
