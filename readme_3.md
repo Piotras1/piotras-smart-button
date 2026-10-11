@@ -134,7 +134,7 @@ Each guide has screenshots and ready-to-use YAML.
 |---|---|
 | 💬 [Show & Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) | Dashboards and setups shared by the community — good for ideas. |
 | 🧩 [Custom Data Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) | Ready-made `custom_data` modules to copy and paste. |
-| 📈 [PSB History Engine](https://github.com/Piotras1/psb-history-engine) | Companion HACS integration that keeps a rolling history of any numeric entity, so you can build fast charts with `custom_data`. |
+| 📈 [PSB History Engine](https://github.com/Piotras1/psb-history-engine) | Companion HACS integration that keeps a rolling history of any numeric entity, <br>so you can build fast charts with `custom_data`. |
 | 🎨 [Assets Gallery](https://piotras1.github.io/piotras-cards-pack/smart-button-assets.html) | Backgrounds and images to use with the card. |
 | 🔍 [HA Icons](https://piotras1.github.io/piotras-cards-pack/mdi-icon-browser.html) | Searchable gallery of icons to use in the icon fields. |
 | 🧰 [My Kiosk](https://github.com/Piotras1/piotras-cards-pack) | View all my cards in one place. |
