@@ -6,20 +6,20 @@ This option is not in the visual editor. Add it in the code editor (YAML), at th
 
 ## The main rule
 
-**Read entities and calculate in `custom_data`. Show the result in other options.**
+**Read entities and calculate in `custom_data`. In the other options, use the result as `customData.name`.**
 
-Only the templates in `custom_data` can read entities (`states`) and the user (`user`). Other options, such as `name` or `icon_color`, can only use the results from `custom_data`.
+Only the templates in `custom_data` can read entities (`states`) and the user (`user`). Other options, such as `name` or `icon_color`, only take the results from `custom_data`.
 
 ```yaml
 type: custom:piotras-smart-button
 custom_data:
-  count: "p{{{ return Object.keys(states).filter(k => k.startsWith('light.') && states[k].state === 'on').length; }}}q"
-name: "p{{{ return customData.count + ' lights on'; }}}q"
+  label: "p{{{ const n = Object.keys(states).filter(k => k.startsWith('light.') && states[k].state === 'on').length; return n + ' lights on'; }}}q"
+name: customData.label
 show_state: false
 icon: mdi:lightbulb-group
 ```
 
-The card counts the lights that are on and shows, for example, `3 lights on`.
+The card counts the lights that are on and shows, for example, `3 lights on`. The count is in `custom_data`. The `name` only uses the result.
 
 ## How it works
 
@@ -31,18 +31,23 @@ The card counts the lights that are on and shows, for example, `3 lights on`.
 | A template | `avg: "p{{{ ... }}}q"` | The result of your JavaScript |
 | A reference | `copy: customData.limit` | The value of another entry |
 
-You use the values as `customData.name`:
+In the other options, write a reference. It takes the value as it is:
 
-- As a template: `name: "p{{{ return customData.avg + '°C'; }}}q"`.
-- As a reference, when you want the value as it is: `icon_color: customData.color`.
+```yaml
+name: customData.label
+icon_color: customData.color
+show_more: customData.running
+```
 
-The card calculates `custom_data` again every time Home Assistant sends an update. An entry can use the entries written above it, so you can build the result in steps.
+The card calculates `custom_data` again every time Home Assistant sends an update. An entry can use the entries written above it, so you can build the result in steps: first a number, then a text, then a color.
+
+You can also write a template in another option, for example `name: "p{{{ return customData.avg + '°C'; }}}q"`. It can use `customData`, but it cannot read entities. It is simpler to put the whole calculation in `custom_data`, and to write only a reference in the option.
 
 ## Templates
 
 A template starts with `p{{{` and ends with `}}}q`. Inside is JavaScript. You must use `return`.
 
-The template must be the whole value. You cannot write text before or after it. To mix text and a result, do it inside the template: `"p{{{ return 'Now: ' + customData.avg; }}}q"`.
+The template must be the whole value. You cannot write text before or after it. To build a text from a result, write the template in `custom_data`: `label: "p{{{ return 'Now: ' + customData.avg; }}}q"`. Then use `name: customData.label`.
 
 In YAML, put the whole template in quotes. For a long template, use a block with `|-`.
 
@@ -60,7 +65,7 @@ Write `states['entity_id']?.state` with the `?.` sign. When the card loads, Home
 
 ## Where you can use the results
 
-You can use a template or a reference in these options:
+You can use a reference to `custom_data` (or a template) in these options:
 
 | Group | Options |
 |---|---|
@@ -73,7 +78,7 @@ You can use a template or a reference in these options:
 | Bars | `slider_height`, `slider_label_color`, `max_watts`, `con_warning`, `entity_watts`, `comfort_min`, `comfort_max`, `time_service`, `service_style` |
 | Clock | `clock_tile_bg`, `clock_12h` |
 
-Templates and references also work in:
+References and templates also work in:
 
 - the texts of `custom_states_labels`. See [Custom State Labels](custom_states_labels_3.md).
 - the values of `custom_tap`. See [Custom Tap](custom_tap_3.md).
@@ -86,14 +91,15 @@ They do not work in `entity`, `tap_action`, `double_tap_action` and `hold_action
 type: custom:piotras-smart-button
 custom_data:
   avg: "p{{{ const v = ['sensor.room_1_temperature', 'sensor.room_2_temperature', 'sensor.room_3_temperature'].map(id => parseFloat(states[id]?.state)).filter(n => !isNaN(n)); return v.length ? Math.round(v.reduce((a, b) => a + b, 0) / v.length * 10) / 10 : null; }}}q"
+  label: "p{{{ return customData.avg === null ? '--' : customData.avg + '°C'; }}}q"
   color: "p{{{ return customData.avg === null ? '#9e9e9e' : customData.avg > 24 ? '#ff7043' : '#69f0ae'; }}}q"
-name: "p{{{ return customData.avg === null ? '--' : customData.avg + '°C'; }}}q"
+name: customData.label
 icon: mdi:thermometer
 icon_color: customData.color
 show_state: false
 ```
 
-The first entry calculates the average of three sensors. It skips sensors without a number, for example `unavailable`. The second entry uses the first one to choose a color. The `name` shows the result, and `icon_color` uses the color.
+All three sensors are read in the first entry. It skips sensors without a number, for example `unavailable`. The second entry makes the text, and the third chooses the color. Each one uses the entry above it. The card only takes the results: `name` takes `label`, and `icon_color` takes `color`.
 
 ## Example 2: a greeting with the user name
 
@@ -106,7 +112,7 @@ icon: mdi:hand-wave
 show_state: false
 ```
 
-`name: customData.hello` is a reference. It takes the text as it is.
+The user is read in `custom_data`. `name` takes the text as it is.
 
 ## Example 3: show or hide parts of the card
 
@@ -121,7 +127,7 @@ show_more: customData.running
 entity_watts: sensor.washing_machine_power
 ```
 
-The power bar shows only while the washing machine uses more than 5 W.
+The power is read in `custom_data`. `show_more` takes the result, so the power bar shows only while the washing machine uses more than 5 W.
 
 ## When something does not work
 
@@ -147,4 +153,4 @@ Good to know:
 - 👁️ [Conditional Visibility](visible_if_3.md) — show or hide the card
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
-> 🔙 Back to the [Main README](../README_3.md)
+> 🔙 Back to the [Main README](../README.md)
