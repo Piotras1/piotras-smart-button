@@ -37,20 +37,7 @@ In the **📝 Text** tab, the **Clock** section has:
 
 To show the date, open the **🎚 Slider & Power** tab and switch on **Show slider or power bar** (`show_more: true`). On a clock card, this bar shows the date. You can also set the **Bar height** (`slider_height`) and the **Label color** (`slider_label_color`) there.
 
-## Minimal example
-
-```yaml
-type: custom:piotras-smart-button
-entity: on.clock
-clock_mode: 3
-show_icon: false
-show_name: false
-show_state: false
-```
-
-<details>
-<summary>📋 <code>Full example from screenshot</code></summary>
-<br>
+## 📋 Full example from screenshot
 
 ```yaml
 type: custom:piotras-smart-button
@@ -71,8 +58,6 @@ border_width: 1
 ```
 
 `clock_12h: true` switches between 12-hour (true) and 24-hour (false, default) clock display.
-
-</details>
 
 ## Go further
 
