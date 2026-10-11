@@ -91,7 +91,7 @@ Each guide has screenshots and ready-to-use YAML.
 
 | What you control | Entity type | Guide |
 |---|---|---|
-| 💡 Lights (brightness, color temp, auto icon color) | `light` | [light](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/light_3.md) |
+| 💡 Lights | `light` | [light](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/light_3.md) |
 | 🔊 Media players | `media_player` | [media](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/media_3.md) |
 | 🌡️ Thermostats & climate | `climate` | [thermostat](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/thermostat_3.md) |
 | 🚪 Gates & garage doors | `cover` | [garage](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/garage_3.md) |
@@ -101,7 +101,7 @@ Each guide has screenshots and ready-to-use YAML.
 | 🚨 Alarm panels | `alarm_control_panel` | [alarm](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/alarm_3.md) |
 | 🌤️ Weather | `weather` | [weather](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/weather_3.md) |
 | 👤 People & devices | `person`, `device_tracker` | [person](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/person_3.md) |
-| 🔋 Batteries (level bar, auto icon, charging state) | `sensor` + any entity you pick for charging state | [battery](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/battery_3.md) |
+| 🔋 Batteries | `sensor` + any entity you pick for charging state | [battery](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/battery_3.md) |
 | 🎛️ Sockets & power monitoring | `switch` + power sensor | [socket](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/socket_3.md) |
 | 🌡️ Temperature | `sensor` | [temperature](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/temperature_3.md) |
 | 💧 Humidity | `sensor` | [humidity](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/humidity_3.md) |
@@ -109,7 +109,7 @@ Each guide has screenshots and ready-to-use YAML.
 | 🕒 Clock | `on.clock` | [clock](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/clock_3.md) |
 | 📅 Calendar | `on.calendar` | [calendar](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/calendar_3.md) |
 | 🧭 Navigation menu | — | [navigation](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/navigation_3.md) |
-| 🔘 Chip buttons (icon only, icon + name, or with slider) | any entity | [chip](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/chip_3.md) |
+| 🔘 Chip buttons | any entity | [chip](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/chip_3.md) |
 | 🧩 Anything else | no entity needed | [Custom Data](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/custom_data_guide_3.md) |
 
 ---
