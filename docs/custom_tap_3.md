@@ -230,4 +230,4 @@ The text on the element changes between `On` and `Off`. Write `states[...]?.stat
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
-> 🔙 Back to the [Main README](../README_3.md)
+> 🔙 Back to the [Main README](../README.md)
