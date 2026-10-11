@@ -1,4 +1,4 @@
-# 🔹 Chip Buttons
+# 🔘 Chip Buttons
 
 A small, compact version of the card. You make it by setting a small card size and moving the icon and the name into one row. A chip works with any entity from the other guides.
 
@@ -49,8 +49,10 @@ Elements in the same place stack: icon, then name, then state. The default for a
 type: custom:piotras-smart-button
 entity: light.living_room
 name: Living Room
-card_width: 110
+card_width: 140
 card_height: 40
+icon: mdi:lightbulb
+icon_wrap_size: 30
 icon_mode: 4
 name_mode: 6
 show_state: false
@@ -59,30 +61,26 @@ show_state: false
 The minimal example uses the default icon. Add `icon: mdi:lightbulb` to set your own.
 
 <details>
-<summary>Full example</summary>
+<summary>📋 <code>Full example from screenshot</code></summary>
+<br>
 
 ```yaml
 type: custom:piotras-smart-button
-entity: light.living_room
+entity: light.lsc_outdoor_neon_strip_3m
 name: Living Room
+card_width: 140
+card_height: 40
 icon: mdi:lightbulb
-icon_on: mdi:lightbulb-on
-icon_color: "#f0c040"
-icon_color_on: "#ffffff"
-icon_style: circle_color
-icon_size: 18
-icon_wrap_size: 28
-name_size: 12
+icon_color_on: auto
+icon_color: '#c0c0c0'
+icon_wrap_size: 30
 icon_mode: 4
 name_mode: 6
 show_state: false
-card_width: 110
-card_height: 40
-border_radius: 20
+background_color1: '#80808044'
+border_width: 1
 tap_action:
   action: toggle
-double_tap_action:
-  action: more-info
 hold_action:
   action: more-info
 ```
@@ -102,6 +100,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
 
-> 🔙 Back to the [Main README](../README_3.md)
+---
+
+> 🔙 Back to the [Main README](../README.md)
