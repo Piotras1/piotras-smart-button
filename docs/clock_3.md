@@ -1,9 +1,8 @@
-# 🔹 Clock
+# 🕒 Clock
 
 A clock card. It shows the current time in four styles and, if you want, the date. It does not use a Home Assistant entity. You turn it on with a special entity name: `on.clock`.
 
-![Clock 1](../img/piotras-smart-button-clock-1.jpg)
-![Clock 2](../img/piotras-smart-button-clock-2.jpg)
+![Clock](../img/piotras-smart-button-clock-v3.jpg)
 
 ## What you get
 
@@ -44,33 +43,40 @@ To show the date, open the **🎚 Slider & Power** tab and switch on **Show slid
 type: custom:piotras-smart-button
 entity: on.clock
 clock_mode: 3
-show_more: true
+show_icon: false
+show_name: false
+show_state: false
 ```
 
 <details>
-<summary>Full example</summary>
+<summary>📋 <code>Full example from screenshot</code></summary>
+<br>
 
 ```yaml
 type: custom:piotras-smart-button
 entity: on.clock
 clock_mode: 2
-clock_tile_bg: "rgba(255,255,255,0.35)"
-clock_12h: false
-name_size: 40
-text_color: "#ffffff"
+show_icon: false
+show_name: false
+show_state: false
 show_more: true
+name_size: 37
+card_width: 190
+name_mode: 2
+card_height: 110
+clock_12h: true
 slider_height: 30
-slider_label_color: "rgba(255,255,255,0.85)"
-card_width: 200
-card_height: 140
-border_radius: 20
+background_color1: '#ff808077'
+border_width: 1
 ```
+
+`clock_12h: true` switches between 12-hour (true) and 24-hour (false, default) clock display.
 
 </details>
 
 ## Go further
 
-Everything above works from the visual editor. A greeting under the clock, for example "Good morning", needs your own text for each hour. You set it with Custom State Labels. For special options, see the guides:
+Everything above works from the visual editor. For special options, see the guides:
 
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
@@ -81,6 +87,9 @@ Everything above works from the visual editor. A greeting under the clock, for e
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
 
-> 🔙 Back to the [Main README](../README_3.md)
+---
+
+> 🔙 Back to the [Main README](../README.md)
