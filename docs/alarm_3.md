@@ -18,15 +18,15 @@ If you do not set `icon`, the card shows the default `mdi:lightning-bolt`.
 
 ## State badge texts
 
-Languages: Polish, English, French, German, Spanish, Italian and Dutch. For any other language, the card uses English.
+Languages: Polish, English, French, German, Spanish, Italian and Dutch. For any other language, including regional codes such as `de-AT` or `es-419`, the card uses English.
 
-For a state not on this list, for example `unavailable`, the badge shows the state in capital letters.
+For a state without its own text, for example `unavailable`, the badge shows the state in capital letters.
 
 ## Setup
 
 No extra switch is needed. Enter the alarm entity in the **⚙️ General** tab and the card works.
 
-The 📝 Text tab has Custom state (ON) (name_on) and Custom state (OFF) (name_off). Fill in both. If both are set, they replace all default status texts, so the badge shows only two texts: one for all ON states and one for disarmed. Leave them empty to keep the texts per state.
+The **📝 Text** tab has **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). Fill in both. If both are set, they replace all default status texts, so the badge shows only two texts: one for all ON states and one for disarmed. Leave them empty to keep the texts per state.
 
 ## Minimal example
 
