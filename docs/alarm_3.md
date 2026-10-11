@@ -28,20 +28,7 @@ No extra switch is needed. Enter the alarm entity in the **⚙️ General** tab 
 
 The **📝 Text** tab has **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). Fill in both. If both are set, they replace all default status texts, so the badge shows only two texts: one for all ON states and one for disarmed. Leave them empty to keep the texts per state.
 
-## Minimal example
-
-```yaml
-type: custom:piotras-smart-button
-entity: alarm_control_panel.home
-name: Alarm
-icon: mdi:shield-home
-tap_action:
-  action: more-info
-```
-
-<details>
-<summary>📋 <code>Full example from screenshot</code></summary>
-<br>
+## 📋 Full example from screenshot
 
 ```yaml
 type: custom:piotras-smart-button
@@ -62,8 +49,6 @@ border_width: 1
 tap_action:
   action: more-info
 ```
-
-</details>
 
 ## Go further
 
