@@ -39,20 +39,7 @@ Other options in the same tab:
 
 To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). For example, `Playing` and `Silent`. Fill in both. If only one is set, the card ignores them.
 
-## Minimal example
-
-```yaml
-type: custom:piotras-smart-button
-entity: media_player.living_room
-name: Living Room
-icon: mdi:speaker
-show_more: true
-show_player: true
-```
-
-<details>
-<summary>📋 <code>Full example from screenshot</code></summary>
-<br>
+## 📋 Full example from screenshot
 
 ```yaml
 type: custom:piotras-smart-button
@@ -80,8 +67,6 @@ background_color1: '#0080c0'
 tap_action:
   action: more-info
 ```
-
-</details>
 
 ## Go further
 
