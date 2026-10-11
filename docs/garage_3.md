@@ -80,4 +80,4 @@ Everything above works from the visual editor. For special options, see the guid
 
 > 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
 
-> 🔙 Back to the [Main README](../README_3.md)
+> 🔙 Back to the [Main README](../README.md)
