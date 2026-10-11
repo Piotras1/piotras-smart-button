@@ -1,9 +1,8 @@
-# 🔹 Media Player
+# 🔊 Media Player
 
 A card for `media_player` entities. It shows whether the player is playing and adds a volume slider and player buttons.
 
-![Media Player 1](../img/piotras-smart-button-media-1.jpg)
-![Media Player 2](../img/piotras-smart-button-media-2.jpg)
+![Media Player](../img/piotras-smart-button-media-v3.jpg)
 
 ## What you get
 
@@ -54,33 +53,33 @@ show_player: true
 ```
 
 <details>
-<summary>Full example</summary>
+<summary>📋 <code>Full example from screenshot</code></summary>
+<br>
 
 ```yaml
 type: custom:piotras-smart-button
 entity: media_player.living_room
 name: Living Room
+card_width: 200
+card_height: 120
 icon: mdi:speaker
 icon_on: mdi:speaker-wireless
-icon_color: "#f0c040"
-icon_color_on: "#ffffff"
-icon_style: circle_color
-icon_size: 28
+icon_color: '#ff8282'
+icon_color_on: '#ffffff'
+icon_size: 30
+icon_wrap_size: 40
 name_on: Playing
 name_off: Silent
 show_more: true
 show_player: true
-player_mode: 2
-player_height: 28
-slider_height: 30
-slider_label_color: "rgba(255,255,255,0.85)"
-card_width: 200
-card_height: 140
+player_mode: 1
+icon_mode: 1
+name_mode: 3
+value_mode: 3
+name_size: 17
+state_size: 15
+background_color1: '#0080c0'
 tap_action:
-  action: toggle
-double_tap_action:
-  action: more-info
-hold_action:
   action: more-info
 ```
 
@@ -99,6 +98,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
 
-> 🔙 Back to the [Main README](../README_3.md)
+---
+
+> 🔙 Back to the [Main README](../README.md)
