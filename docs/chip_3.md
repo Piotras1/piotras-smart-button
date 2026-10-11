@@ -2,15 +2,14 @@
 
 A small, compact version of the card. You make it by setting a small card size and moving the icon and the name into one row. A chip works with any entity from the other guides.
 
-![Chip Buttons 1](../img/piotras-smart-button-chip-1.jpg)
-![Chip Buttons 2](../img/piotras-smart-button-chip-2.jpg)
+![Chip Buttons](../img/piotras-smart-button-chip-v3.jpg)
 
 ## What you get
 
-- A card as small as a single row, for example 100 × 40 px. The default card is 140 × 120 px.
+- A card as small as a single row, for example 140 × 40 px. The default card is 140 × 120 px.
 - The icon and the name sit side by side. You pick their places in the **🔲 Layout** tab.
 - Rounded corners up to a full pill shape with **Border radius**.
-- Everything else works as for the full card: the state of the entity, `icon_color` and `icon_color_on`, `tap_action`, `double_tap_action` and `hold_action`.
+- Everything else works as on any other card: name, icon, colors, size and actions.
 
 A chip has no room for the slider bar, the power bar or the state badge. The bar always takes the bottom row of the card, so leave **Show slider or power bar** off. Hide the state badge with **Show entity state**.
 
@@ -25,7 +24,7 @@ A chip has no room for the slider bar, the power bar or the state badge. The bar
 **Icon.** Open the **💡 Icon** tab:
 
 - **Icon size (px)** (`icon_size`, 10–100) — make it smaller, for example 18.
-- **Wrap size (px)** (`icon_wrap_size`, 20–120) — the circle or square behind the icon. The default is 48. Use about 28 for a chip.
+- **Wrap size (px)** (`icon_wrap_size`, 20–120) — the circle or square behind the icon. The default is 48. Use about 30 for a chip.
 
 **Name.** Open the **📝 Text** tab:
 
@@ -35,9 +34,9 @@ A chip has no room for the slider bar, the power bar or the state badge. The bar
 
 | | | |
 |---|---|---|
-| ↖ `1` | ↑ `2` | ↗ `3` |
-| ← `4` | · `5` | → `6` |
-| ↙ `7` | ↓ `8` | ↘ `9` |
+| ↖️ `1` | ⬆️ `2` | ↗️ `3` |
+| 🟢 `4` | 🔵 `5` | 🟢 `6` |
+| ↙️ `7` | ⬇️ `8` | ↘️ `9` |
 
 Elements in the same place stack: icon, then name, then state. The default for all three is `5`, the center. For a chip, set **Icon** to `4` (left) and **Name** to `6` (right).
 
@@ -66,7 +65,7 @@ The minimal example uses the default icon. Add `icon: mdi:lightbulb` to set your
 
 ```yaml
 type: custom:piotras-smart-button
-entity: light.lsc_outdoor_neon_strip_3m
+entity: light.living_room
 name: Living Room
 card_width: 140
 card_height: 40
@@ -84,6 +83,8 @@ tap_action:
 hold_action:
   action: more-info
 ```
+
+`icon_color_on: auto` takes the icon color from the light. In this example, hold opens more-info.
 
 </details>
 
