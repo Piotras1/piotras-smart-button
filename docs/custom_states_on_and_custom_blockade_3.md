@@ -125,4 +125,4 @@ The card looks "on" when the door is open or moving. While the door is moving, t
 - 👁️ [Conditional Visibility](visible_if_3.md) — show or hide the card
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
-> 🔙 Back to the [Main README](../README_3.md)
+> 🔙 Back to the [Main README](../README.md)
