@@ -217,4 +217,4 @@ You can use a template or a reference to `custom_data` in most of the options ab
 | Small buttons | [Chip Buttons](chip_3.md) |
 | Menu of views | [Navigation Mode](navigation_3.md) |
 
-> 🔙 Back to the [Main README](../README_3.md)
+> 🔙 Back to the [Main README](../README.md)
