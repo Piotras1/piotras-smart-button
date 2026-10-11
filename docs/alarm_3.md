@@ -1,4 +1,4 @@
-# 🔹 Advanced Alarm Status
+# 🚨 Advanced Alarm Status
 
 A card for `alarm_control_panel` entities. It shows the alarm state as a short word and marks an active alarm with a glowing icon.
 
@@ -20,18 +20,6 @@ If you do not set `icon`, the card shows the default `mdi:lightning-bolt`.
 
 Languages: Polish, English, French, German, Spanish, Italian and Dutch. For any other language, the card uses English.
 
-| State | English | Polish |
-|---|---|---|
-| `disarmed` | DISARMED | WYŁĄCZONY |
-| `armed_home` | HOME | DOM |
-| `armed_away` | AWAY | WYJŚCIE |
-| `armed_night` | NIGHT | NOC |
-| `armed_vacation` | VACATION | URLOP |
-| `armed_custom_bypass` | CUSTOM | CUSTOM |
-| `pending` | PENDING | OCZEKUJE |
-| `arming` | ARMING | UZBRAJANIE |
-| `triggered` | ALARM! | ALARM! |
-
 For a state not on this list, for example `unavailable`, the badge shows the state in capital letters.
 
 ## Setup
@@ -52,26 +40,27 @@ tap_action:
 ```
 
 <details>
-<summary>Full example</summary>
+<summary>📋 <code>Full example from screenshot</code></summary>
+<br>
 
 ```yaml
 type: custom:piotras-smart-button
-entity: alarm_control_panel.home
+entity: alarm_control_panel.test_alarm
 name: Alarm
-icon: mdi:shield-off
-icon_on: mdi:shield-home
-icon_color: "#f0c040"
-icon_color_on: "#ff5252"
-icon_style: circle_color
-icon_size: 28
+card_width: 150
+card_height: 120
+icon: mdi:alarm-light-off
+icon_on: mdi:alarm-light
+icon_color: '#d4d4d4'
+icon_color_on: '#ff8000'
+icon_size: 40
+icon_wrap_size: 42
+name_size: 20
+state_size: 15
+background_color1: '#c0c0c037'
+border_width: 1
 tap_action:
   action: more-info
-double_tap_action:
-  action: none
-hold_action:
-  action: more-info
-card_width: 140
-card_height: 120
 ```
 
 </details>
@@ -89,6 +78,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
+
+---
 
 > 🔙 Back to the [Main README](../README.md)
