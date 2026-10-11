@@ -79,4 +79,4 @@ The card is shown to users with administrator rights. Other users do not see it.
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
-> 🔙 Back to the [Main README](../README_3.md)
+> 🔙 Back to the [Main README](../README.md)
