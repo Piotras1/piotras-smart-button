@@ -1,9 +1,8 @@
-# 🔹 Light & Auto-Dimmer Slider
+# 💡 Light & Auto-Dimmer Slider
 
 A card for `light` entities. It shows the light state and adds sliders for brightness and color temperature when the light supports them.
 
-![Light & Auto-Dimmer Slider 1](../img/piotras-smart-button-light-1.jpg)
-![Light & Auto-Dimmer Slider 2](../img/piotras-smart-button-light-2.jpg)
+![Light & Auto-Dimmer Slider](../img/piotras-smart-button-light-v3.jpg)
 
 ## What you get
 
@@ -16,23 +15,14 @@ A card for `light` entities. It shows the light state and adds sliders for brigh
 
 ## Setup
 
-Open the **🎚 Slider & Power** tab and switch on **Show slider or power bar** (`show_more: true`). Without it, sliders are not shown.
+- Open the 🎚 Slider & Power tab and switch on Show slider or power bar (show_more: true). Without it, sliders are not shown.
+- In the same tab, you can set the Bar height (slider_height, 16–60 px) and the Label color (slider_label_color).
+- To change the state text, use the 📝 Text tab: Custom state (ON) (name_on) and Custom state (OFF) (name_off). Fill in both. If only one is set, the card ignores them.
+- To configure icon colors, use the following options:
+   - icon_color: '#c0c0c0' — sets the default icon color when the entity is OFF.
+   - icon_color_on: auto — when set to auto, the icon dynamically inherits the entity's active color (e.g., current light color/temperature).
 
-In the same tab you can set the **Bar height** (`slider_height`, 16–60 px) and the **Label color** (`slider_label_color`).
-
-To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). Fill in both. If only one is set, the card ignores them.
-
-## Minimal example
-
-```yaml
-type: custom:piotras-smart-button
-entity: light.living_room
-name: Living Room
-show_more: true
-```
-
-<details>
-<summary>Full example</summary>
+## 📋 Full example from screenshot
 
 ```yaml
 type: custom:piotras-smart-button
@@ -40,26 +30,28 @@ entity: light.living_room
 name: Living Room
 icon: mdi:lightbulb
 icon_on: mdi:lightbulb-on
-icon_color: "#f0c040"
-icon_color_on: "#ffffff"
-icon_style: circle_color
-icon_size: 28
+icon_color: '#c0c0c0'
+icon_color_on: auto
+icon_size: 32
 name_on: Lit
 name_off: Dark
 show_more: true
 slider_height: 30
-slider_label_color: "rgba(255,255,255,0.85)"
-card_width: 140
-card_height: 120
+card_width: 180
+card_height: 90
+icon_mode: 1
+name_mode: 3
+value_mode: 3
+icon_wrap_size: 40
+name_size: 16
+state_size: 17
+background_color1: '#c0c0c037'
 tap_action:
   action: toggle
-double_tap_action:
-  action: more-info
 hold_action:
   action: more-info
 ```
 
-</details>
 
 ## Go further
 
@@ -74,6 +66,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
+
+---
 
 > 🔙 Back to the [Main README](../README.md)
