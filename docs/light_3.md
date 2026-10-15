@@ -15,7 +15,7 @@ A card for `light` entities. It shows the light state and adds sliders for brigh
 
 ## Setup
 
-- Open the 🎚 Slider & Power tab and switch on Show slider or power bar (show_more: true). Without it, sliders are not shown.
+- Open the **🎚 Slider & Power** tab and switch on Show slider or power bar (show_more: true). Without it, sliders are not shown.
 - In the same tab, you can set the Bar height (slider_height, 16–60 px) and the Label color (slider_label_color).
 - To change the state text, use the 📝 Text tab: Custom state (ON) (name_on) and Custom state (OFF) (name_off). Fill in both. If only one is set, the card ignores them.
 - To configure icon colors, use the following options:
