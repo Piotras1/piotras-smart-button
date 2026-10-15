@@ -68,7 +68,7 @@ Everything above works from the visual editor. For special options, see the guid
 
 > 🧩 **[Hybrid LED Strip Controller (`lightColorPanel`)](https://github.com/Piotras1/piotras-smart-button/discussions/23)**
 >
-> <a href="https://github.com/Piotras1/piotras-smart-button/discussions/23"><img src="../img/piotras-smart-button-light-v3.gif" width="90" alt="Dynamic Background Preview"></a>  
+> <a href="https://github.com/Piotras1/piotras-smart-button/discussions/23"><img src="../img/piotras-smart-button-light-v3.gif" width="100" alt="Dynamic Background Preview"></a>  
 
 
 ## More ideas
