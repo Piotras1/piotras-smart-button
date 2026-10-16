@@ -123,6 +123,8 @@ The card looks "on" when the door is open or moving. While the door is moving, t
 
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 👁️ [Conditional Visibility](visible_if_3.md) — show or hide the card
+- 🧩 [Custom Data & Templates](custom_data_guide_3.md) — your own logic in JavaScript
+- 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
 > 🔙 Back to the [Main README](../README.md)
