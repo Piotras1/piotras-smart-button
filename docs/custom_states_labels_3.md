@@ -106,7 +106,9 @@ The greeting needs **Show entity state** to be on (it is on by default). You can
 ## Go further
 
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
+- 👁️ [Conditional Visibility](visible_if_3.md) — show or hide the card
 - 🧩 [Custom Data & Templates](custom_data_guide_3.md) — your own logic in JavaScript
+- 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
 > 🔙 Back to the [Main README](../README.md)
