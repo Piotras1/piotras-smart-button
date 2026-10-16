@@ -29,7 +29,7 @@ The card counts the lights that are on and shows, for example, `3 lights on`. Th
 | Value | Example | Result |
 |---|---|---|
 | A plain value | `limit: 24` | The value as it is. A number, text, true or false, a list |
-| A template | `avg: "p{{{ ... }}}q"` | The result of your JavaScript |
+| A template | `avg: p{{{ ... }}}q` | The result of your JavaScript |
 | A reference | `copy: customData.limit` | The value of another entry |
 
 In the other options, write a reference. It takes the value as it is:
@@ -48,7 +48,7 @@ You can also write a template in another option, for example `name: "p{{{ return
 
 A template starts with `p{{{` and ends with `}}}q`. Inside is JavaScript. You must use `return`.
 
-The template must be the whole value. You cannot write text before or after it. To build a text from a result, write the template in `custom_data`: `label: "p{{{ return 'Now: ' + customData.avg; }}}q"`. Then use `name: customData.label`.
+The template must be the whole value. You cannot write text before or after it. To build a text from a result, write the template in `custom_data`: `label: p{{{ return 'Now: ' + customData.avg; }}}q`. Then use `name: customData.label`.
 
 In YAML, put the whole template in quotes. For a long template, use a block with `|-`.
 
@@ -156,9 +156,10 @@ Good to know:
 
 ## Go further
 
-- 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
+- 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
 - 👁️ [Conditional Visibility](visible_if_3.md) — show or hide the card
+- 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
 > 🔙 Back to the [Main README](../README.md)
