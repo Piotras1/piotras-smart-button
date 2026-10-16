@@ -13,7 +13,7 @@ Only the templates in `custom_data` can read entities (`states`) and the user (`
 ```yaml
 type: custom:piotras-smart-button
 custom_data:
-  label: "p{{{ const n = Object.keys(states).filter(k => k.startsWith('light.') && states[k].state === 'on').length; return n + ' lights on'; }}}q"
+  label: p{{{ const n = Object.keys(states).filter(k => k.startsWith('light.') && states[k].state === 'on').length; return n + ' lights on'; }}}q
 name: customData.label
 show_state: false
 icon: mdi:lightbulb-group
@@ -90,9 +90,9 @@ They do not work in `entity`, `tap_action`, `double_tap_action` and `hold_action
 ```yaml
 type: custom:piotras-smart-button
 custom_data:
-  avg: "p{{{ const v = ['sensor.room_1_temperature', 'sensor.room_2_temperature', 'sensor.room_3_temperature'].map(id => parseFloat(states[id]?.state)).filter(n => !isNaN(n)); return v.length ? Math.round(v.reduce((a, b) => a + b, 0) / v.length * 10) / 10 : null; }}}q"
-  label: "p{{{ return customData.avg === null ? '--' : customData.avg + '°C'; }}}q"
-  color: "p{{{ return customData.avg === null ? '#9e9e9e' : customData.avg > 24 ? '#ff7043' : '#69f0ae'; }}}q"
+  avg: p{{{ const v = ['sensor.room_1_temperature', 'sensor.room_2_temperature', 'sensor.room_3_temperature'].map(id => parseFloat(states[id]?.state)).filter(n => !isNaN(n)); return v.length ? Math.round(v.reduce((a, b) => a + b, 0) / v.length * 10) / 10 : null; }}}q
+  label: p{{{ return customData.avg === null ? '--' : customData.avg + '°C'; }}}q
+  color: p{{{ return customData.avg === null ? '#9e9e9e' : customData.avg > 24 ? '#ff7043' : '#69f0ae'; }}}q
 name: customData.label
 icon: mdi:thermometer
 icon_color: customData.color
@@ -106,7 +106,7 @@ All three sensors are read in the first entry. It skips sensors without a number
 ```yaml
 type: custom:piotras-smart-button
 custom_data:
-  hello: "p{{{ return 'Hello, ' + (user?.name ?? ''); }}}q"
+  hello: p{{{ return 'Hello, ' + (user?.name ?? ''); }}}q
 name: customData.hello
 icon: mdi:hand-wave
 show_state: false
@@ -120,7 +120,7 @@ The user is read in `custom_data`. `name` takes the text as it is.
 type: custom:piotras-smart-button
 entity: switch.washing_machine_socket
 custom_data:
-  running: "p{{{ return parseFloat(states['sensor.washing_machine_power']?.state) > 5; }}}q"
+  running: p{{{ return parseFloat(states['sensor.washing_machine_power']?.state) > 5; }}}q
 name: Washing Machine
 icon: mdi:washing-machine
 show_more: customData.running
