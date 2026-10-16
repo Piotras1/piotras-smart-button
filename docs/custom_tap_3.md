@@ -28,7 +28,7 @@ You move the elements with the **Name** grid in the **🔲 Layout** tab. Write t
 
 ```yaml
 custom_data:
-  panel: "p{{{ return `<span ${customTap.id('lamp')}>💡 Lamp</span>`; }}}q"
+  panel: p{{{ return `<span ${customTap.id('lamp')}>💡 Lamp</span>`; }}}q
 name: customData.panel
 custom_tap:
   lamp:
@@ -94,7 +94,7 @@ custom_tap:
 type: custom:piotras-smart-button
 entity: light.living_room
 custom_data:
-  lamp_state: "p{{{ return states['light.living_room']?.state === 'on' ? 'On' : 'Off'; }}}q"
+  lamp_state: p{{{ return states['light.living_room']?.state === 'on' ? 'On' : 'Off'; }}}q
   panel: |-
     p{{{ return `
       <span ${customTap.id('lamp')} style="padding:4px 8px;">💡 ${customData.lamp_state}</span>
