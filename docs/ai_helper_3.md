@@ -26,9 +26,12 @@ CUSTOM DATA
 CORRECT EXAMPLE
 type: custom:piotras-smart-button
 custom_data:
-  temp: p{{{ const t = parseFloat(states['sensor.room_temperature']?.state); return isNaN(t) ? null : t; }}}q
-  label: p{{{ return customData.temp === null ? '--' : customData.temp + '°C'; }}}q
-  color: p{{{ return customData.temp === null ? '#9e9e9e' : customData.temp > 24 ? '#ff7043' : '#69f0ae'; }}}q
+  temp: |-
+    p{{{ const t = parseFloat(states['sensor.room_temperature']?.state); return isNaN(t) ? null : t; }}}q
+  label: |-
+    p{{{ return customData.temp === null ? '--' : customData.temp + '°C'; }}}q
+  color: |-
+    p{{{ return customData.temp === null ? '#9e9e9e' : customData.temp > 24 ? '#ff7043' : '#69f0ae'; }}}q
 name: customData.label
 icon: mdi:thermometer
 icon_color: customData.color
