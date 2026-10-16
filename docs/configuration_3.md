@@ -217,4 +217,12 @@ You can use a template or a reference to `custom_data` in most of the options ab
 | Small buttons | [Chip Buttons](chip_3.md) |
 | Menu of views | [Navigation Mode](navigation_3.md) |
 
+## Go further
+
+- 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
+- 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
+- 👁️ [Conditional Visibility](visible_if_3.md) — show or hide the card
+- 🧩 [Custom Data & Templates](custom_data_guide_3.md) — your own logic in JavaScript
+- 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
+
 > 🔙 Back to the [Main README](../README.md)
