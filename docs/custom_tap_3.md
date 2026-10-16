@@ -191,8 +191,10 @@ Good to know:
 
 ## Go further
 
-- 🧩 [Custom Data & Templates](custom_data_guide_3.md) — your own logic in JavaScript
+- 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
+- 👁️ [Conditional Visibility](visible_if_3.md) — show or hide the card
+- 🧩 [Custom Data & Templates](custom_data_guide_3.md) — your own logic in JavaScript
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
 > 🔙 Back to the [Main README](../README.md)
