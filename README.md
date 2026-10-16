@@ -125,6 +125,7 @@ Each guide has screenshots and ready-to-use YAML.
 | 🏷️ Custom State Labels | [Labels](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/custom_states_labels_3.md) |
 | 🎛️ Custom States On & Blockade | [States & Blockade](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/custom_states_on_and_custom_blockade_3.md) |
 | 👁️ Conditional Visibility | [visible_if](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/visible_if_3.md) |
+| 🤖 Write code with AI | [AI helper](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/ai_helper_3.md) |
 
 ---
 
