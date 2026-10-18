@@ -63,6 +63,12 @@ Everything above works from the visual editor. For special options, see the guid
 - 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
+## 🛠️ Ready-to-Use
+
+> 🧩 **[Hybrid Thermostat Presets (hybrid_thermostat)](https://github.com/Piotras1/piotras-smart-button/discussions/24)**
+>
+> <a href="https://github.com/Piotras1/piotras-smart-button/discussions/24"><img src="../img/piotras-smart-button-termostatv3.gif" width="100" alt="Dynamic Background Preview"></a>  
+
 ## More ideas
 
 * 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
