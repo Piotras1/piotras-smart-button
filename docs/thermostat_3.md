@@ -1,9 +1,8 @@
-# 🔹 Thermostat
+# 🌡️ Thermostat
 
 A card for `climate` entities. It shows the room temperature and lets you change the target temperature with − and + buttons.
 
-![Thermostat 1](../img/piotras-smart-button-thermostat-1.jpg)
-![Thermostat 2](../img/piotras-smart-button-thermostat-2.jpg)
+![Thermostat](../img/piotras-smart-button-thermostat.jpg)
 
 ## What you get
 
@@ -24,42 +23,34 @@ In the same tab you can set the **Bar height** (`slider_height`, 16–60 px) and
 
 For a climate entity, the **📝 Text** tab does not offer **Custom state (ON)** and **Custom state (OFF)**. The state badge always shows the room temperature.
 
-## Minimal example
+## 📋 Full example from screenshot
 
 ```yaml
 type: custom:piotras-smart-button
-entity: climate.bedroom
-name: Bedroom
-show_more: true
-```
-
-<details>
-<summary>Full example</summary>
-
-```yaml
-type: custom:piotras-smart-button
-entity: climate.bedroom
+entity: climate.your_termostat
 name: Bedroom
 icon: mdi:thermostat
 icon_on: mdi:fire
-icon_color: "#f0c040"
-icon_color_on: "#ff7043"
-icon_style: circle_color
+icon_color: '#c0c0c0'
+icon_color_on: '#ff8080'
 icon_size: 28
 show_more: true
-slider_height: 30
-slider_label_color: "rgba(255,255,255,0.85)"
-card_width: 140
-card_height: 120
-tap_action:
-  action: toggle
-double_tap_action:
-  action: more-info
+slider_height: 40
+card_width: 200
+card_height: 150
+icon_mode: 1
+name_mode: 3
+value_mode: 6
+name_size: 17
+state_size: 26
+background_color1: '#c0c0c037'
+background_color3: '#c0c0c037'
+background_color2: '#00000033'
 hold_action:
   action: more-info
+tap_action:
+  action: toggle
 ```
-
-</details>
 
 ## Go further
 
@@ -74,6 +65,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
+
+---
 
 > 🔙 Back to the [Main README](../README.md)
