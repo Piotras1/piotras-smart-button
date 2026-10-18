@@ -68,6 +68,9 @@ Everything above works from the visual editor. For special options, see the guid
 > 🧩 **[Hybrid Thermostat Presets (hybrid_thermostat)](https://github.com/Piotras1/piotras-smart-button/discussions/24)**
 >
 > <a href="https://github.com/Piotras1/piotras-smart-button/discussions/24"><img src="../img/piotras-smart-button-termostatv3.gif" width="100" alt="Dynamic Background Preview"></a>  
+> 🧩 **[Advanced Circular Climate Widget (hvac_widget_html)](https://github.com/Piotras1/piotras-smart-button/discussions/25)**
+>
+> <a href="https://github.com/Piotras1/piotras-smart-button/discussions/25"><img src="../img/piotras-smart-button-term-v3.gif" width="100" alt="Dynamic Background Preview"></a> 
 
 ## More ideas
 
