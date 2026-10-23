@@ -1,9 +1,8 @@
-# 🔹 Calendar
+# 📅 Calendar
 
 A month calendar card. It shows the current month, highlights today and marks days with events. It does not use a Home Assistant entity. You turn it on with a special entity name: `on.calendar`.
 
-![Calendar 1](../img/piotras-smart-button-calendar-1.jpg)
-![Calendar 2](../img/piotras-smart-button-calendar-2.jpg)
+![Calendar](../img/piotras-smart-button-calendar-v3.jpg)
 
 ## What you get
 
@@ -38,34 +37,35 @@ The **State font size** (`state_size`) changes the size of the text in the grid.
 |---|---|
 | `calendar_extended` | A sensor with an `events` attribute in the Home Assistant calendar format (`start`, `end`, `summary`, `description`). The card marks the days that have events |
 
-## Minimal example
+## 📋 Full example from screenshot 1
 
 ```yaml
 type: custom:piotras-smart-button
 entity: on.calendar
-calendar_extended: sensor.calendar_extended
-card_width: 200
-card_height: 180
-```
-
-<details>
-<summary>Full example</summary>
-
-```yaml
-type: custom:piotras-smart-button
-entity: on.calendar
-calendar_extended: sensor.calendar_extended
-calendar_days_ahead: 14
-icon_color: "#f0c040"
-icon_color_on: "#ffffff"
-text_color: "#ffffff"
+icon_color: '#f0c040'
+icon_color_on: '#ff8000'
+text_color: '#ffffff'
 state_size: 12
 card_width: 220
 card_height: 200
 border_radius: 20
 ```
 
-</details>
+## 📋 Full example from screenshot 2
+
+```yaml
+type: custom:piotras-smart-button
+entity: on.calendar
+calendar_extended: sensor.extended_calendar
+calendar_days_ahead: 30
+icon_color: '#f0c040'
+icon_color_on: '#ff8000'
+text_color: '#ffffff'
+state_size: 12
+card_width: 220
+card_height: 200
+border_radius: 20
+```
 
 ## Go further
 
@@ -80,6 +80,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
+
+---
 
 > 🔙 Back to the [Main README](../README.md)
