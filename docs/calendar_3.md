@@ -37,7 +37,7 @@ The **State font size** (`state_size`) changes the size of the text in the grid.
 |---|---|
 | `calendar_extended` | A sensor with an `events` attribute in the Home Assistant calendar format (`start`, `end`, `summary`, `description`). The card marks the days that have events |
 
-## 📋 Full example from screenshot 1
+## 📋 Option A: Basic Month Calendar (No Events)
 
 ```yaml
 type: custom:piotras-smart-button
@@ -51,7 +51,7 @@ card_height: 200
 border_radius: 20
 ```
 
-## 📋 Full example from screenshot 2
+## 📋 Option B: Extended Calendar with Events (sensor.extended_calendar)
 
 ```yaml
 type: custom:piotras-smart-button
