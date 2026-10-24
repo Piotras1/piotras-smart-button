@@ -65,6 +65,7 @@ state_size: 12
 card_width: 220
 card_height: 200
 border_radius: 20
+show_press_effect: false
 ```
 
 ## Go further
