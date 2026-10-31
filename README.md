@@ -16,7 +16,7 @@
 **Piotras Smart Button is not designed for just one type of entity.
 It combines controls, status displays, visualizations and custom logic into a single card. Set it up in the visual editor — no YAML needed — or build your own panels with Custom Data.**
 
-**🆕 v3.0 adds `custom_tap`: make any element you generate clickable, keep your own state on the card and build complete panels — keypads, charts, control boards — from a single card.**
+**🆕 Starting with v3.0, `custom_tap`: make any element you generate clickable, keep your own state on the card and build complete panels — keypads, charts, control boards — from a single card.**
 
 ---
 
@@ -76,7 +76,7 @@ Write your own JavaScript to read any entities and compute values, text and colo
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=3.0.0
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=3.1.0
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
