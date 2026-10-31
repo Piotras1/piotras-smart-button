@@ -1,69 +1,87 @@
-# 🔹 Garage Door & Cover
+# 🚪 Gates & Garage Doors
 
-A card for `cover` entities, such as a garage door, a gate or a blind. It shows whether the cover is open and adds a position slider when the cover reports its position.
+A card for `cover` entities that work like a gate or a garage door. It shows the state, picks the icon for you, and gives you open, stop and close buttons. The buttons can call the service of the cover, or your own scripts.
 
-![Garage Door & Cover 1](../img/piotras-smart-button-garage-1.jpg)
-![Garage Door & Cover 2](../img/piotras-smart-button-garage-2.jpg)
+For blinds and shutters with a position, see [Blinds & Shutters](blinds_3.md).
 
 ## What you get
 
-- The card turns ON when the cover state is `open`. In every other state it is OFF, including `closed`, `opening` and `closing`.
-- The icon uses `icon_color` when the card is off and `icon_color_on` when it is on. You can set a different icon for the on state with `icon_on`.
-- The state badge shows `CLOSED` when the card is off.
-- When the card is on, the badge shows `OPEN`. If the cover reports its position and the position is 50% or less, the badge shows `CLOSING`.
-- A position slider (0–100%) appears automatically if the cover reports `current_position`. It appears when you switch on the slider bar.
 - Tap toggles the cover. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
-- These options work as usual: `name`, `name_on`, `name_off`, `icon`, `icon_on`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
-
-If you do not set `icon`, the card shows the default `mdi:lightning-bolt`. Set `icon` to something that fits, for example `mdi:garage`.
+- The state badge shows `CLOSED`, `OPEN`, `OPENING` or `CLOSING`.
+- The card is lit while the gate is open, and also while it is opening or closing.
+- The icon is chosen for you by the type and by the state: one icon for closed, one for open, and an arrow while it moves. An icon that you set always wins.
+- Three buttons on the bar: ▲ open, ■ stop and ▼ close. The card shows only the buttons that the cover supports.
+- While the gate moves, the button of that direction is highlighted. The ▲ button is dimmed when the gate is fully open, and the ▼ button when it is closed. A dimmed button still works.
+- Each button can call your own script instead of the service of the cover.
+- These options work as usual: `name`, `name_on`, `name_off`, `icon`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
 
 ## Setup
 
-For the position slider, open the **🎚 Slider & Power** tab and switch on **Show slider or power bar** (`show_more: true`). Without it, the slider is not shown. A cover that does not report its position has no slider.
+- Open the **🎚 Slider & Power** tab and switch on Show slider or power bar (`show_more: true`). Without it, the buttons are not shown.
+- In the same tab, in the section **Cover control**, set the Control type (`cover_control`) to **▲ ■ ▼ buttons (open / stop / close)**.
+- To use your own scripts, set an action for each button. In the same section you find three fields: **▲ Open button**, **■ Stop button** and **▼ Close button** (`cover_up_action`, `cover_stop_action`, `cover_down_action`). For each of them:
+   - **Native cover service** — the button calls `cover.open_cover`, `cover.stop_cover` or `cover.close_cover`. This is the default.
+   - **Call service (e.g. script)** — the button calls the service that you write in the field **Service**, for example `script.gate_open`.
+- A button with your own script is shown even when the cover does not support that function.
+- To pass data to a service, use YAML (`service_data`). The editor has no field for it.
+- To choose the icon, open the **💡 Icon** tab and set Cover type (automatic icon) (`cover_type`) to **Gate** or **Garage door**. If you leave it on `auto`, the card takes the type from the `device_class` of the cover. Leave the Icon field empty to use the automatic icon.
+- The size of the buttons follows the Bar height (`slider_height`, 16–60 px). For buttons, 24 or more is a good choice.
+- To change the colors, use Bar color (`bar_color`) and Bar icons color (`bar_icon_color`) in the same tab. If you leave Bar icons color empty, the icons on the buttons use `icon_color` and `icon_color_on`.
 
-In the same tab you can set the **Bar height** (`slider_height`, 16–60 px) and the **Label color** (`slider_label_color`).
+| Cover type | Closed | Open | Opening / closing |
+|---|---|---|---|
+| Gate | `mdi:gate` | `mdi:gate-open` | `mdi:arrow-up-box` / `mdi:arrow-down-box` |
+| Garage door | `mdi:garage` | `mdi:garage-open` | `mdi:arrow-up-box` / `mdi:arrow-down-box` |
+| Door | `mdi:door-closed` | `mdi:door-open` | `mdi:arrow-up-box` / `mdi:arrow-down-box` |
 
-To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). For example, `Open` and `Closed`. Fill in both. If only one is set, the card ignores them.
+> 💡 **A button is missing?** The card reads the functions of the cover from its `supported_features`. A cover without a stop function has no ■ button. If you control the cover with scripts, add an action for that button, and it will show.
 
-## Minimal example
+> 💡 **The gate does not light up while it moves?** If you use `custom_states_on`, add `opening` and `closing` to the list.
+
+## 📋 Full example
+
+A garage door that you control with its own service:
 
 ```yaml
 type: custom:piotras-smart-button
 entity: cover.garage_door
 name: Garage
-icon: mdi:garage
-show_more: true
-```
-
-<details>
-<summary>Full example</summary>
-
-```yaml
-type: custom:piotras-smart-button
-entity: cover.garage_door
-name: Garage
-icon: mdi:garage
-icon_on: mdi:garage-open
-icon_color: "#f0c040"
-icon_color_on: "#ff7043"
-icon_style: circle_color
-icon_size: 28
-name_on: Open
-name_off: Closed
+icon_color: '#9e9e9e'
+icon_color_on: '#ff9800'
+icon_size: 32
 show_more: true
 slider_height: 30
-slider_label_color: "rgba(255,255,255,0.85)"
-card_width: 140
-card_height: 120
+cover_control: buttons
+cover_type: garage
 tap_action:
-  action: toggle
-double_tap_action:
-  action: more-info
-hold_action:
   action: more-info
 ```
 
-</details>
+A gate that you control with scripts:
+
+```yaml
+type: custom:piotras-smart-button
+entity: cover.driveway_gate
+name: Gate
+show_more: true
+slider_height: 30
+cover_control: buttons
+cover_type: gate
+bar_icon_color: '#ffb74d'
+cover_up_action:
+  action: call-service
+  service: script.gate_open
+cover_stop_action:
+  action: call-service
+  service: script.gate_stop
+cover_down_action:
+  action: call-service
+  service: script.gate_close
+tap_action:
+  action: more-info
+```
+
+For a gate, `more-info` is a safe action for a tap. The toggle of some gates opens and closes in turns, so you may not want it on a short tap.
 
 ## Go further
 
@@ -78,6 +96,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
+
+---
 
 > 🔙 Back to the [Main README](../README.md)
