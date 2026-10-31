@@ -95,8 +95,8 @@ Each guide has screenshots and ready-to-use YAML.
 | 🔊 Media players | `media_player` | [media](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/media_3.md) |
 | 🌡️ Thermostats & climate | `climate` | [thermostat](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/thermostat_3.md) |
 | 🚪 Gates & garage doors | `cover` | [garage](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/garage_3.md) |
-| 🪟 Blinds & shutters (position slider) | `cover` | [configuration](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/configuration_3.md) |
-| 🌀 Fans (speed slider) | `fan` | [configuration](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/configuration_3.md) |
+| 🪟 Blinds & shutters | `cover` | [blinds](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/blinds_3.md) |
+| 🌀 Fans | `fan` | [fan](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/fan_3.md) |
 | 🧹 Vacuums | `vacuum` | [vacuum](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/vacuum_3.md) |
 | 🚨 Alarm panels | `alarm_control_panel` | [alarm](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/alarm_3.md) |
 | 🌤️ Weather | `weather` | [weather](https://github.com/Piotras1/piotras-smart-button/blob/main/docs/weather_3.md) |
