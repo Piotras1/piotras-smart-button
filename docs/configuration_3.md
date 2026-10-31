@@ -335,9 +335,10 @@ You can use a template or a reference to `custom_data` in most of the options ab
 | Script | [Script Button](script_3.md) |
 | Alarm | [Advanced Alarm Status](alarm_3.md) |
 | Weather | [Mini Weather Card](weather_3.md) |
-| Fan | The options are in the section [Fan](#fan) of this page |
+| Fan | [Fan](fan_3.md) |
 | Vacuum | [Vacuum](vacuum_3.md) |
-| Garage door and cover | [Garage Door & Cover](garage_3.md). The control options are in the section [Cover](#cover) of this page |
+| Gates & garage doors | [Gates & garage doors](garage_3.md)|
+| Blinds & shutters | [Blinds & shutters](blinds_3.md)|
 | Clock | [Clock](clock_3.md) |
 | Calendar | [Calendar](calendar_3.md) |
 | Small buttons | [Chip Buttons](chip_3.md) |
