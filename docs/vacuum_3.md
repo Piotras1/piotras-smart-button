@@ -1,76 +1,66 @@
-# 🔹 Vacuum
+# 🧹 Vacuum
 
-A card for `vacuum` entities. It shows what the robot is doing with a short word and a moving icon.
-
-![Vacuum 1](../img/piotras-smart-button-vacuum-1.jpg)
-![Vacuum 2](../img/piotras-smart-button-vacuum-2.jpg)
+A card for `vacuum` entities. It shows what the vacuum is doing, moves the icon while it cleans, and gives you start, pause and base buttons.
 
 ## What you get
 
-- The card turns ON when the vacuum is cleaning or returning to the dock. In every other state it is OFF.
-- While the vacuum is cleaning, the icon swings left and right.
-- The icon uses `icon_color` when the card is off and `icon_color_on` when it is on. You can set a different icon for the on state with `icon_on`.
-- The state badge shows a short word for each state, in the language of Home Assistant.
-- Tap toggles the entity. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
-- These options work as usual: `name`, `icon`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
-
-If you do not set `icon`, the card shows the default `mdi:lightning-bolt`. Set `icon` to something that fits, for example `mdi:robot-vacuum`.
-
-## State badge texts
-
-Languages: Polish, English, German, French, Spanish, Italian and Dutch. For any other language, the card uses English.
-
-| State | English | Polish |
-|---|---|---|
-| `cleaning` | CLEANING | SPRZĄTA |
-| `docked` | DOCKED | ZADOKOWANY |
-| `returning` | RETURNING | WRACA |
-| `paused` | PAUSED | PAUZA |
-| `idle` | IDLE | GOTOWY |
-| `error` | ERROR | BŁĄD |
-| `charging` | CHARGING | ŁADUJE |
-
-For a state not on this list, the badge shows the state in capital letters.
+- Tap toggles the vacuum. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
+- The state badge shows the state of the vacuum in the language of your Home Assistant: for example `CLEANING`, `DOCKED`, `RETURNING`, `PAUSED`, `IDLE`, `ERROR` or `CHARGING`. The card knows English, Polish, German, French, Spanish, Italian and Dutch. For a state it does not know, it shows the state in capital letters.
+- The card is lit while the vacuum is `cleaning` or `returning`. In the other states, it is off.
+- The icon sweeps from side to side while the vacuum is `cleaning`.
+- Three buttons on the bar: ▶ start, ⏸ pause and 🏠 base. They call `vacuum.start`, `vacuum.pause` and `vacuum.return_to_base`.
+- These options work as usual: `name`, `name_on`, `name_off`, `icon`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
 
 ## Setup
 
-No extra switch is needed. Enter the vacuum entity in the **⚙️ General** tab and the card works.
+- Open the tab **🧹 Vacuum Buttons** and switch on Show control buttons (start / pause / dock) (`show_more: true`). Without it, the buttons are not shown.
+- In the same tab, set the Bar height (`slider_height`, 16–60 px). It sets the size of the bar, of the buttons and of their icons. For buttons, 24 or more is a good choice.
+- To change the colors, use Bar color (`bar_color`) and Bar icons color (`bar_icon_color`) in the same tab. If you leave Bar icons color empty, the icons on the buttons use `icon_color` and `icon_color_on`.
+- A vacuum card has no power options, so this tab shows only the switch, the bar height and the colors.
+- To change the state text, write your own text for each state in `custom_states_labels` (YAML). See below.
+- To change which states light the card, set `custom_states_on` (YAML). For example, add `paused` to keep the card lit when the vacuum is paused.
+- To configure icon colors, use the following options:
+   - icon_color: '#9e9e9e' — sets the icon color when the card is off.
+   - icon_color_on: '#4caf50' — sets the icon color when the card is lit.
 
-The **📝 Text** tab has **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). Fill in both. If both are set, they replace all the texts from the table above, so the badge shows only two texts: one for cleaning and returning, and one for all other states. Leave them empty to keep the texts per state.
-
-## Minimal example
+## Your own text for each state
 
 ```yaml
-type: custom:piotras-smart-button
-entity: vacuum.robot
-name: Robot
-icon: mdi:robot-vacuum
+custom_states_labels:
+  cleaning: Cleaning now
+  returning: Going home
+  docked: At home
+  paused: Waiting
+  error: Needs help
 ```
 
-<details>
-<summary>Full example</summary>
+The card checks your text first. For a state that you did not write, it uses its own text. The older name `vacuum_states_labels` works too.
+
+## 📋 Full example
 
 ```yaml
 type: custom:piotras-smart-button
 entity: vacuum.robot
 name: Robot
 icon: mdi:robot-vacuum
-icon_on: mdi:robot-vacuum
-icon_color: "#f0c040"
-icon_color_on: "#69f0ae"
-icon_style: circle_color
-icon_size: 28
+icon_color: '#9e9e9e'
+icon_color_on: '#4caf50'
+icon_size: 32
+show_more: true
+slider_height: 30
+bar_color: 'rgba(0, 0, 0, 0.5)'
+bar_icon_color: '#ffffff'
+custom_states_labels:
+  cleaning: Cleaning now
+  returning: Going home
+  docked: At home
+custom_states_on:
+  - cleaning
+  - returning
+  - paused
 tap_action:
-  action: toggle
-double_tap_action:
   action: more-info
-hold_action:
-  action: more-info
-card_width: 140
-card_height: 120
 ```
-
-</details>
 
 ## Go further
 
@@ -85,6 +75,9 @@ Everything above works from the visual editor. For special options, see the guid
 
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
+
+---
 
 > 🔙 Back to the [Main README](../README.md)
