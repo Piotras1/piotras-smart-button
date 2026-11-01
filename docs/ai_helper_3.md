@@ -37,6 +37,14 @@ icon: mdi:thermometer
 icon_color: customData.color
 show_state: false
 
+This also works with nesting, if `custom_data` returns a whole object:
+custom_data:
+  Configuration: |-
+    p{{{
+      return { temperature: 21.5, color: '#22c55e' };
+    }}}q
+name: customData.Configuration.color
+
 CLICKABLE ELEMENTS (custom_tap)
 - Build the element as HTML in `custom_data`. Put `${customTap.id(...)}` or `${customTap.id_js(...)}` inside its opening tag. Show it with `name: customData.<key>`.
 - Control entities: `customTap.id('lamp')` plus an entry `lamp:` under `custom_tap:`, or inline: `customTap.id({ action: 'toggle', entity: 'light.living_room' })`.
