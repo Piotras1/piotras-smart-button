@@ -1,9 +1,9 @@
-# 🔹 Battery
+# 🔋 Battery
 
 A card for battery sensors. It works with any entity that has `device_class: battery`, for example a phone or tablet battery sensor.
 
-![Battery 1](../img/piotras-smart-button-battery-1.jpg)
-![Battery 2](../img/piotras-smart-button-battery-2.jpg)
+![Battery](../img/piotras-smart-button-batery-v3.jpg)
+
 
 ## What you get
 
@@ -33,44 +33,30 @@ To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`nam
 |---|---|
 | `entity_battery_state` | Charging state sensor. The card reacts to the state `charging`. Other states: `discharging`, `full`, `not_charging` |
 
-## Minimal example
+## 📋 Full example from screenshot
 
 ```yaml
 type: custom:piotras-smart-button
-entity: sensor.phone_battery
+entity: sensor.phone_battery_level
 name: Phone
-show_more: true
-entity_battery_state: sensor.phone_battery_state
-```
-
-<details>
-<summary>Full example</summary>
-
-```yaml
-type: custom:piotras-smart-button
-entity: sensor.phone_battery
-name: Phone
-icon_color: "#f0c040"
-icon_color_on: "#69f0ae"
+icon_color: '#f0c040'
+icon_color_on: '#69f0ae'
 icon_style: circle_color
-icon_size: 28
+icon_size: 26
+icon_wrap_size: 30
+background_color1: auto
 name_on: Charging
 name_off: On battery
 show_more: true
 entity_battery_state: sensor.phone_battery_state
 slider_height: 30
-slider_label_color: "rgba(255,255,255,0.85)"
 card_width: 140
 card_height: 120
+icon_mode: 1
 tap_action:
-  action: more-info
-double_tap_action:
-  action: none
-hold_action:
   action: more-info
 ```
 
-</details>
 
 ## Go further
 
@@ -83,8 +69,17 @@ Everything above works from the visual editor. For special options, see the guid
 - 🖱️ [Custom Tap](custom_tap_3.md) — clickable elements and your own panels
 - ⚙️ [Configuration Reference](configuration_3.md) — the full list of options
 
+## 🛠️ Ready-to-Use
+
+> 🧩 **[Dynamic Battery Gauge & Charging Status (`batteryGauge`)](https://github.com/Piotras1/piotras-smart-button/discussions/27)**
+>  
+> <a href="https://github.com/Piotras1/piotras-smart-button/discussions/27"><img src="../img/piotras-smart-button-batery-v3b.jpg" width="100" alt="Dynamic Background Preview"></a>  
+
 ## More ideas
 
-> 💬 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell)
+* 🙌 [Show and Tell](https://github.com/Piotras1/piotras-smart-button/discussions/categories/show-and-tell) — Dashboards and setups shared by the community — good for ideas.
+* 🧩 [Custom Data & Modules](https://github.com/Piotras1/piotras-smart-button/discussions/categories/custom-data-modules) — Ready-made custom_data modules to copy and paste.
+
+---
 
 > 🔙 Back to the [Main README](../README.md)
