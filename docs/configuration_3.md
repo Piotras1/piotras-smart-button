@@ -10,6 +10,24 @@ type: custom:piotras-smart-button
 
 If you do not write an option, the card uses the default value from the tables.
 
+## The `auto` value
+
+Many options accept `auto`. The card then takes the value from Home Assistant, so it fits your theme. In the visual editor, these fields have an **Auto** button.
+
+| Option | What `auto` does |
+|---|---|
+| `card_width` | The card fills the available width |
+| `card_height` | The card fits its content. See [Size](#-size) |
+| `background_color1`, `background_color2`, `background_color3` | The card color of your Home Assistant theme |
+| `icon_color`, `icon_color_on` | The color of the entity, for example the current color of a light. If the entity has no color, the default color |
+| `text_color`, `value_color` | The text color of your theme. It follows light and dark mode |
+| `border_color` | The border color of your theme. See [Size](#-size) |
+| `bar_color` | A soft tint of the text color of your theme |
+| `bar_icon_color`, `slider_label_color` | The text color of your theme |
+| `clock_tile_bg` | A soft tint of the text color |
+
+The colors that follow your theme change at once when you switch the theme.
+
 ## ⚙️ General
 
 | Option | Default | What it does |
@@ -25,20 +43,24 @@ If you do not write an option, the card uses the default value from the tables.
 
 | Option | Default | What it does |
 |---|---|---|
-| `card_width` | `140` | Width. A number in px, a percent such as `100%`, or `auto` |
-| `card_height` | `120` | Height. A number in px, or `auto` |
+| `card_width` | `140` | Width. A number in px, a percent such as `100%`, or `auto` (fills the available width) |
+| `card_height` | `120` | Height. A number in px, or `auto` (fits the content) |
 | `border_radius` | `12` | Rounded corners in px. Range in the editor: 0–80 |
-| `border_width` | `0` | Border width in px. Range in the editor: 0–20 |
-| `border_color` | `rgba(255,255,255,0.2)` | Border color |
+| `border_width` | `0` | Border width in px. Range in the editor: 0–20. If `border_color` is `auto` and you do not set `border_width`, the card uses the width of the Home Assistant card border, usually 1 px. Set `0` for no border |
+| `border_color` | `rgba(255,255,255,0.2)` | Border color. Use `auto` for the border color of your Home Assistant theme |
 | `box_shadow` | none | Outer shadow, as a CSS value. For example `0 0 12px rgba(0,0,0,0.8)` |
+
+**Auto height.** With `card_height: auto`, the card measures its content: the icon, the name, the state and the bottom bar. It grows when the content needs more space, for example with a bigger font or with the bar turned on. It is never lower than `icon_wrap_size` + 32 px. A calendar needs at least 200 px, and it grows with `name_size`. In a Sections view, the card also fills the whole cell when the cell is taller than the content.
+
+**Auto border.** `border_color: auto` uses the border color of your theme (`--ha-card-border-color`). If your theme does not set it, the card uses a soft tint of the text color of your theme, so the border is visible in light and dark mode.
 
 ## 🖼 Background
 
 | Option | Default | What it does |
 |---|---|---|
 | `background_color1` | `#1a1a2e` | The background color. Use `auto` for the card color of your Home Assistant theme |
-| `background_color2` | empty | A second color. With it, the background becomes a gradient |
-| `background_color3` | empty | A third color for the gradient |
+| `background_color2` | empty | A second color. With it, the background becomes a gradient. It can be `auto` too |
+| `background_color3` | empty | A third color for the gradient. It can be `auto` too |
 | `background_gradient_angle` | `135` | The direction of the gradient. Range in the editor: 0–360 |
 | `show_image` | `false` | Uses an image as the background instead of the colors |
 | `background_image_on` | none | The image when the card is on. For example `/local/images/on.jpg` |
@@ -65,8 +87,8 @@ In the editor, you set each filter with three sliders: **Brightness** (0–2), *
 |---|---|---|
 | `icon` | none | The icon, for example `mdi:lightbulb`. If empty, the card shows `mdi:lightning-bolt`. Battery, temperature, humidity, weather and cover cards choose their own icon |
 | `icon_on` | none | The icon when the card is on. If empty, the card uses `icon` |
-| `icon_color` | `#f0c040` | The icon color when the card is off. Use `auto` to take the color from the light |
-| `icon_color_on` | `#ffffff` | The icon color when the card is on. Use `auto` to take the color from the light |
+| `icon_color` | `#f0c040` | The icon color when the card is off. Use `auto` to take the color from the entity |
+| `icon_color_on` | `#ffffff` | The icon color when the card is on. Use `auto` to take the color from the entity |
 | `icon_size` | `28` | Icon size in px. Range in the editor: 10–100 |
 | `icon_wrap_size` | `48` | The size of the circle or square behind the icon, in px. Range in the editor: 20–120 |
 | `icon_style` | `circle_color` | The shape behind the icon: `circle_color`, `circle`, `square_color`, `square` or `none` |
@@ -74,9 +96,9 @@ In the editor, you set each filter with three sliders: **Brightness** (0–2), *
 | `icon_over_size` | `4` | How much the icon goes over the edge, when `show_icon_full` is `false`. A higher value gives a smaller overlap. Range in the editor: 2–10 |
 | `cover_type` | `auto` | The type of a cover, for the automatic icon: `auto` (taken from the `device_class` of the cover), `shutter`, `blind`, `curtain`, `garage`, `gate`, `door` or `window`. It works only when `icon` and `icon_on` are empty |
 
-With `auto`, the color comes from the light: its `rgb_color` or `hs_color`. If the entity has no color, the card uses the default.
+With `auto`, the color comes from the entity: for a light, its `rgb_color` or `hs_color`. If the entity has no color, the card uses the default.
 
-On a calendar card, `icon_color` and `icon_color_on` are the colors of the past days and of the today badge. See [Calendar](calendar_3.md).
+On a calendar card, `icon_color` and `icon_color_on` are the colors of the past days and of the today badge. With `auto`, the card uses the default colors. The number of today changes its color by itself when it would be hard to read on the badge. See [Calendar](calendar_3.md).
 
 **Automatic icon of a cover.** When `icon` and `icon_on` are empty, a cover card chooses the icon by the type and the state of the cover: one icon for closed, one for open, and an arrow while the cover is opening or closing. A cover that is only partly open uses the open icon. An icon that you set always wins.
 
@@ -100,10 +122,10 @@ While the cover is opening, the icon is `mdi:arrow-up-box`. While it is closing,
 |---|---|---|
 | `font_style` | `1` | `1` normal, `2` small caps, `3` monospace, `4` uppercase. Range in the editor: 1–4 |
 | `text_shadow` | `true` | The shadow under the text. Set `false` to remove it. It helps on a bright background, where the dark shadow looks dirty |
-| `name_size` | `14` | Name font size in px. Range in the editor: 6–40 |
-| `state_size` | `12` | State badge font size in px. Range in the editor: 6–40. On a calendar card, it is the size of the letters of the calendar |
-| `text_color` | `#ffffff` | The color of the name |
-| `value_color` | the value of `text_color` | The color of the state badge |
+| `name_size` | `14` | Name font size in px. Range in the editor: 6–40. On a calendar card, it is the size of the calendar text: the month name, the weekday letters and the day numbers |
+| `state_size` | `12` | State badge font size in px. Range in the editor: 6–40. On a calendar card, it is the size of the event details |
+| `text_color` | `#ffffff` | The color of the name. Use `auto` for the text color of your Home Assistant theme |
+| `value_color` | the value of `text_color` | The color of the state badge. Use `auto` for the text color of your theme |
 | `text_shadow_color` | none | The color of the shadow. If empty, the shadow is dark. For dark text on a bright background, try `rgba(255,255,255,0.8)`. The shape of the shadow stays the same |
 | `name_on` | none | The text of the state badge when the card is on |
 | `name_off` | none | The text of the state badge when the card is off |
@@ -116,7 +138,12 @@ In the visual editor, the color options of this tab are together in the **Colors
 
 On a clock card, `name_size` and `text_color` are the size and color of the clock, and `state_size` and `value_color` are the size and color of the greeting. See [Clock](clock_3.md).
 
-On a calendar card, `state_size` sets the size of the letters: the month name, the weekday letters and the day numbers. `text_color` is the color of the calendar text. See [Calendar](calendar_3.md).
+**Calendar sizes.** On a calendar card, the two sizes work like this:
+
+- `name_size` sets the main page: the month name (it is 2 px larger), the weekday letters and the day numbers. If the value is too big for the height of the card, the three sizes are limited together, so they always match. With `card_height: auto`, the card grows with `name_size`.
+- `state_size` sets the event details, which open when you tap a day. The title and the time of the event have this size. The date at the top is 2 px larger, and the description is 80% of it.
+
+`text_color` is the color of the calendar text. See [Calendar](calendar_3.md).
 
 ## 🔲 Layout
 
@@ -136,24 +163,26 @@ The card has nine places, numbered like this:
 
 Elements in the same place stack: icon, then name, then state.
 
+When the bottom bar is shown (`show_more`), elements placed in the bottom row (`7`, `8`, `9`) move up one row (to `4`, `5`, `6`), so the bar has room. If the entity has no bar, nothing moves.
+
 ## 🎚 Slider & Power
 
 This tab sets the bar at the bottom of the card. For a vacuum, the tab is called **🧹 Vacuum Buttons**. The settings of a fan and of a cover are in this tab too.
 
 | Option | Default | What it does |
 |---|---|---|
-| `show_more` | `false` | Shows the bar at the bottom of the card. What it shows depends on the entity: a slider, the power, the battery level, the comfort value, the thermostat buttons, the last change, humidity and wind, the date on a clock, or the buttons of a fan, a cover or a vacuum |
+| `show_more` | `false` | Shows the bar at the bottom of the card. What it shows depends on the entity: a slider, the power, the battery level, the comfort value, the thermostat buttons, the last change, humidity and wind, the date on a clock, or the buttons of a fan, a cover or a vacuum. It works only for an entity that has a bar. For other entities, and for a card without an entity, the option is ignored. See [Which entities have a bar](#which-entities-have-a-bar) |
 | `slider_height` | `26` | Bar height in px. For a fan, a cover and a vacuum, it also sets the size of the buttons and of their icons. Range in the editor: 16–60. For buttons, 24 or more is a good choice |
-| `slider_label_color` | `rgba(255,255,255,0.85)` | The color of the text on the bar |
+| `slider_label_color` | `rgba(255,255,255,0.85)` | The color of the text on the bar. Use `auto` for the text color of your theme |
 | `bar_color` | none | The background of the bottom bars. See [Bar colors](#bar-colors) |
 | `bar_icon_color` | none | The color of the icons and buttons on the bar. See [Bar colors](#bar-colors) |
 | `show_player` | `false` | Shows the player buttons of a media player |
 | `player_mode` | `1` | The layout of the player bar: `1` volume at the bottom and buttons above, `2` buttons left and volume right, `3` volume left and buttons right |
 | `player_height` | `28` | The size of the player buttons of a media player in px. Range in the editor: 16–80. A fan, a cover and a vacuum do not use it, they use `slider_height` |
-| `entity_battery_state` | none | The sensor with the charging state of a battery |
+| `entity_battery_state` | none | The sensor with the charging state of a battery. If the sensor does not exist, the card ignores it: the bar shows the battery level without the charging state |
 | `comfort_min` | none | The lowest comfortable value of a temperature or humidity sensor. Range in the editor: -50 to 100 |
 | `comfort_max` | none | The highest comfortable value of a temperature or humidity sensor. Range in the editor: -50 to 100 |
-| `entity_watts` | none | The power sensor of a socket |
+| `entity_watts` | none | The power sensor of a socket. If the sensor does not exist, the bar shows `0W` |
 | `max_watts` | `2000` | The power in watts that fills the whole power bar. Range in the editor: 100–10000 |
 | `con_warning` | `80` | The percent of the power bar above which it pulses. Use `false` to turn the warning off. Range in the editor: 1–100 |
 
@@ -161,14 +190,29 @@ In the visual editor, the colors of the bar are together in the **Bar colors** s
 
 The buttons of a fan, a cover and a vacuum show only when `show_more` is `true`. A vacuum card has no power options, so the **🧹 Vacuum Buttons** tab shows only the switch and the bar height.
 
+### Which entities have a bar
+
+| Entity | What the bar shows |
+|---|---|
+| `light`, `fan`, `cover`, `media_player` | Sliders and buttons |
+| `climate` | The `−` and `+` buttons |
+| `vacuum` | The buttons |
+| `person`, `device_tracker` | The last change |
+| `weather` | Humidity and wind |
+| `switch`, `input_boolean`, `script`, `automation` | The power bar. It needs `entity_watts` |
+| A sensor with `device_class` `battery`, `temperature` or `humidity` | The battery level or the comfort range |
+| `on.clock` | The date |
+
+For other entities (for example `lock`, `binary_sensor` or a sensor with another `device_class`), and for a card without an entity, `show_more` does nothing. The visual editor locks the **Slider & Power** tab for them. See [Visual Editor](edytor_3.md#when-the-bar-is-not-available).
+
 ### Bar colors
 
 | Option | Default | What it does |
 |---|---|---|
-| `bar_color` | none | The background of the bottom bars: the slider, the bar of buttons and the countdown bar. If empty, the bars are dark and a little transparent. Any CSS color works, for example `#112233` or `rgba(10,20,40,0.8)` |
-| `bar_icon_color` | none | The color of the icons and buttons on the bar: the buttons of a fan, a cover, a vacuum and a media player, and the `−` and `+` of a thermostat. If empty, the icons on the buttons use `icon_color` when the card is off and `icon_color_on` when it is on |
+| `bar_color` | none | The background of the bottom bars: the slider, the bar of buttons and the countdown bar. If empty, the bars are dark and a little transparent. Any CSS color works, for example `#112233` or `rgba(10,20,40,0.8)`. Use `auto` for a soft tint of the text color of your theme |
+| `bar_icon_color` | none | The color of the icons and buttons on the bar: the buttons of a fan, a cover, a vacuum and a media player, and the `−` and `+` of a thermostat. If empty, the icons on the buttons use `icon_color` when the card is off and `icon_color_on` when it is on. Use `auto` for the text color of your theme |
 
-`bar_icon_color` does not change the main icon of the card, the colored icons of a person or a temperature bar, or the text on the bar. The text uses `slider_label_color`.
+`bar_icon_color` does not change the main icon of the card, the colored icons of a person or a temperature bar, or the text on the bar. The text uses `slider_label_color`. The visual editor shows `bar_icon_color` only for a bar that has buttons or icons.
 
 ### Fan
 
@@ -267,7 +311,7 @@ A vacuum card with `show_more: true` shows the buttons start, pause and base. Th
 |---|---|---|
 | `tap_action` | `toggle` | A short tap |
 | `double_tap_action` | `none` | Two taps one after another |
-| `hold_action` | `none` | A press of half a second |
+| `hold_action` | `none` | A press of half a second. If it is `none`, a long press works like a normal tap |
 
 Each action has these fields in the editor:
 
@@ -282,7 +326,7 @@ Each action has these fields in the editor:
 | Option | Default | What it does |
 |---|---|---|
 | `clock_mode` | `1` | `1` digits, `2` flip tiles, `3` analog, `4` LED |
-| `clock_tile_bg` | none | The background of the tiles, the analog face or the LED panel |
+| `clock_tile_bg` | none | The background of the tiles, the analog face or the LED panel. Use `auto` for a soft tint of the text color |
 | `clock_12h` | `false` | 12-hour format with AM/PM |
 
 ## 📅 Calendar
@@ -291,6 +335,18 @@ Each action has these fields in the editor:
 |---|---|---|
 | `calendar_extended` | none | The sensor with the events |
 | `calendar_days_ahead` | `7` | How many days from today are checked for events. Range in the editor: 5–30 |
+
+The calendar fits the real size of the card, so `card_width` and `card_height` can be a number, a percent or `auto`. The sizes of the text are set by `name_size` and `state_size`, see [Calendar sizes](#-text).
+
+## 🌐 Language
+
+The card follows the language of Home Assistant.
+
+- **State names.** For a vacuum, an alarm panel and every entity that uses `custom_states_on`, the state badge shows the state name from Home Assistant, in capital letters. In a Polish Home Assistant, a docked vacuum shows `ZADOKOWANY`. If Home Assistant cannot give the name, the card shows the state as it is, for example `DOCKED`. Your `custom_states_labels` and `name_on` / `name_off` always have priority.
+- **Short texts.** The tooltips of the buttons (start, pause, return to base, turn on, turn off, previous, next) and the texts of the calendar ("No details", the name of an event without a title) are in English, Polish, German, French, Spanish, Italian and Dutch. For other languages, the card uses English.
+- **Other badges.** `ON`, `OFF`, `DIM`, `PLAY`, `HEAT`, `OPEN` and `CLOSED` stay short English labels. To change them, use `name_on` / `name_off` or `custom_states_labels`.
+
+The names from Home Assistant can be longer than the old short labels. If a label is too long for a narrow card, set your own text with `custom_states_labels`.
 
 ## Options only in YAML
 
@@ -319,6 +375,21 @@ Older names that still work: `vacuum_states_labels` (the same as `custom_states_
 ## Templates
 
 You can use a template or a reference to `custom_data` in most of the options above. See [Custom Data & Templates](custom_data_guide_3.md) for the list.
+
+If a template has an error, the card writes a message in the browser console and keeps working. When you read an entity in your code, write it in a safe way, for example `states['sensor.x']?.state`. Then a missing entity does not stop your code.
+
+## Messages in the browser console
+
+The card never stops working because of a wrong entity or a wrong value. When something needs your attention, it writes a short message in the browser console (F12). Every message starts with `[PSB]`.
+
+| Message | What it means |
+|---|---|
+| `[PSB] entity_battery_state "…" was not found in Home Assistant` | An entity id in `entity`, `entity_battery_state` or `entity_watts` does not exist. Check the id. The card keeps working without it. The message appears once, about 1.5 seconds after you stop typing in the editor |
+| `[PSB] … failed, the rest of the card keeps working` | A part of the card had a problem. The rest of the card is not affected. If it repeats, open an issue on GitHub and add this line and the YAML of the card |
+| `[PSB] Syntax error in p{{{ }}}q block`, `Template block execution error`, `Unsupported template syntax` | A template has a mistake. See [Custom Data & Templates](custom_data_guide_3.md) |
+| `[PSB] Error in custom_data['…']`, `Error in custom_tap['…']` | A `custom_data` or `custom_tap` code has a mistake |
+| `[PSB] custom_tap["…"] is not defined in the card config` | An element uses a `custom_tap` name that you did not define |
+| `[PSB editor] render failed` | The visual editor cannot show the configuration. See [Visual Editor](edytor_3.md#if-the-editor-shows-an-error-message) |
 
 ## Guides by type of entity
 
