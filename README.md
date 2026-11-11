@@ -35,13 +35,18 @@ Not sure where to start? Find your device in the table below. Levels 2 and 3 are
 One card, three levels — start simple and go as deep as you like. Each level builds on the previous one, and cards from earlier versions keep working.
 
 ### 🖥 Level 1 — Visual editor, no YAML
-Pick an entity and set everything up from the Home Assistant UI: layout, size, icon, text, background, sliders, actions and services. Sliders for brightness, color temperature, volume, position and fan speed are detected automatically. The table below lists the ready-made cards you get this way — lights, media players, thermostats, gates and blinds, vacuums, alarms, weather, clock, calendar, batteries, sockets, chip buttons and more.
+Pick an entity and set everything up from the Home Assistant UI: layout, size, icon, text, background, sliders, actions and services. Sliders for brightness, color temperature, volume, position and fan speed are detected automatically. The editor only offers what the picked entity can actually do — for example, the slider / power bar options are locked for entities that have no bar. The table below lists the ready-made cards you get this way — lights, media players, thermostats, gates and blinds, vacuums, alarms, weather, clock, calendar, batteries, sockets, chip buttons and more.
 
 ### 🏷️ Level 2 — Small customizations, a few lines of YAML
 No programming needed. Write your own text for each state (**Custom State Labels**, including HTML and time-of-day greetings), decide which states count as "on" and lock the card while something is running (**Custom States On & Blockade**), or hide the whole card when it doesn't matter (**Conditional Visibility**).
 
 ### 🧩 Level 3 — Pro: `custom_data` and `custom_tap` (v3.0)
 Write your own JavaScript to read any entities and compute values, text and colors (**Custom Data**), then make anything you generate clickable and keep your own state on the card (**Custom Tap**). No main entity is needed, so the card becomes a blank canvas for keypads, charts and multi-device control panels — all inside a single card.
+
+### 🎯 Made for every setup
+- **Follows your theme** — text, icon, background, border and bar colors can be set to `auto` to match your Home Assistant theme in light and dark mode. `card_width` and `card_height` can also be `auto`, so the card fits its content.
+- **Speaks your language** — state names for vacuums and alarm panels come from Home Assistant itself, and button tooltips follow the Home Assistant language.
+- **Never breaks your dashboard** — a wrong or missing entity id doesn't take the card down. It keeps rendering and prints a short `[PSB]` hint in the browser console (F12) that tells you what to check.
 
 *Works with lights, media players, climate, covers, fans, vacuums, alarms, weather, sensors, scripts and more.*
 
@@ -76,10 +81,12 @@ Write your own JavaScript to read any entities and compute values, text and colo
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-smart-button/piotras-smart-button-loader.js?v=3.1.0
+/local/piotras-smart-button/piotras-smart-button-loader.js?v=3.2.0
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
+
+> 💡 After every update, change the number after `?v=` (or clear the browser cache), otherwise the browser may keep running the old file.
 
 </details>
 
