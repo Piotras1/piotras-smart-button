@@ -8,19 +8,41 @@ A month calendar card. It shows the current month, highlights today and marks da
 
 - The card switches to calendar mode when `entity` is `on.calendar`. The entity does not need to exist in Home Assistant.
 - A grid with the current month. The month name and the weekday names follow the language of Home Assistant. The week starts on Monday.
-- Today is highlighted with a badge. Past days of the current month are dimmed.
+- Today is highlighted with a badge. The number of today changes its color by itself when it would be hard to read on the badge. Past days of the current month are dimmed.
 - With an events sensor (see below), days with upcoming events are underlined. Tap such a day to see the time, title and description of its events. The list closes after 10 seconds, or when you tap it.
+- An event without a title shows the word "Event", in the language of Home Assistant. If a title or a description contains HTML, the card shows it as plain text.
 - If events reach into the next month, a small arrow appears next to the month name. Tap it to preview the next month. The card goes back to the current month after 30 seconds.
 - The card has no ON and OFF state. Tap on the card itself does nothing by default. You can set your own action for tap, double-tap and hold in the **⚡ Actions** tab.
 - These options work as usual: `card_width`, `card_height`, `border_radius`, background and filters.
 
-The calendar uses `card_width` and `card_height` to scale the grid. If you do not set them, it assumes 200 × 180 px. Give the card enough space for the grid.
+## Size and spacing
+
+The calendar fits the real size of the card. Set `card_width` and `card_height` in the **📐 Size** tab:
+
+- A number in px, for example `220` and `200`.
+- `card_width: 100%` or `auto`: the calendar fills the available width.
+- `card_height: auto`: the card grows to fit the calendar. It is never lower than 200 px, and it grows when you make `name_size` bigger. In a Sections view, the card fills the whole cell.
+
+If you do not set them, the card is 140 × 120 px. This is small for a calendar, so set a bigger size, for example 220 × 200, or use `auto`.
+
+The calendar leaves a free space around the grid: about 10% of the width on both sides. With `card_height: auto`, there is a little more free space at the top and at the bottom.
+
+## Text sizes
+
+Two options set the size of the text. In the editor, both are in the **Calendar** section of the **📝 Text** tab.
+
+| Option | Name in the editor | What it sets |
+|---|---|---|
+| `name_size` (default 14) | **Calendar text size** | The main page: the month name (it is 2 px larger), the weekday letters and the day numbers |
+| `state_size` (default 12) | **Event details size** | The details of a day, which open when you tap it: the title and the time of an event. The date at the top is 2 px larger, and the description is 80% of it |
+
+If the value of `name_size` is too big for the height of the card, the sizes of the grid are limited together, so the month, the weekdays and the numbers always match. Give the card more height, or use `card_height: auto`, to get bigger text.
 
 ## Setup
 
 Enter `on.calendar` in **Entity** in the **⚙️ General** tab. The **Calendar display** section appears below, with two options:
 
-- **Extended events entity** (`calendar_extended`) — a sensor with the events. Without it, the card shows the month grid only, with no marked days.
+- **Extended events entity** (`calendar_extended`) — a sensor with the events. Without it, or if the sensor does not exist, the card shows the month grid only, with no marked days.
 - **Days ahead (event window)** (`calendar_days_ahead`) — how many days from today are checked for events. Range in the editor: 5–30. Default: 7.
 
 Colors:
@@ -29,7 +51,9 @@ Colors:
 - **Today badge color** (`icon_color_on`) in the **💡 Icon** tab — the color of the today badge, the underline of marked days and the month arrow.
 - **Calendar text color** (`text_color`) in the **📝 Text** tab — the color of the month name, weekday names and day numbers.
 
-The **State font size** (`state_size`) changes the size of the text in the grid.
+With `auto`, `icon_color` and `icon_color_on` use the default color (gold). With `text_color: auto`, the text takes the text color of your Home Assistant theme and follows light and dark mode.
+
+To match your theme, you can also set `background_color1: auto` and `border_color: auto`. See the [Configuration Reference](configuration_3.md#the-auto-value).
 
 ### Extra entities
 
@@ -45,7 +69,7 @@ entity: on.calendar
 icon_color: '#f0c040'
 icon_color_on: '#ff8000'
 text_color: '#ffffff'
-state_size: 12
+name_size: 12
 card_width: 220
 card_height: 200
 border_radius: 20
@@ -61,11 +85,30 @@ calendar_days_ahead: 30
 icon_color: '#f0c040'
 icon_color_on: '#ff8000'
 text_color: '#ffffff'
+name_size: 12
 state_size: 12
 card_width: 220
 card_height: 200
 border_radius: 20
 show_press_effect: false
+```
+
+## 📋 Option C: Fits Your Theme and the Space
+
+The card fills the available width, grows to fit the calendar, and uses the colors of your Home Assistant theme.
+
+```yaml
+type: custom:piotras-smart-button
+entity: on.calendar
+calendar_extended: sensor.extended_calendar
+calendar_days_ahead: 14
+text_color: auto
+background_color1: auto
+border_color: auto
+card_width: auto
+card_height: auto
+name_size: 14
+state_size: 12
 ```
 
 ## Go further
