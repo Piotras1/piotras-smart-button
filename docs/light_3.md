@@ -6,8 +6,8 @@ A card for `light` entities. It shows the light state and adds sliders for brigh
 
 ## What you get
 
-- Tap toggles the light. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
-- The state badge shows `OFF` when the light is off, `DIM` when it is on and supports brightness, and `ON` when it is on without brightness.
+- Tap toggles the light. Double-tap does nothing by default, and a long press works like a normal tap until you set a hold action. You can set all three in the **⚡ Actions** tab.
+- The state badge shows `OFF` when the light is off, `DIM` when it is on and supports brightness, and `ON` when it is on without brightness. You can change these texts, see [Your own text for each state](#your-own-text-for-each-state).
 - The icon uses `icon_color` when the light is off and `icon_color_on` when it is on. You can set a different icon for the on state with `icon_on`.
 - A brightness slider (1–100%) appears automatically if the light reports brightness.
 - A color temperature slider appears automatically if the light reports color temperature. The label shows kelvin or mireds, depending on what the light provides.
@@ -16,11 +16,45 @@ A card for `light` entities. It shows the light state and adds sliders for brigh
 ## Setup
 
 - Open the **🎚 Slider & Power** tab and switch on Show slider or power bar (show_more: true). Without it, sliders are not shown.
-- In the same tab, you can set the Bar height (slider_height, 16–60 px) and the Label color (slider_label_color).
-- To change the state text, use the 📝 Text tab: Custom state (ON) (name_on) and Custom state (OFF) (name_off). Fill in both. If only one is set, the card ignores them.
+- In the same tab, you can set the Bar height (slider_height, 16–60 px) and the colors of the bar: Label color (slider_label_color) and Bar color (bar_color). Both fields have an **Auto** button, which takes the colors from your Home Assistant theme.
+- To change the state text, use the 📝 Text tab: Custom state (ON) (name_on) and Custom state (OFF) (name_off). Fill in both. If only one is set, the card ignores them. For more control, use `custom_states_labels` in YAML, see below.
 - To configure icon colors, use the following options:
    - icon_color: '#c0c0c0' — sets the default icon color when the entity is OFF.
-   - icon_color_on: auto — when set to auto, the icon dynamically inherits the entity's active color (e.g., current light color/temperature).
+   - icon_color_on: auto — when set to auto, the icon dynamically inherits the entity's active color (e.g., current light color/temperature). If the light has no color, the card uses the default color.
+
+## Your own text for each state
+
+`custom_states_labels` (YAML) lets you write your own text for the state badge. The card checks it first, so it has priority over `name_on` and `name_off`. For a case that you did not write, the card uses its normal text.
+
+**Texts for on, off and unavailable**
+
+```yaml
+custom_states_labels:
+  'on': Lit
+  'off': Dark
+  unavailable: Offline
+```
+
+Write `on` and `off` in quotes, as above. Without quotes, some YAML readers (for example a dashboard in YAML mode) turn them into `true` and `false`, and the text is not found.
+
+**Texts for the brightness**
+
+You can also write a text for a range of brightness, in percent. The card checks the exact state first (`off`, `unavailable`), then the brightness of the light.
+
+```yaml
+custom_states_labels:
+  'off': Dark
+  '1-30': Night light
+  '31-70': Cozy
+  '>=71': Bright
+```
+
+You can write a single number (`'50'`), a range (`'31-70'`), or a comparison: `'>=71'`, `'<=20'`, `'>50'` and `'<10'`.
+
+Two things to remember:
+
+- Do not write the key `on` in this example. A text for `on` is used for every brightness, so the ranges would never be reached.
+- A light that does not report brightness, so it only turns on and off, shows `ON`. For such lights, use the first example, with `on`.
 
 ## 📋 Full example from screenshot
 
@@ -52,10 +86,9 @@ hold_action:
   action: more-info
 ```
 
-
 ## Go further
 
-Everything above works from the visual editor. For special options, see the guides:
+Everything above works from the visual editor, except `custom_states_labels`. For special options, see the guides:
 
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
