@@ -12,16 +12,54 @@ A card for `climate` entities. It shows the room temperature and lets you change
 - A bar with − and + buttons appears at the bottom of the card when you switch on the slider bar. It shows the target temperature. Each tap changes it by 0.5°.
 - The bar respects the minimum and maximum temperature of the thermostat. If the thermostat does not report them, the card uses 5° and 35°.
 - When the thermostat is off, the bar shows `OFF` and has no buttons.
-- Tap toggles the entity. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
+- Tap toggles the entity. Double-tap does nothing by default, and a long press works like a normal tap until you set a hold action. You can set all three in the **⚡ Actions** tab.
 - These options work as usual: `name`, `icon`, `icon_style`, `tap_action`, `double_tap_action`, `hold_action`.
 
 ## Setup
 
 Open the **🎚 Slider & Power** tab and switch on **Show slider or power bar** (`show_more: true`). Without it, the − and + buttons are not shown.
 
-In the same tab you can set the **Bar height** (`slider_height`, 16–60 px) and the **Label color** (`slider_label_color`).
+In the same tab you can set the **Bar height** (`slider_height`, 16–60 px) and the colors of the bar, in the **Bar colors** section:
 
-For a climate entity, the **📝 Text** tab does not offer **Custom state (ON)** and **Custom state (OFF)**. The state badge always shows the room temperature.
+- **Label color** (`slider_label_color`) — the color of the text on the bar.
+- **Bar color** (`bar_color`) — the background of the bar.
+- **Bar icons color** (`bar_icon_color`) — the color of the − and + buttons.
+
+All three fields have an **Auto** button, which takes the colors from your Home Assistant theme.
+
+For a climate entity, the **📝 Text** tab does not offer **Custom state (ON)** and **Custom state (OFF)**. The state badge always shows the room temperature. To show an extra text, use `custom_states_labels` in YAML, see below.
+
+## Extra text under the temperature
+
+With `custom_states_labels` (YAML), the card can show a second, smaller text under the temperature, for example `Heating`. It is the same size as the state badge, but 5 px smaller (never below 8 px).
+
+The card looks for your text in this order, and shows the first one it finds:
+
+1. What the thermostat is doing now (`hvac_action`): `heating`, `cooling`, `idle`, `off` and so on.
+2. The mode of the thermostat (its state): `heat`, `cool`, `auto`, `heat_cool`, `off` and so on.
+3. The preset (`preset_mode`): `eco`, `away`, `comfort` and so on.
+
+```yaml
+custom_states_labels:
+  heating: Heating
+  cooling: Cooling
+  idle: Idle
+  'off': Off
+```
+
+Write `off` in quotes, as above. Without quotes, some YAML readers (for example a dashboard in YAML mode) turn it into `false`, and the text is not found.
+
+Only one text is shown at a time. If you write a text for the mode (for example `heat: Heat mode`), it is shown whenever the thermostat has no text for `hvac_action`, and the text for the preset is never reached. To show a preset, do not write a text for the mode:
+
+```yaml
+custom_states_labels:
+  heating: Heating
+  idle: Idle
+  eco: Eco mode
+  away: Away
+```
+
+If you write no texts, the card shows only the temperature.
 
 ## 📋 Full example from screenshot
 
@@ -54,7 +92,7 @@ tap_action:
 
 ## Go further
 
-Everything above works from the visual editor. For special options, see the guides:
+Everything above works from the visual editor, except `custom_states_labels`. For special options, see the guides:
 
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
