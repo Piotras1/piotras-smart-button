@@ -6,13 +6,13 @@ A card for `media_player` entities. It shows whether the player is playing and a
 
 ## What you get
 
-- The card turns ON when the player is playing. The state badge shows `PLAY` when it is playing and `STOP` in every other state, including paused and idle.
+- The card turns ON when the player is playing. The state badge shows `PLAY` when it is playing and `STOP` in every other state, including paused and idle. You can change these texts, see [Your own text for each state](#your-own-text-for-each-state).
 - The icon uses `icon_color` when the card is off and `icon_color_on` when it is on. You can set a different icon for the on state with `icon_on`.
 - A volume slider (0–100%) appears automatically if the player reports its volume. It appears when you switch on the slider bar.
 - Player buttons appear when you switch on **Show player buttons**: previous, play/pause, next and power.
 - When the player is off or unavailable, the player bar shows only the power button. It turns the player on. The volume slider is hidden.
 - Three layouts for the player bar. You can also change the height of the bar.
-- Tap toggles the player. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
+- Tap toggles the player. Double-tap does nothing by default, and a long press works like a normal tap until you set a hold action. You can set all three in the **⚡ Actions** tab.
 - Everything else works as on any other card: name, icon, colors, size and actions.
 
 ## Setup
@@ -35,9 +35,29 @@ If only **Show player buttons** is on, the buttons are shown without the volume 
 Other options in the same tab:
 
 - **Player bar height** (`player_height`, 16–80 px, default 28) — changes the size of the buttons.
-- **Bar height** (`slider_height`, 16–60 px) and **Label color** (`slider_label_color`) — the volume slider.
+- **Bar height** (`slider_height`, 16–60 px) — the volume slider.
+- The colors of the bar, in the **Bar colors** section: **Label color** (`slider_label_color`), **Bar color** (`bar_color`) and **Bar icons color** (`bar_icon_color`). **Bar icons color** is shown when **Show player buttons** is on, because it sets the color of the buttons. All three fields have an **Auto** button, which takes the colors from your Home Assistant theme.
 
-To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). For example, `Playing` and `Silent`. Fill in both. If only one is set, the card ignores them.
+To change the state text, use the **📝 Text** tab: **Custom state (ON)** (`name_on`) and **Custom state (OFF)** (`name_off`). For example, `Playing` and `Silent`. Fill in both. If only one is set, the card ignores them. For a text for each state, use `custom_states_labels` in YAML, see below.
+
+## Your own text for each state
+
+`custom_states_labels` (YAML) lets you write your own text for each state of the player. The card checks it first, so it has priority over `name_on` and `name_off`.
+
+```yaml
+custom_states_labels:
+  playing: Now playing
+  paused: Paused
+  idle: Idle
+  'off': Off
+  standby: Standby
+```
+
+Write `off` in quotes, as above. Without quotes, some YAML readers (for example a dashboard in YAML mode) turn it into `false`, and the text is not found.
+
+For a state that you did not write, for example `buffering` or `unavailable`, the card keeps its normal text: `PLAY` or `STOP`.
+
+The card is lit only while the player is playing. To light it also in other states, for example while paused, see [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md).
 
 ## 📋 Full example from screenshot
 
@@ -70,7 +90,7 @@ tap_action:
 
 ## Go further
 
-Everything above works from the visual editor. For special options, see the guides:
+Everything above works from the visual editor, except `custom_states_labels`. For special options, see the guides:
 
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
