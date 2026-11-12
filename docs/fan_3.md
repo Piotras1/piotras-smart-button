@@ -4,7 +4,7 @@ A card for `fan` entities. It shows the fan state, turns the icon while the fan 
 
 ## What you get
 
-- Tap toggles the fan. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
+- Tap toggles the fan. Double-tap does nothing by default, and a long press works like a normal tap until you set a hold action. You can set all three in the **⚡ Actions** tab.
 - The state badge shows `ON` or `OFF`. You can show your own text for each speed with `custom_states_labels` (see below).
 - The icon turns while the fan is on. The higher the speed, the faster it turns. If the fan has `direction: reverse`, the icon turns the other way.
 - Three ways to control the speed: a **slider**, **speed buttons** or **− / + buttons**. You choose one in the editor.
@@ -20,7 +20,7 @@ A card for `fan` entities. It shows the fan state, turns the icon while the fan 
    - **− / + buttons** — a `−` button, the current percentage and a `+` button. A tap on the percentage turns the fan on or off. When the speed gets to 0%, the fan turns off.
 - For the `−` and `+` buttons, set the step in `− / + step (%)` (`fan_step`, 1–50, default 10). If the fan has its own steps of 5% or more, the card uses them and ignores this value.
 - The size of the buttons follows the Bar height (`slider_height`, 16–60 px). For buttons, 24 or more is a good choice.
-- To change the colors, use Bar color (`bar_color`) and Bar icons color (`bar_icon_color`) in the same tab. If you leave Bar icons color empty, the icons on the buttons use `icon_color` and `icon_color_on`.
+- To change the colors, use Bar color (`bar_color`) and Bar icons color (`bar_icon_color`) in the same tab. If you leave Bar icons color empty, the icons on the buttons use `icon_color` and `icon_color_on`. Both fields have an **Auto** button: `bar_color: auto` is a soft tint of the text color of your Home Assistant theme, and `bar_icon_color: auto` is the text color of your theme.
 - To turn the spinning icon off, switch off Spin icon when fan is on (`fan_spin: false`).
 
 > 💡 **How many speeds does my fan have?** Open Developer tools → States and look at the `percentage_step` of your fan. `33.33` means 3 speeds, `25` means 4 speeds, `1` means a smooth fan with no steps. A smooth fan works best with the slider or with `−` and `+`.
@@ -41,6 +41,7 @@ custom_states_labels:
 - Do not add an `on` key. It would win over the ranges.
 - Start the first range at `1`, so that the off fan does not show `LOW`.
 - The card checks the keys from top to bottom and uses the first one that fits.
+- A fan that is on but does not report its speed shows `ON`.
 
 ## 📋 Full example
 
@@ -79,7 +80,7 @@ fan_step: 20
 
 ## Go further
 
-Everything above works from the visual editor. For special options, see the guides:
+Everything above works from the visual editor, except `custom_states_labels`. For special options, see the guides:
 
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
