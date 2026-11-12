@@ -6,7 +6,7 @@ For a gate or a garage door, see [Gates & Garage Doors](garage_3.md).
 
 ## What you get
 
-- Tap toggles the cover: it opens when closed and closes when open. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
+- Tap toggles the cover: it opens when closed and closes when open. Double-tap does nothing by default, and a long press works like a normal tap until you set a hold action. You can set all three in the **⚡ Actions** tab.
 - The state badge shows `CLOSED`, `OPEN`, `OPENING` or `CLOSING`. If the cover is only partly open, it shows the position, for example `40%`.
 - The card is lit while the cover is open, and also while it is opening or closing.
 - The icon is chosen for you by the type of the cover and by its state: one icon for closed, one for open, and an arrow while it moves. A cover that is only partly open uses the open icon. An icon that you set always wins.
@@ -22,7 +22,7 @@ For a gate or a garage door, see [Gates & Garage Doors](garage_3.md).
    - **▲ ■ ▼ buttons (open / stop / close)** — three buttons that open, stop and close the cover. The card shows only the buttons that the cover supports. While the cover moves, the button of that direction is highlighted.
 - For the `−` and `+` buttons, set the step in `− / + step (%)` (`cover_step`, 1–50, default 10).
 - The size of the buttons follows the Bar height (`slider_height`, 16–60 px). For buttons, 24 or more is a good choice.
-- To change the colors, use Bar color (`bar_color`) and Bar icons color (`bar_icon_color`) in the same tab. If you leave Bar icons color empty, the icons on the buttons use `icon_color` and `icon_color_on`.
+- To change the colors, use Bar color (`bar_color`) and Bar icons color (`bar_icon_color`) in the same tab. If you leave Bar icons color empty, the icons on the buttons use `icon_color` and `icon_color_on`. Both fields have an **Auto** button: `bar_color: auto` is a soft tint of the text color of your Home Assistant theme, and `bar_icon_color: auto` is the text color of your theme.
 - To choose the icon type, open the **💡 Icon** tab and set Cover type (automatic icon) (`cover_type`). With `auto`, the card takes the type from the `device_class` of the cover. Leave the Icon field empty to use the automatic icon.
 
 | Cover type | Closed | Open |
@@ -46,7 +46,8 @@ custom_states_labels:
 ```
 
 - Do not add an `open` key if you want the ranges to work. It would win over them.
-- The card checks the keys from top to bottom and uses the first one that fits.
+- The card checks the keys from top to bottom and uses the first one that fits. If two ranges overlap, the one that is higher in the list wins.
+- If you do not write `unavailable`, a cover that is unavailable shows `CLOSED`. Add a text for `unavailable`, for example `unavailable: No connection`, to show the real situation.
 
 If you use `custom_states_on`, add `opening` and `closing` to the list. Then the card stays lit while the cover moves.
 
@@ -82,7 +83,7 @@ cover_control: buttons
 
 ## Go further
 
-Everything above works from the visual editor. For special options, see the guides:
+Everything above works from the visual editor, except `custom_states_labels`. For special options, see the guides:
 
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
