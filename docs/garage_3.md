@@ -6,8 +6,8 @@ For blinds and shutters with a position, see [Blinds & Shutters](blinds_3.md).
 
 ## What you get
 
-- Tap toggles the cover. Double-tap and hold do nothing by default. You can set all three in the **⚡ Actions** tab.
-- The state badge shows `CLOSED`, `OPEN`, `OPENING` or `CLOSING`.
+- Tap toggles the cover. Double-tap does nothing by default, and a long press works like a normal tap until you set a hold action. You can set all three in the **⚡ Actions** tab. See the warning about the long press below.
+- The state badge shows `CLOSED`, `OPEN`, `OPENING` or `CLOSING`. You can write your own texts, see [Your own text for each state](#your-own-text-for-each-state).
 - The card is lit while the gate is open, and also while it is opening or closing.
 - The icon is chosen for you by the type and by the state: one icon for closed, one for open, and an arrow while it moves. An icon that you set always wins.
 - Three buttons on the bar: ▲ open, ■ stop and ▼ close. The card shows only the buttons that the cover supports.
@@ -26,7 +26,7 @@ For blinds and shutters with a position, see [Blinds & Shutters](blinds_3.md).
 - To pass data to a service, use YAML (`service_data`). The editor has no field for it.
 - To choose the icon, open the **💡 Icon** tab and set Cover type (automatic icon) (`cover_type`) to **Gate** or **Garage door**. If you leave it on `auto`, the card takes the type from the `device_class` of the cover. Leave the Icon field empty to use the automatic icon.
 - The size of the buttons follows the Bar height (`slider_height`, 16–60 px). For buttons, 24 or more is a good choice.
-- To change the colors, use Bar color (`bar_color`) and Bar icons color (`bar_icon_color`) in the same tab. If you leave Bar icons color empty, the icons on the buttons use `icon_color` and `icon_color_on`.
+- To change the colors, use Bar color (`bar_color`) and Bar icons color (`bar_icon_color`) in the same tab. If you leave Bar icons color empty, the icons on the buttons use `icon_color` and `icon_color_on`. Both fields have an **Auto** button: `bar_color: auto` is a soft tint of the text color of your Home Assistant theme, and `bar_icon_color: auto` is the text color of your theme.
 
 | Cover type | Closed | Open | Opening / closing |
 |---|---|---|---|
@@ -37,6 +37,26 @@ For blinds and shutters with a position, see [Blinds & Shutters](blinds_3.md).
 > 💡 **A button is missing?** The card reads the functions of the cover from its `supported_features`. A cover without a stop function has no ■ button. If you control the cover with scripts, add an action for that button, and it will show.
 
 > 💡 **The gate does not light up while it moves?** If you use `custom_states_on`, add `opening` and `closing` to the list.
+
+> ⚠️ **A long press can open the gate.** A long press works like a tap. If the tap is **Toggle** and you did not set a hold action, a long press also toggles the gate. To be safe, set the tap or the hold to **More info**, as in the examples below.
+
+## Your own text for each state
+
+With `custom_states_labels` (YAML), you can write your own text for the state badge, for example in your own language. The card checks it first, so it has priority over `name_on` and `name_off`.
+
+```yaml
+custom_states_labels:
+  open: Gate is open
+  closed: Gate is closed
+  opening: Opening...
+  closing: Closing...
+  unavailable: No connection
+```
+
+Two things to remember:
+
+- A cover that is only partly open shows its position in percent. If you write a text for `open`, the text is shown instead of the percentage.
+- If you do not write `unavailable`, a gate that is unavailable shows `CLOSED`. A text for `unavailable` shows the real situation.
 
 ## 📋 Full example
 
@@ -85,7 +105,7 @@ For a gate, `more-info` is a safe action for a tap. The toggle of some gates ope
 
 ## Go further
 
-Everything above works from the visual editor. For special options, see the guides:
+Everything above works from the visual editor, except `custom_states_labels`. For special options, see the guides:
 
 - 🏷️ [Custom State Labels](custom_states_labels_3.md) — your own text for each state
 - 🎛️ [Custom States On & Blockade](custom_states_on_and_custom_blockade_3.md) — decide what counts as "on" and lock the card
